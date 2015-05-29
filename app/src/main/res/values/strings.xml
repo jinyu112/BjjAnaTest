@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">BjjAnaTest</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="tourney_activity">Add tournament stats.</string>
+    <string name="title_activity_add_tourney">AddTourney</string>
+    <string name="pts_scored">Points Scored: </string>
+    <string name="pts_allowed">Points Allowed: </string>
+    <string name="swp_att">Sweeps Attempted: </string>
+    <string name="swp_suc">Sweeps Successful: </string>
+    <string name="pass_att">Passes Attempted: </string>
+    <string name="pass_suc">Passes Successful: </string>
+    <string name="td_att">Takedowns Attempted: </string>
+    <string name="td_suc">Takedowns Successful: </string>
+    <string name="title_item_list">Items</string>
+    <string name="title_item_detail">Item Detail</string>
+
+
+    <string-array name="drawerBar">
+        <item>Main</item>
+        <item>Add Tourney Stats</item>
+        <item>View Tourney List</item>
+    </string-array>
+
+    <string name="drawer_open">Open Navigation Drawer</string>
+    <string name="drawer_close">Close Navigation Drawer</string>
+</resources>
