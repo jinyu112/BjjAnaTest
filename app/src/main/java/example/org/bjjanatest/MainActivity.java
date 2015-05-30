@@ -9,11 +9,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +25,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import java.sql.SQLData;
 import java.util.List;
@@ -32,7 +33,7 @@ import example.org.bjjanatest.db.TournDataSource;
 import example.org.bjjanatest.db.trainingDBOpenHelper;
 
 
-public class MainActivity extends ActionBarActivity implements AdapterView.OnItemClickListener {
+public class MainActivity extends ActionBarActivity {
     //LOGCAT
     private static final String LOGTAG = "BJJTRAINING";
 
@@ -43,15 +44,10 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
     TournDataSource dataSource;
 
     //Drawer layout objects
-    private DrawerLayout drawerLayout;
-    private ListView lv;
-    private String[] drawerStrings;
-    private ActionBarDrawerToggle drawerListener;
+    private FragmentNavigationDrawer dlDrawer;
 
     //Other objects
     TextView tv;
-    Fragment frag;
-    FragmentTransaction fragTrans;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,55 +55,66 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_main);
 
         //initialize stuff
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        lv = (ListView) findViewById(R.id.drawerList);
-        drawerStrings=getResources().getStringArray(R.array.drawerBar);
-        lv.setAdapter(new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,drawerStrings)); //the adapter handles the data behind the list
-        lv.setOnItemClickListener(this);
+        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-
-        drawerListener = new ActionBarDrawerToggle(this,drawerLayout,R.string.drawer_open,R.string.drawer_close) {
-            @Override
-            public void onDrawerClosed(View drawerView) {
-                super.onDrawerClosed(drawerView);
-            }
-
-            @Override
-        public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-            }
-        };
-        drawerLayout.setDrawerListener(drawerListener);
-        getSupportActionBar().setHomeButtonEnabled(true); //required to show nav button
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true); //required to show nav button
-
+        // Find our drawer view
+        dlDrawer = (FragmentNavigationDrawer) findViewById(R.id.drawerLayout);
+        // Setup drawer view
+        dlDrawer.setupDrawerConfiguration((ListView) findViewById(R.id.drawerList), toolbar,
+                R.layout.drawer_nav_item, R.id.mainContent);
+        // Add nav items
+        dlDrawer.addNavItem("First", "First Fragment", MainContentFragment.class);
+        // Select default
+        if (savedInstanceState == null) {
+            dlDrawer.selectDrawerItem(0);
+        }
         dataSource = new TournDataSource(this);
-        getStats();
+
+//        getStats();
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        // If the nav drawer is open, hide action items related to the content
+        if (dlDrawer.isDrawerOpen()) {
+            // Uncomment to hide menu items
+            // menu.findItem(R.id.mi_test).setVisible(false);
+        }
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+        MenuInflater inflater = getMenuInflater();
+        // Uncomment to inflate menu items to Action Bar
+        // inflater.inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }else if (drawerListener.onOptionsItemSelected(item)) {
+        // The action bar home/up action should open or close the drawer.
+        // ActionBarDrawerToggle will take care of this.
+        if (dlDrawer.getDrawerToggle().onOptionsItemSelected(item)) {
             return true;
         }
 
-
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        dlDrawer.getDrawerToggle().syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // Pass any configuration change to the drawer toggles
+        dlDrawer.getDrawerToggle().onConfigurationChanged(newConfig);
     }
 
     public void goToTourneyActivity(View view){
@@ -118,7 +125,7 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
     @Override
     protected void onResume() {
         super.onResume();
-        getStats();
+//        getStats();
     }
 
     @Override
@@ -132,40 +139,6 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         super.onStop();
         dataSource.close();
     }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        drawerListener.onConfigurationChanged(newConfig);
-    }
-
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        drawerListener.syncState(); //syncs the nav icon with opening/closing drawer
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText(this,"Item " + position + " was selected.",Toast.LENGTH_SHORT).show();
-        lv.setItemChecked(position,true);
-        selectItem(position);
-    }
-
-    public void selectItem(int position) {
-        setTitle(drawerStrings[position]);
-        if (position == 2) {
-            frag = new AddTourneyFragment();
-            fragTrans = getFragmentManager().beginTransaction().add(R.layout.fragment_add_tourney,frag);
-            fragTrans.commit();
-        }
-
-    }
-
-    public void setTitle(String title) {
-        getSupportActionBar().setTitle(title);
-    }
-
 
     public void getStats () {
         dataSource.open(); //opens connection to the datasource
