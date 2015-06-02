@@ -64,7 +64,7 @@ public class MainActivity extends ActionBarActivity {
         dlDrawer.setupDrawerConfiguration((ListView) findViewById(R.id.drawerList), toolbar,
                 R.layout.drawer_nav_item, R.id.mainContent);
         // Add nav items
-        dlDrawer.addNavItem("First", "First Fragment", MainContentFragment.class);
+        dlDrawer.addNavItem("My Stats", "My Statistics", MainContentFragment.class);
         // Select default
         if (savedInstanceState == null) {
             dlDrawer.selectDrawerItem(0);

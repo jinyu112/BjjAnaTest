@@ -12,19 +12,25 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import example.org.bjjanatest.db.TournDataSource;
+
 public class MainContentFragment extends Fragment {
     private TextView tv;
+
+    //database related
+    TournDataSource dataSource;
+
     public MainContentFragment (){
             }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.main_content_frag,container,false);
+        dataSource = new TournDataSource(getActivity());
         return rootView;
     }
 
     public void getStats () {
-        dataSource.open(); //opens connection to the datasource
         List<Tourn> tourns = dataSource.findAll();
         if (tourns.size()!=0) {
 
@@ -54,8 +60,27 @@ public class MainContentFragment extends Fragment {
         }
         else {
             Toast toast;
-            toast=Toast.makeText(this, "No tournament data found", Toast.LENGTH_LONG);
+            toast=Toast.makeText(getActivity(), "No tournament data found", Toast.LENGTH_LONG);
             toast.show();
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        dataSource.open(); //opens connection to the datasource
+        getStats();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        dataSource.close();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        dataSource.close();
     }
 }
