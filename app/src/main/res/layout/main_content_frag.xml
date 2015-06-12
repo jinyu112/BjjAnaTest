@@ -169,21 +169,21 @@
                 android:text="0" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="horizontal">
+        <!--<LinearLayout-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="horizontal">-->
 
-            <Button
-                android:id="@+id/add_tourney"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:onClick="goToTourneyActivity"
-                android:text="Add Tournament Stats" />
-        </LinearLayout>
+            <!--<Button-->
+                <!--android:id="@+id/add_tourney"-->
+                <!--android:layout_width="100dp"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:onClick="goToTourneyActivity"-->
+                <!--android:text="Add Tournament Stats" />-->
+        <!--</LinearLayout>-->
 
     </LinearLayout>

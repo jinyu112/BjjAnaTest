@@ -47,7 +47,6 @@ public class MainActivity extends ActionBarActivity {
     private FragmentNavigationDrawer dlDrawer;
 
     //Other objects
-    TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +64,12 @@ public class MainActivity extends ActionBarActivity {
                 R.layout.drawer_nav_item, R.id.mainContent);
         // Add nav items
         dlDrawer.addNavItem("My Stats", "My Statistics", MainContentFragment.class);
+        dlDrawer.addNavItem("Tournaments", "Add Tournament", TournListFragment.class);
+        dlDrawer.addNavItem("Training Sessions", "Add Training Session", TournListFragment.class);
+        dlDrawer.addNavItem("Techniques", "Technique List", TournListFragment.class);
+        dlDrawer.addNavItem("Weight Tracker", "Weight Tracker", TournListFragment.class);
+        dlDrawer.addNavItem("Time Tracker", "Time Tracker", TournListFragment.class);
+        dlDrawer.addNavItem("About", "About", TournListFragment.class);
         // Select default
         if (savedInstanceState == null) {
             dlDrawer.selectDrawerItem(0);
@@ -117,15 +122,14 @@ public class MainActivity extends ActionBarActivity {
         dlDrawer.getDrawerToggle().onConfigurationChanged(newConfig);
     }
 
-    public void goToTourneyActivity(View view){
-        Intent intent = new Intent(this,AddTourney.class);
-        startActivityForResult(intent,ADDTOURNEY_REQ_CODE);
-    }
+//    public void goToTourneyActivity(View view){
+//        Intent intent = new Intent(this,AddTourney.class);
+//        startActivityForResult(intent,ADDTOURNEY_REQ_CODE);
+//    }
 
     @Override
     protected void onResume() {
         super.onResume();
-//        getStats();
     }
 
     @Override
@@ -140,42 +144,6 @@ public class MainActivity extends ActionBarActivity {
         dataSource.close();
     }
 
-    public void getStats () {
-        dataSource.open(); //opens connection to the datasource
-        List<Tourn> tourns = dataSource.findAll();
-        if (tourns.size()!=0) {
-            Log.i(LOGTAG,"tournlen: " + tourns.size());
-
-            tv = (TextView) findViewById(R.id.main_ptsScored);
-            tv.setText(String.format("%d",dataSource.getTotalPts()));
-
-            tv = (TextView) findViewById(R.id.main_ptsAllowed);
-            tv.setText(String.format("%d",dataSource.getTotalPtsAllowed()));
-
-            tv = (TextView) findViewById(R.id.main_tdPerc);
-            tv.setText(String.format("%2.2f",dataSource.getTdSucPerc()));
-
-            tv = (TextView) findViewById(R.id.main_passperc);
-            tv.setText(String.format("%2.2f",dataSource.getPassSucPerc()));
-
-            tv = (TextView) findViewById(R.id.main_swpPerc);
-            tv.setText(String.format("%2.2f",dataSource.getSweepSucPerc()));
-
-            tv = (TextView) findViewById(R.id.main_subPerc);
-            tv.setText(String.format("%2.2f",dataSource.getSubSucPerc()));
-
-            tv = (TextView) findViewById(R.id.main_avgMatchTime);
-            tv.setText(String.format("%5.2f",dataSource.getAvgMatchTime()));
-
-            tv = (TextView) findViewById(R.id.main_numTourn);
-            tv.setText(String.format("%d",dataSource.getTournLen()));
-        }
-        else {
-            Toast toast;
-            toast=Toast.makeText(this, "No tournament data found", Toast.LENGTH_LONG);
-            toast.show();
-        }
-    }
 
 }
 

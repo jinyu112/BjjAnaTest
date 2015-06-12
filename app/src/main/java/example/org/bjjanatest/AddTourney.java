@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import example.org.bjjanatest.db.TournDataSource;
@@ -18,6 +19,7 @@ public class AddTourney extends ActionBarActivity {
     private static TextView tv;
     private static TextView tvatt;
     private static TextView tvsuc;
+    private static EditText et;
     private static Button button_minus;
     private static Button button_plus;
     private static final String LOGTAG = "BJJTRAINING";
@@ -93,6 +95,28 @@ public class AddTourney extends ActionBarActivity {
         button_minus.setOnClickListener(passSucMinusListener);
         //////
 
+        button_minus = (Button) findViewById(R.id.tdAttMinus);
+        button_plus = (Button) findViewById(R.id.tdAttPlus);
+        tvatt = (TextView) findViewById(R.id.tdAtt);
+        PlusOnClickListener tdAttPlusListener = new PlusOnClickListener(tvatt);
+        button_plus.setOnClickListener(tdAttPlusListener);
+
+        MinusOnClickListener tdAttMinusListener = new MinusOnClickListener(tvatt);
+        button_minus.setOnClickListener(tdAttMinusListener);
+
+        button_minus = (Button) findViewById(R.id.tdSucMinus);
+        button_plus = (Button) findViewById(R.id.tdSucPlus);
+        tvatt = (TextView) findViewById(R.id.tdAtt);
+        tvsuc = (TextView) findViewById(R.id.tdSuc);
+        PlusOnClickListener tdSucPlusListener = new PlusOnClickListener(tvatt,tvsuc);
+        button_plus.setOnClickListener(tdSucPlusListener);
+
+        MinusOnClickListener tdSucMinusListener = new MinusOnClickListener(tvatt,tvsuc);
+        button_minus.setOnClickListener(tdSucMinusListener);
+        //////
+
+
+
     }
 
     @Override
@@ -137,18 +161,25 @@ public class AddTourney extends ActionBarActivity {
         tv = (TextView) findViewById(R.id.passSuc);
         tourn.setPassSuccessful(Integer.parseInt(tv.getText().toString()));
 
+        tv = (TextView) findViewById(R.id.tdAtt);
+        tourn.setTdAttempted(Integer.parseInt(tv.getText().toString()));
+
+        tv = (TextView) findViewById(R.id.tdSuc);
+        tourn.setTdSuccessful(Integer.parseInt(tv.getText().toString()));
+
+        et = (EditText) findViewById(R.id.matchTimeMinEV);
+        double minutes = Double.parseDouble(et.getText().toString());
+
+        et = (EditText) findViewById(R.id.matchTimeSecEV);
+        double seconds = Double.parseDouble(et.getText().toString());
+        double sec2min = seconds/60.0;
+
+        tourn.setMatchTime(minutes+sec2min);
+
+
         tourn = dataSource.create(tourn);
         finish();
     }
-
-//    public void setOnClickListenersForButtons(Button bmtemp, Button bptemp, TextView tvtemp1, TextView tvtemp2) {
-//        PlusOnClickListener ptsScoredPlusListener = new PlusOnClickListener(tvtemp1,tvtemp2); //temp1 is att, temp2 is suc
-//        bptemp.setOnClickListener(ptsScoredPlusListener);
-//
-//        MinusOnClickListener ptsScoredMinusListener = new MinusOnClickListener(tvtemp1,tvtemp2);
-//        bmtemp.setOnClickListener(ptsScoredMinusListener);
-//    }
-
 
     @Override
     protected void onResume() {

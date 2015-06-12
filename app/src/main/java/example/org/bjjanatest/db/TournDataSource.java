@@ -100,8 +100,7 @@ public class TournDataSource {
         Cursor cursor = database.query(trainingDBOpenHelper.TABLE_TOURN,allColumns,null,null,null,null,null);
         Log.i(LOGTAG,"returned " + cursor.getCount() + " rows.");
         tournLen = cursor.getCount();
-        if (cursor.getCount()>0 && cursor != null) {
-            Tourn tourn = new Tourn();
+        if (tournLen>0 && cursor != null) {
             totalPts = 0;
             totalPtsAllowed = 0;
             totalPassAtt = 0;
@@ -119,6 +118,8 @@ public class TournDataSource {
             subSucPerc = 0.0;
             avgMatchTime = 0.0;
             while (cursor.moveToNext()) {
+                Tourn tourn = new Tourn();
+                Log.i(LOGTAG,"findall: tournid " + cursor.getLong(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_ID)));
                 tourn.setId(cursor.getLong(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_ID)));
                 tourn.setTournName(cursor.getString(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_TOURN_NAME)));
                 tourn.setMatchTime(cursor.getDouble(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_MATCH_TIME)));
@@ -137,6 +138,7 @@ public class TournDataSource {
                 tourn.setTdSuccessful(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_TD_SUCCESS   )));
                 tourn.setNumBackTakes(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_BACK_TAKES   )));
                 tourn.setNumMounts(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_MOUNTS   )));
+
 
                 totalPts        = totalPts + tourn.getPointsScored();
                 totalPtsAllowed = totalPtsAllowed + tourn.getPointsAllowed();
@@ -165,9 +167,11 @@ public class TournDataSource {
                 subSucPerc = (double) totalSubSuc/totalSubAtt;
             }
             if (tournLen !=0) {
-                avgMatchTime = (double) totalTdSuc/tournLen;
+                avgMatchTime = (double) totalMatchTime/tournLen;
             }
         }
+
+
         return tourns;
     }
 
