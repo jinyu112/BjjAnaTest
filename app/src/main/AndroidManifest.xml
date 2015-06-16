@@ -21,6 +21,11 @@
             android:label="@string/title_activity_add_tourney" >
         </activity>
         <activity
+            android:name=".ViewTourn"
+            android:label="@string/title_activity_view_tourn" >
+        </activity>
+
+        <activity
             android:name=".ItemListActivity"
             android:label="@string/title_item_list" >
         </activity>

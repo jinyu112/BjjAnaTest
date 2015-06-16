@@ -1,6 +1,9 @@
 package example.org.bjjanatest;
 
-public class Tourn {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Tourn implements Parcelable{
     private long id;
     private String tournName;
     private String belt;
@@ -184,5 +187,70 @@ public class Tourn {
     public void setMatchTime(double num) {
         matchTime = num;
     }
+
+
+    // Parcelling part
+    protected Tourn(Parcel in) {
+        id = in.readLong();
+        tournName = in.readString();
+        belt = in.readString();
+        weightClass = in.readInt();
+        date = in.readInt();
+        pointsAllowed = in.readInt();
+        pointsScored = in.readInt();
+        subAttempted = in.readInt();
+        subSuccessful = in.readInt();
+        passAttempted = in.readInt();
+        passSuccessful = in.readInt();
+        sweepAttempted = in.readInt();
+        sweepSuccessful = in.readInt();
+        tdAttempted = in.readInt();
+        tdSuccessful = in.readInt();
+        numBackTakes = in.readInt();
+        numMounts = in.readInt();
+        matchTime = in.readDouble();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(id);
+        dest.writeString(tournName);
+        dest.writeString(belt);
+        dest.writeInt(weightClass);
+        dest.writeInt(date);
+        dest.writeInt(pointsAllowed);
+        dest.writeInt(pointsScored);
+        dest.writeInt(subAttempted);
+        dest.writeInt(subSuccessful);
+        dest.writeInt(passAttempted);
+        dest.writeInt(passSuccessful);
+        dest.writeInt(sweepAttempted);
+        dest.writeInt(sweepSuccessful);
+        dest.writeInt(tdAttempted);
+        dest.writeInt(tdSuccessful);
+        dest.writeInt(numBackTakes);
+        dest.writeInt(numMounts);
+        dest.writeDouble(matchTime);
+    }
+
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<Tourn> CREATOR = new Parcelable.Creator<Tourn>() {
+        @Override
+        public Tourn createFromParcel(Parcel in) {
+            return new Tourn(in);
+        }
+
+        @Override
+        public Tourn[] newArray(int size) {
+            return new Tourn[size];
+        }
+    };
+
+
 }
 

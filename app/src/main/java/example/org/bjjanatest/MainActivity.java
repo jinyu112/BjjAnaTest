@@ -122,11 +122,6 @@ public class MainActivity extends ActionBarActivity {
         dlDrawer.getDrawerToggle().onConfigurationChanged(newConfig);
     }
 
-//    public void goToTourneyActivity(View view){
-//        Intent intent = new Intent(this,AddTourney.class);
-//        startActivityForResult(intent,ADDTOURNEY_REQ_CODE);
-//    }
-
     @Override
     protected void onResume() {
         super.onResume();

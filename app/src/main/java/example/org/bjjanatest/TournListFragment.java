@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,8 +24,9 @@ import example.org.bjjanatest.db.TournDataSource;
 public class TournListFragment extends android.support.v4.app.ListFragment {
 
     private static final int ADDTOURNEY_REQ_CODE = 1;
+    private static final int VIEWTOURNEY_REQ_CODE = 2;
 
-    private List<Tourn> tourns;
+    private List<Tourn> tourns;  // should this be static??
     //database related
     TournDataSource dataSource; //should this be a private variable?
     private static final String LOGTAG = "BJJTRAINING";
@@ -59,13 +61,26 @@ public class TournListFragment extends android.support.v4.app.ListFragment {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onListItemClick(ListView l, View v, int pos, long id) {
+        super.onListItemClick(l, v, pos, id);
+
+        Intent intent = new Intent(getActivity(),ViewTourn.class);
+        Tourn tourn;
+        tourn = tourns.get(pos);
+        intent.putExtra("tourn_obj",tourn);
+        startActivity(intent);
+
+        Toast.makeText(getActivity(), "Item " + pos + " was clicked", Toast.LENGTH_SHORT).show();
+    }
+
     public void refreshDisplay() {
         ArrayAdapter<Tourn> adapter = new TournListAdapter(getActivity(),getTourns());
         setListAdapter(adapter);
     }
 
     public List<Tourn> getTourns() {
-        List<Tourn> tourns = dataSource.findAll();
+        tourns = dataSource.findAll();
         return tourns;
     }
 

@@ -5,6 +5,7 @@
     <string name="action_settings">Settings</string>
     <string name="tourney_activity">Add tournament stats.</string>
     <string name="title_activity_add_tourney">AddTourney</string>
+    <string name="title_activity_view_tourn">ViewTourney</string>
     <string name="pts_scored">Points Scored: </string>
     <string name="pts_allowed">Points Allowed: </string>
     <string name="swp_att">Sweeps Attempted: </string>
@@ -17,6 +18,7 @@
     <string name="title_item_detail">Item Detail</string>
     <string name="match_time">Match Time:</string>
     <string name="tourn_add">Add</string>
+    <string name="view_tourn_activity">Tournament Stats</string>
 
 
     <string-array name="drawerBar">
