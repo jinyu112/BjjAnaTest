@@ -31,7 +31,18 @@ public class TournDataSource {
     private static int totalTdSuc = 0;
     private static int totalSubAtt = 0;
     private static int totalSubSuc = 0;
+    private static int totalBackTakes = 0;
+    private static int totalMounts = 0;
     private static double totalMatchTime = 0.0;
+    private static double avgTdScored = 0.0;
+    private static double avgPassesScored = 0.0;
+    private static double avgSweepsScored = 0.0;
+    private static double avgSubsScored = 0.0;
+    private static double avgTdAtt = 0.0;
+    private static double avgPassesAtt = 0.0;
+    private static double avgSweepsAtt = 0.0;
+    private static double avgSubsAtt = 0.0;
+    private static int totalWins = 0;
 
     private static final String LOGTAG = "BJJTRAINING";
     private static final String[] allColumns = {
@@ -52,7 +63,8 @@ public class TournDataSource {
             trainingDBOpenHelper.COLUMN_TD_SUCCESS,
             trainingDBOpenHelper.COLUMN_BACK_TAKES,
             trainingDBOpenHelper.COLUMN_MOUNTS,
-            trainingDBOpenHelper.COLUMN_MATCH_TIME};
+            trainingDBOpenHelper.COLUMN_MATCH_TIME,
+            trainingDBOpenHelper.COLUMN_WIN};
 
     public TournDataSource (Context context) {
         dbhelper = new trainingDBOpenHelper(context);
@@ -89,6 +101,7 @@ public class TournDataSource {
         values.put(trainingDBOpenHelper.COLUMN_BACK_TAKES,tourn.getNumBackTakes());
         values.put(trainingDBOpenHelper.COLUMN_MOUNTS,tourn.getNumMounts());
         values.put(trainingDBOpenHelper.COLUMN_MATCH_TIME,tourn.getMatchTime());
+        values.put(trainingDBOpenHelper.COLUMN_WIN,tourn.getWin());
         long insertId = database.insert(trainingDBOpenHelper.TABLE_TOURN,null,values);
         Log.i(LOGTAG,"Tourn ID: " + insertId);
         tourn.setId(insertId);
@@ -117,27 +130,31 @@ public class TournDataSource {
             sweepSucPerc = 0.0;
             subSucPerc = 0.0;
             avgMatchTime = 0.0;
+            totalBackTakes = 0;
+            totalMounts = 0;
+            totalWins = 0;
             while (cursor.moveToNext()) {
                 Tourn tourn = new Tourn();
                 Log.i(LOGTAG,"findall: tournid " + cursor.getLong(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_ID)));
                 tourn.setId(cursor.getLong(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_ID)));
                 tourn.setTournName(cursor.getString(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_TOURN_NAME)));
                 tourn.setMatchTime(cursor.getDouble(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_MATCH_TIME)));
-                tourn.setWeightClass(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_WEIGHT         )));
-                tourn.setBelt(cursor.getString(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_BELT           )));
-                tourn.setDate(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_DATE           )));
-                tourn.setPointsAllowed(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_PTS_ALLOWED    )));
-                tourn.setPointsScored(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_PTS_SCORED     )));
-                tourn.setSubAttempted(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_SUB_ATTEMPT    )));
-                tourn.setSubSuccessful(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_SUB_SUCCESS    )));
-                tourn.setPassAttempted(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_PASS_ATTEMPTED )));
-                tourn.setPassSuccessful(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_PASS_SUCCESS   )));
+                tourn.setWeightClass(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_WEIGHT)));
+                tourn.setBelt(cursor.getString(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_BELT)));
+                tourn.setDate(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_DATE)));
+                tourn.setPointsAllowed(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_PTS_ALLOWED)));
+                tourn.setPointsScored(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_PTS_SCORED)));
+                tourn.setSubAttempted(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_SUB_ATTEMPT)));
+                tourn.setSubSuccessful(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_SUB_SUCCESS)));
+                tourn.setPassAttempted(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_PASS_ATTEMPTED)));
+                tourn.setPassSuccessful(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_PASS_SUCCESS)));
                 tourn.setSweepAttempted(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_SWEEP_ATTEMPTED)));
-                tourn.setSweepSuccessful(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_SWEEP_SUCCESS  )));
-                tourn.setTdAttempted(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_TD_ATTEMPTED   )));
-                tourn.setTdSuccessful(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_TD_SUCCESS   )));
-                tourn.setNumBackTakes(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_BACK_TAKES   )));
-                tourn.setNumMounts(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_MOUNTS   )));
+                tourn.setSweepSuccessful(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_SWEEP_SUCCESS)));
+                tourn.setTdAttempted(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_TD_ATTEMPTED)));
+                tourn.setTdSuccessful(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_TD_SUCCESS)));
+                tourn.setNumBackTakes(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_BACK_TAKES)));
+                tourn.setNumMounts(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_MOUNTS)));
+                tourn.setWin(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_WIN)));
 
 
                 totalPts        = totalPts + tourn.getPointsScored();
@@ -151,6 +168,9 @@ public class TournDataSource {
                 totalSubAtt     = totalSubAtt + tourn.getSubAttempted();
                 totalSubSuc     = totalSubSuc + tourn.getSubSuccessful();
                 totalMatchTime  = totalMatchTime + tourn.getMatchTime();
+                totalBackTakes  = totalBackTakes + tourn.getNumBackTakes();
+                totalMounts     = totalMounts + tourn.getNumMounts();
+                totalWins       = totalWins + tourn.getWin();
 
                 tourns.add(tourn);
             }
@@ -169,11 +189,30 @@ public class TournDataSource {
             if (tournLen !=0) {
                 avgMatchTime = (double) totalMatchTime/tournLen;
             }
+
+
+            //Calculate tournament averages
+            if (tournLen != 0) {
+                avgTdScored = (double) totalTdSuc/tournLen;
+                avgPassesScored = (double) totalPassSuc/tournLen;
+                avgSweepsScored = (double) totalSweepSuc/tournLen;
+                avgSubsScored = (double) totalSubSuc/tournLen;
+
+                avgTdAtt = (double) totalTdAtt/tournLen;
+                avgPassesAtt = (double) totalPassAtt/tournLen;
+                avgSweepsAtt = (double) totalSweepAtt/tournLen;
+                avgSubsAtt = (double)totalSubAtt/tournLen;
+            }
         }
-
-
         return tourns;
     }
+
+public boolean removeFromTourns(Tourn tourn) {
+    String where = trainingDBOpenHelper.COLUMN_ID + "=" + tourn.getId(); //this string must be very carefully crafted or all data can be deleted
+    int result = database.delete(trainingDBOpenHelper.TABLE_TOURN, where, null);
+    return (result==1);
+
+}
 
     public int getTotalPts() {
         return totalPts;
@@ -238,4 +277,26 @@ public class TournDataSource {
     public int getTournLen() {
         return tournLen;
     }
+
+    public int getNumBackTakes() {return totalBackTakes;}
+
+    public int getNumMounts() {return totalMounts;}
+
+    public double getAvgTdScored() {return avgTdScored;}
+
+    public double getAvgPassesScored() {return avgPassesScored;}
+
+    public double getAvgSweepsScored() {return avgSweepsScored;}
+
+    public double getAvgSubsScored() {return avgSubsScored;}
+
+    public double getAvgTdAtt() {return avgTdAtt;}
+
+    public double getAvgPassesAtt() {return avgPassesAtt;}
+
+    public double getAvgSweepsAtt() {return avgSweepsAtt;}
+
+    public double getAvgSubsAtt() {return avgSubsAtt;}
+
+    public int getWins() {return totalWins;}
 }

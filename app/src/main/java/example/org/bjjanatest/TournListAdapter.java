@@ -1,6 +1,7 @@
 package example.org.bjjanatest;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,17 +26,27 @@ public class TournListAdapter extends ArrayAdapter<Tourn> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater vi = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = vi.inflate(R.layout.tourn_list_item,null);
+        View view = vi.inflate(R.layout.tourn_list_item, null);
 
         Tourn tourn = tourns.get(position);
 
+        TextView tv = (TextView) view.findViewById(R.id.tourn_list_item_name);
+        tv.setText(tourn.getTournName());
 
-        TextView tv = (TextView) view.findViewById(R.id.tourn_list_item_id);
-        tv.setText(String.valueOf(tourn.getId()));
-
-
-        tv = (TextView) view.findViewById(R.id.tourn_list_item_name);
+        tv = (TextView) view.findViewById(R.id.tourn_list_item_belt);
         tv.setText(tourn.getBelt());
+
+        tv = (TextView) view.findViewById(R.id.tourn_list_item_win);
+        if (tourn.getWin() == 1) {
+            tv.setText("WIN");
+            tv.setTextColor(Color.GREEN);
+        }
+        else {
+            tv.setText("LOSS");
+            tv.setTextColor(Color.RED);
+        }
+
+
 
         return view;
     }

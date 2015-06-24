@@ -57,6 +57,64 @@ public class MainContentFragment extends Fragment {
 
             tv = (TextView) getView().findViewById(R.id.main_numTourn);
             tv.setText(String.format("%d",dataSource.getTournLen()));
+
+            tv = (TextView) getView().findViewById(R.id.main_tdsAtt);
+            tv.setText(String.format("%d",dataSource.getTotalTdAtt()));
+
+            tv = (TextView) getView().findViewById(R.id.main_tdsScored);
+            tv.setText(String.format("%d",dataSource.getTotalTdSuc()));
+
+            tv = (TextView) getView().findViewById(R.id.main_passesAtt);
+            tv.setText(String.format("%d",dataSource.getTotalPassAtt()));
+
+            tv = (TextView) getView().findViewById(R.id.main_passesScored);
+            tv.setText(String.format("%d",dataSource.getTotalPassSuc()));
+
+            tv = (TextView) getView().findViewById(R.id.main_sweepsAtt);
+            tv.setText(String.format("%d",dataSource.getTotalSweepAtt()));
+
+            tv = (TextView) getView().findViewById(R.id.main_sweepsScored);
+            tv.setText(String.format("%d",dataSource.getTotalSweepSuc()));
+
+            tv = (TextView) getView().findViewById(R.id.main_subAtt);
+            tv.setText(String.format("%d",dataSource.getTotalSubAtt()));
+
+            tv = (TextView) getView().findViewById(R.id.main_subsScored);
+            tv.setText(String.format("%d",dataSource.getTotalSubSuc()));
+
+            tv = (TextView) getView().findViewById(R.id.main_numBackTakes);
+            tv.setText(String.format("%d",dataSource.getNumBackTakes()));
+
+            tv = (TextView) getView().findViewById(R.id.main_numMounts);
+            tv.setText(String.format("%d",dataSource.getNumMounts()));
+
+            tv = (TextView) getView().findViewById(R.id.main_avgTds);
+            tv.setText(String.format("%5.2f",dataSource.getAvgTdScored()));
+
+            tv = (TextView) getView().findViewById(R.id.main_avgTdsAtt);
+            tv.setText(String.format("%5.2f",dataSource.getAvgTdAtt()));
+
+            tv = (TextView) getView().findViewById(R.id.main_avgPass);
+            tv.setText(String.format("%5.2f",dataSource.getAvgPassesScored()));
+
+            tv = (TextView) getView().findViewById(R.id.main_avgPassAtt);
+            tv.setText(String.format("%5.2f",dataSource.getAvgPassesAtt()));
+
+            tv = (TextView) getView().findViewById(R.id.main_avgSweep);
+            tv.setText(String.format("%5.2f",dataSource.getAvgSweepsScored()));
+
+            tv = (TextView) getView().findViewById(R.id.main_avgSweepAtt);
+            tv.setText(String.format("%5.2f",dataSource.getAvgSweepsAtt()));
+
+            tv = (TextView) getView().findViewById(R.id.main_avgSub);
+            tv.setText(String.format("%5.2f",dataSource.getAvgSubsScored()));
+
+            tv = (TextView) getView().findViewById(R.id.main_avgSubAtt);
+            tv.setText(String.format("%5.2f",dataSource.getAvgSubsAtt()));
+
+            tv = (TextView) getView().findViewById(R.id.main_record);
+            tv.setText(String.format("%d W-%d L",dataSource.getWins(),dataSource.getTournLen()-dataSource.getWins()));
+
         }
         else {
             Toast toast;

@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -23,7 +24,7 @@ public class AddTourney extends ActionBarActivity {
     private static Button button_minus;
     private static Button button_plus;
     private static final String LOGTAG = "BJJTRAINING";
-    TournDataSource dataSource;
+    private TournDataSource dataSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +32,10 @@ public class AddTourney extends ActionBarActivity {
         setContentView(R.layout.activity_add_tourney);
 
         //database related
-
         dataSource = new TournDataSource(this);
         dataSource.open();
+
+//        set a generic plus and minus click listener object and use that for all the setOnClickListener methods??????
 
         button_minus = (Button) findViewById(R.id.ptsScoredMinus);
         button_plus = (Button) findViewById(R.id.ptsScoredPlus);
@@ -113,6 +115,36 @@ public class AddTourney extends ActionBarActivity {
 
         MinusOnClickListener tdSucMinusListener = new MinusOnClickListener(tvatt,tvsuc);
         button_minus.setOnClickListener(tdSucMinusListener);
+        ////// back take and mount
+
+        button_minus = (Button) findViewById(R.id.backTakeMinus);
+        button_plus = (Button) findViewById(R.id.backTakePlus);
+        tvsuc = (TextView) findViewById(R.id.numBackTakes);
+        PlusOnClickListener backTakePlusListener = new PlusOnClickListener(tvsuc);
+        button_plus.setOnClickListener(backTakePlusListener);
+
+        MinusOnClickListener backTakeMinusListener = new MinusOnClickListener(tvsuc);
+        button_minus.setOnClickListener(backTakeMinusListener);
+
+        button_minus = (Button) findViewById(R.id.mountMinus);
+        button_plus = (Button) findViewById(R.id.mountPlus);
+        tvsuc = (TextView) findViewById(R.id.numMount);
+        PlusOnClickListener mountPlusListener = new PlusOnClickListener(tvsuc);
+        button_plus.setOnClickListener(mountPlusListener);
+
+        MinusOnClickListener mountMinusListener = new MinusOnClickListener(tvsuc);
+        button_minus.setOnClickListener(mountMinusListener);
+        //////
+
+        button_minus = (Button) findViewById(R.id.subAttMinus);
+        button_plus = (Button) findViewById(R.id.subAttPlus);
+        tvatt = (TextView) findViewById(R.id.subAtt);
+        PlusOnClickListener subAttPlusListener = new PlusOnClickListener(tvatt);
+        button_plus.setOnClickListener(subAttPlusListener);
+
+        MinusOnClickListener subAttMinusListener = new MinusOnClickListener(tvatt);
+        button_minus.setOnClickListener(subAttMinusListener);
+
         //////
 
 
@@ -167,15 +199,57 @@ public class AddTourney extends ActionBarActivity {
         tv = (TextView) findViewById(R.id.tdSuc);
         tourn.setTdSuccessful(Integer.parseInt(tv.getText().toString()));
 
+        tv = (TextView) findViewById(R.id.numBackTakes);
+        tourn.setNumBackTakes(Integer.parseInt(tv.getText().toString()));
+
+        tv = (TextView) findViewById(R.id.numMount);
+        tourn.setNumMounts(Integer.parseInt(tv.getText().toString()));
+
+        tv = (TextView) findViewById(R.id.subAtt);
+        tourn.setSubAttempted(Integer.parseInt(tv.getText().toString()));
+
+        CheckBox cb = (CheckBox) findViewById(R.id.winCheck);
+        if (cb.isChecked()) {
+            tourn.setWin(1);
+        }
+        else {
+            tourn.setWin(0);
+        }
+
+        cb = (CheckBox) findViewById(R.id.subCheck);
+        if (cb.isChecked()) {
+            tourn.setSubSuccessful(1);
+            tourn.setWin(1);
+        }
+        else {
+            tourn.setSubSuccessful(0);
+        }
+
+        if (tourn.getPointsAllowed() < tourn.getPointsScored()) {
+            tourn.setWin(1);
+        }
+        else if (tourn.getPointsAllowed() > tourn.getPointsScored()) {
+            tourn.setWin(0);
+        }
+
+
+
+        //!!!!!!!!!!!!!!!move match time, name, belt, date inputs to a popup alert before saving
+        //!!!!!!!!!!!!!!also provide safeguard for empty fields
         et = (EditText) findViewById(R.id.matchTimeMinEV);
         double minutes = Double.parseDouble(et.getText().toString());
 
         et = (EditText) findViewById(R.id.matchTimeSecEV);
         double seconds = Double.parseDouble(et.getText().toString());
+        if (seconds > 60.0) {
+            seconds = 60.0;
+        }
         double sec2min = seconds/60.0;
 
         tourn.setMatchTime(minutes+sec2min);
 
+        et = (EditText) findViewById(R.id.tournNameEV);
+        tourn.setTournName(et.getText().toString());
 
         tourn = dataSource.create(tourn);
         finish();

@@ -22,10 +22,11 @@ public class Tourn implements Parcelable{
     private int numBackTakes;
     private int numMounts;
     private double matchTime;
+    private int win; //1 == win, 0 == loss
 
     public Tourn() {
         id = 0;
-        tournName = "";
+        tournName = "IBJJF";
         belt = "white";
         weightClass = 0;
         date = 0;
@@ -42,6 +43,7 @@ public class Tourn implements Parcelable{
         numBackTakes = 0;
         numMounts = 0;
         matchTime = 0.0;
+        win = 0;
     }
 
     public long getId() {
@@ -188,6 +190,14 @@ public class Tourn implements Parcelable{
         matchTime = num;
     }
 
+    public int getWin() {
+        return this.win;
+    }
+
+    public void setWin(int flag) {
+        win = flag;
+    }
+
 
     // Parcelling part
     protected Tourn(Parcel in) {
@@ -209,6 +219,7 @@ public class Tourn implements Parcelable{
         numBackTakes = in.readInt();
         numMounts = in.readInt();
         matchTime = in.readDouble();
+        win = in.readInt();
     }
 
     @Override
@@ -236,6 +247,7 @@ public class Tourn implements Parcelable{
         dest.writeInt(numBackTakes);
         dest.writeInt(numMounts);
         dest.writeDouble(matchTime);
+        dest.writeInt(win);
     }
 
     @SuppressWarnings("unused")

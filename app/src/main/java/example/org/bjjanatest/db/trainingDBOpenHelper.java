@@ -31,6 +31,7 @@ public class trainingDBOpenHelper extends SQLiteOpenHelper{
     public static final String COLUMN_BACK_TAKES        = "numBackTakes";
     public static final String COLUMN_MOUNTS           = "numMounts";
     public static final String COLUMN_MATCH_TIME        = "matchTime";
+    public static final String COLUMN_WIN               = "win";
 
     private static final String TABLE_CREATE =
             "CREATE TABLE " + TABLE_TOURN + " (" +
@@ -51,7 +52,8 @@ public class trainingDBOpenHelper extends SQLiteOpenHelper{
                     COLUMN_TD_SUCCESS + " NUMERIC, " +
                     COLUMN_BACK_TAKES + " NUMERIC, " +
                     COLUMN_MOUNTS + " NUMERIC, " +
-                    COLUMN_MATCH_TIME + " NUMERIC " +
+                    COLUMN_MATCH_TIME + " NUMERIC, " +
+                    COLUMN_WIN + " NUMERIC " +
                     ")"; //this string is VERY important. the individual strings must have exactly one space in between them in the sql statement
 
 

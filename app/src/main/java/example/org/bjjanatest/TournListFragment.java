@@ -23,9 +23,6 @@ import example.org.bjjanatest.db.TournDataSource;
 
 public class TournListFragment extends android.support.v4.app.ListFragment {
 
-    private static final int ADDTOURNEY_REQ_CODE = 1;
-    private static final int VIEWTOURNEY_REQ_CODE = 2;
-
     private List<Tourn> tourns;  // should this be static??
     //database related
     TournDataSource dataSource; //should this be a private variable?
@@ -54,7 +51,7 @@ public class TournListFragment extends android.support.v4.app.ListFragment {
         switch (item.getItemId()) {
             case R.id.tourn_add:
                 Intent intent = new Intent(getActivity(),AddTourney.class);
-                startActivityForResult(intent,ADDTOURNEY_REQ_CODE);
+                startActivity(intent);
                 Log.i(LOGTAG,"adding a new tourney from the tourn list frag");
                 break;
         }
@@ -70,8 +67,6 @@ public class TournListFragment extends android.support.v4.app.ListFragment {
         tourn = tourns.get(pos);
         intent.putExtra("tourn_obj",tourn);
         startActivity(intent);
-
-        Toast.makeText(getActivity(), "Item " + pos + " was clicked", Toast.LENGTH_SHORT).show();
     }
 
     public void refreshDisplay() {

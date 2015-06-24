@@ -220,6 +220,56 @@
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/view_backTakeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="@string/back_takes" />
+
+        <TextView
+            android:id="@+id/view_numBackTakes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:text="0" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/view_mountsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="@string/mount" />
+
+        <TextView
+            android:id="@+id/view_numMounts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:text="0" />
+
+    </RelativeLayout>
+
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -246,11 +296,20 @@
 
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal">
+        <Button
+            android:id="@+id/view_del_view_tourn"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:onClick="deleteTourn"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:text="Delete" />
 
         <Button
             android:id="@+id/view_finish_view_tourn"
@@ -258,7 +317,9 @@
             android:layout_height="40dp"
             android:gravity="center"
             android:onClick="finishViewTourn"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
             android:text="Back" />
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

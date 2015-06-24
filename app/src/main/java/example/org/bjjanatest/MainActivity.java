@@ -64,8 +64,8 @@ public class MainActivity extends ActionBarActivity {
                 R.layout.drawer_nav_item, R.id.mainContent);
         // Add nav items
         dlDrawer.addNavItem("My Stats", "My Statistics", MainContentFragment.class);
-        dlDrawer.addNavItem("Tournaments", "Add Tournament", TournListFragment.class);
-        dlDrawer.addNavItem("Training Sessions", "Add Training Session", TournListFragment.class);
+        dlDrawer.addNavItem("Tournaments", "Tournaments", TournListFragment.class);
+        dlDrawer.addNavItem("Training Sessions", "Training Sessions", TournListFragment.class);
         dlDrawer.addNavItem("Techniques", "Technique List", TournListFragment.class);
         dlDrawer.addNavItem("Weight Tracker", "Weight Tracker", TournListFragment.class);
         dlDrawer.addNavItem("Time Tracker", "Time Tracker", TournListFragment.class);

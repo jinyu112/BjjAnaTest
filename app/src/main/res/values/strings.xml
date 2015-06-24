@@ -3,7 +3,7 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="tourney_activity">Add tournament stats.</string>
+    <string name="tourney_activity">Add tournament match statistcs.</string>
     <string name="title_activity_add_tourney">AddTourney</string>
     <string name="title_activity_view_tourn">ViewTourney</string>
     <string name="pts_scored">Points Scored: </string>
@@ -14,11 +14,22 @@
     <string name="pass_suc">Passes Successful: </string>
     <string name="td_att">Takedowns Attempted: </string>
     <string name="td_suc">Takedowns Successful: </string>
+    <string name="sub_att">Submissions Attempted: </string>
+    <string name="sub_suc">Submission? </string>
     <string name="title_item_list">Items</string>
     <string name="title_item_detail">Item Detail</string>
     <string name="match_time">Match Time:</string>
+    <string name="tourn_name">Tournament Name:</string>
     <string name="tourn_add">Add</string>
-    <string name="view_tourn_activity">Tournament Stats</string>
+    <string name="view_tourn_activity">Tournament Match Stats</string>
+    <string name="tourn_totals">Tournament Totals</string>
+    <string name="tourn_percentages">Tournament Offense Percentages</string>
+    <string name="tourn_averages">Tournament Averages</string>
+    <string name="tourn_highs">Tournament Highs</string>
+    <string name="back_takes">Back Takes:</string>
+    <string name="mount">Number of Mount Positions:</string>
+    <string name="win">Win?</string>
+    <string name="main_record_label">Tournament Record:</string>
 
 
     <string-array name="drawerBar">

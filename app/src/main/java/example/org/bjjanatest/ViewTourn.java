@@ -6,14 +6,21 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import example.org.bjjanatest.db.TournDataSource;
+
 public class ViewTourn extends ActionBarActivity {
 
     private Tourn tourn;
+    private TournDataSource dataSource;
+
 
     @Override
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_tourn);
+
+        dataSource = new TournDataSource(this);
+        dataSource.open();
 
         Bundle data = getIntent().getExtras();
         tourn = data.getParcelable("tourn_obj");
@@ -43,11 +50,41 @@ public class ViewTourn extends ActionBarActivity {
         tv = (TextView) findViewById(R.id.view_tdSuc);
         tv.setText(String.valueOf(tourn.getTdSuccessful()));
 
+        tv = (TextView) findViewById(R.id.view_numBackTakes);
+        tv.setText(String.valueOf(tourn.getNumBackTakes()));
+
+        tv = (TextView) findViewById(R.id.view_numMounts);
+        tv.setText(String.valueOf(tourn.getNumMounts()));
+
         tv = (TextView) findViewById(R.id.view_matchTime);
         tv.setText(String.valueOf(tourn.getMatchTime()));
     }
 
     public void finishViewTourn(View view) {
         finish();
+    }
+
+    public void deleteTourn(View view) {
+        dataSource.removeFromTourns(tourn);
+        dataSource.close();
+        finish();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        dataSource.open(); //opens connection to the datasource
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        dataSource.close();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        dataSource.close();
     }
 }
