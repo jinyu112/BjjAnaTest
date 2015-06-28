@@ -21,8 +21,16 @@
             android:label="@string/title_activity_add_tourney" >
         </activity>
         <activity
+            android:name=".AddTraining"
+            android:label="@string/title_activity_add_train" >
+        </activity>
+        <activity
             android:name=".ViewTourn"
             android:label="@string/title_activity_view_tourn" >
+        </activity>
+        <activity
+            android:name=".ViewTrain"
+            android:label="@string/title_activity_view_train" >
         </activity>
 
         <activity
