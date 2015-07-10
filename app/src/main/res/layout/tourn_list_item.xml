@@ -43,7 +43,4 @@
         android:id="@+id/tourn_list_item_win"/>
     </RelativeLayout>
 
-
-
-
 </LinearLayout>

@@ -1,6 +1,7 @@
 package example.org.bjjanatest.db;
 
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -53,6 +54,14 @@ public class trainingDBOpenHelper extends SQLiteOpenHelper{
     public static final String COLUMN_MOUNTS_TRAIN           = "numMounts";
     public static final String COLUMN_MATCH_TIME_TRAIN        = "matchTime";
 
+    public static final String TABLE_TECH       = "tech";
+    public static final String COLUMN_ID_TECH       = "techId";
+    public static final String COLUMN_TECH_NAME       = "techName";
+    public static final String COLUMN_TECH_TYPE       = "techType";
+    public static final String COLUMN_TECH_URL       = "techURL";
+    public static final String COLUMN_TECH_NOTE       = "techNote";
+
+
 
     private static final String TABLE_CREATE =
             "CREATE TABLE " + TABLE_TOURN + " (" +
@@ -98,6 +107,15 @@ public class trainingDBOpenHelper extends SQLiteOpenHelper{
                     COLUMN_MATCH_TIME_TRAIN + " NUMERIC " +
                     ")"; //this string is VERY important. the individual strings must have exactly one space in between them in the sql statement
 
+    private static final String TABLE_CREATE_TECH =
+            "CREATE TABLE " + TABLE_TECH + " (" +
+                    COLUMN_ID_TECH + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    COLUMN_TECH_NAME + " TEXT NOT NULL, " +
+                    COLUMN_TECH_TYPE + " NUMERIC, " +
+                    COLUMN_TECH_URL + " TEXT NOT NULL, " +
+                    COLUMN_TECH_NOTE + " TEXT NOT NULL " +
+                    ")";
+
 
     public trainingDBOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -110,12 +128,16 @@ public class trainingDBOpenHelper extends SQLiteOpenHelper{
         Log.i(LOGTAG, "Table tourn has been created.");
         db.execSQL(TABLE_CREATE_TRAIN);
         Log.i(LOGTAG, "Table train has been created.");
+        db.execSQL(TABLE_CREATE_TECH);
+        Log.i(LOGTAG, "Table tech has been created.");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_TOURN);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_TRAIN);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TECH);
         onCreate(db);
     }
+
 }

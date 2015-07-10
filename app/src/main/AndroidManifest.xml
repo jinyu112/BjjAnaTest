@@ -25,12 +25,24 @@
             android:label="@string/title_activity_add_train" >
         </activity>
         <activity
+            android:name=".AddTech"
+            android:label="@string/title_activity_add_tech" >
+        </activity>
+        <activity
             android:name=".ViewTourn"
             android:label="@string/title_activity_view_tourn" >
         </activity>
         <activity
             android:name=".ViewTrain"
             android:label="@string/title_activity_view_train" >
+        </activity>
+        <activity
+            android:name=".ViewTech"
+            android:label="@string/title_activity_view_tech" >
+        </activity>
+        <activity
+            android:name=".EditTech"
+            android:label="@string/title_activity_edit_tech" >
         </activity>
 
         <activity

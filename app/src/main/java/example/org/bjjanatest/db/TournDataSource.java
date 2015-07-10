@@ -211,7 +211,6 @@ public boolean removeFromTourns(Tourn tourn) {
     String where = trainingDBOpenHelper.COLUMN_ID + "=" + tourn.getId(); //this string must be very carefully crafted or all data can be deleted
     int result = database.delete(trainingDBOpenHelper.TABLE_TOURN, where, null);
     return (result==1);
-
 }
 
     public int getTotalPts() {

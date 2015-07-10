@@ -6,6 +6,9 @@
     <string name="tourney_activity">Add tournament match statistcs.</string>
     <string name="title_activity_add_tourney">AddTourney</string>
     <string name="title_activity_view_tourn">ViewTourney</string>
+    <string name="title_activity_add_train">AddTrain</string>
+    <string name="title_activity_add_tech">AddTech</string>
+    <string name="title_activity_view_train">ViewTrain</string>
     <string name="pts_scored">Points Scored: </string>
     <string name="pts_allowed">Points Allowed: </string>
     <string name="swp_att">Sweeps Attempted: </string>
@@ -22,6 +25,7 @@
     <string name="tourn_name">Tournament Name:</string>
     <string name="tourn_add">Add</string>
     <string name="view_tourn_activity">Tournament Match Stats</string>
+    <string name="view_train_activity">Training Session Stats</string>
     <string name="tourn_totals">Tournament Totals</string>
     <string name="tourn_percentages">Tournament Offense Percentages</string>
     <string name="tourn_averages">Tournament Averages</string>
@@ -30,6 +34,22 @@
     <string name="mount">Number of Mount Positions:</string>
     <string name="win">Win?</string>
     <string name="main_record_label">Tournament Record:</string>
+
+    <string name="training_activity">Add training session statistcs.</string>
+    <string name="train_name">Session Name:</string>
+    <string name="sub_suc_train">Submissions:</string>
+    <string name="train_add">Add</string>
+
+    <string name="tech_activity">Add technique.</string>
+    <string name="tech_name">Technique:</string>
+    <string name="tech_type">Technique Type:</string>
+    <string name="tech_note">Notes:</string>
+    <string name="tech_URL">Technique URL:</string>
+    <string name="tech_add">Add</string>
+    <string name="view_tech_activity">Your BJJ Technique</string>
+    <string name="edit_tech_activity">Edit Technique</string>
+    <string name="title_activity_view_tech">ViewTech</string>
+    <string name="title_activity_edit_tech">EditTech</string>
 
 
     <string-array name="drawerBar">
