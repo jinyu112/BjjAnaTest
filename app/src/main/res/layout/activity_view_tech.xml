@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/view_tech_activity" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/view_techLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:text="@string/tech_name" />
+
+        <TextView
+            android:id="@+id/view_techName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:text="" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/view_techTypeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:text="@string/tech_type" />
+
+        <TextView
+            android:id="@+id/view_techType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:text="" />
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/view_techNotesLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:text="@string/tech_note" />
+        </LinearLayout>
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+        <TextView
+            android:id="@+id/view_techNotes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:text="" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/view_del_view_tech"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:onClick="deleteTech"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="Delete" />
+        <Button
+            android:id="@+id/view_edit_tech"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:onClick="editTech"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="Edit" />
+        <Button
+            android:id="@+id/view_finish_view_tech"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:onClick="finishViewTech"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="Back" />
+    </LinearLayout>
+
+</LinearLayout>
