@@ -61,6 +61,14 @@ public class trainingDBOpenHelper extends SQLiteOpenHelper{
     public static final String COLUMN_TECH_URL       = "techURL";
     public static final String COLUMN_TECH_NOTE       = "techNote";
 
+    public static final String TABLE_WEIGHT       = "weight";
+    public static final String COLUMN_ID_WEIGHT       = "weightId";
+    public static final String COLUMN_WEIGHT_MASS       = "weightMass";
+    public static final String COLUMN_WEIGHT_MONTH       = "weightMonth";
+    public static final String COLUMN_WEIGHT_DAY       = "weightDay";
+    public static final String COLUMN_WEIGHT_YEAR       = "weightYear";
+    public static final String COLUMN_WEIGHT_DATE       = "weightDate";
+
 
 
     private static final String TABLE_CREATE =
@@ -116,6 +124,16 @@ public class trainingDBOpenHelper extends SQLiteOpenHelper{
                     COLUMN_TECH_NOTE + " TEXT NOT NULL " +
                     ")";
 
+    private static final String TABLE_CREATE_WEIGHT =
+            "CREATE TABLE " + TABLE_WEIGHT + " (" +
+                    COLUMN_ID_WEIGHT + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    COLUMN_WEIGHT_MASS + " NUMERIC, " +
+                    COLUMN_WEIGHT_MONTH + " NUMERIC, " +
+                    COLUMN_WEIGHT_DAY + " NUMERIC, " +
+                    COLUMN_WEIGHT_YEAR + " NUMERIC, " +
+                    COLUMN_WEIGHT_DATE + " NUMERIC NOT NULL UNIQUE ON CONFLICT REPLACE " +
+                    ")";
+
 
     public trainingDBOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -130,6 +148,8 @@ public class trainingDBOpenHelper extends SQLiteOpenHelper{
         Log.i(LOGTAG, "Table train has been created.");
         db.execSQL(TABLE_CREATE_TECH);
         Log.i(LOGTAG, "Table tech has been created.");
+        db.execSQL(TABLE_CREATE_WEIGHT);
+        Log.i(LOGTAG, "Table weight has been created.");
     }
 
     @Override
@@ -137,6 +157,7 @@ public class trainingDBOpenHelper extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_TOURN);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_TRAIN);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_TECH);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_WEIGHT);
         onCreate(db);
     }
 
