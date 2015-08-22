@@ -67,7 +67,7 @@ public class MainActivity extends ActionBarActivity {
         dlDrawer.addNavItem("Tournaments", "Tournaments", TournListFragment.class);
         dlDrawer.addNavItem("Training Sessions", "Training Sessions", TrainingListFragment.class);
         dlDrawer.addNavItem("Techniques", "Technique List", TechListFragment.class);
-        dlDrawer.addNavItem("Weight Tracker", "Weight Tracker", TournListFragment.class);
+        dlDrawer.addNavItem("Weight Tracker", "Weight Tracker", AddWeightFragment.class);
         dlDrawer.addNavItem("Time Tracker", "Time Tracker", TournListFragment.class);
         dlDrawer.addNavItem("About", "About", TournListFragment.class);
         // Select default
@@ -138,7 +138,6 @@ public class MainActivity extends ActionBarActivity {
         super.onStop();
         dataSource.close();
     }
-
 
 }
 

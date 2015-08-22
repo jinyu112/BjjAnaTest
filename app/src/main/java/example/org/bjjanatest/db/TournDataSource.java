@@ -204,6 +204,7 @@ public class TournDataSource {
                 avgSubsAtt = (double)totalSubAtt/tournLen;
             }
         }
+        cursor.close();
         return tourns;
     }
 

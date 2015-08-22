@@ -196,6 +196,7 @@ public class TrainDataSource {
                 avgSubsAtt = (double)totalSubAtt/trainLen;
             }
         }
+        cursor.close();
         return trains;
     }
 

@@ -10,7 +10,7 @@ public class Weight implements Parcelable {
     private int day;
     private int year;
     private long id;
-    private String dateStr;
+    private int date;
 
     public Weight() {
         id = 0;
@@ -18,7 +18,7 @@ public class Weight implements Parcelable {
         month = 1;
         day = 1;
         year = 1900;
-        dateStr = "111900";
+        date = 19000101;
     }
 
     public void setId(long in ) {this.id = in;}
@@ -31,8 +31,8 @@ public class Weight implements Parcelable {
     public int getDay() {return this.day;}
     public void setYear(int in) {this.year = in;}
     public int getYear() {return this.year;}
-    public void setDateStr(String str) {this.dateStr = str;}
-    public String getDateStr() {return this.dateStr;}
+    public void setDate(int in) {this.date = in;}
+    public int getDate() {return this.date;}
 
 
     protected Weight(Parcel in) {
@@ -41,7 +41,7 @@ public class Weight implements Parcelable {
         month = in.readInt();
         day = in.readInt();
         year = in.readInt();
-        dateStr = in.readString();
+        date = in.readInt();
     }
 
     @Override
@@ -56,7 +56,7 @@ public class Weight implements Parcelable {
         dest.writeInt(month);
         dest.writeInt(day);
         dest.writeInt(year);
-        dest.writeString(dateStr);
+        dest.writeInt(date);
     }
 
     @SuppressWarnings("unused")

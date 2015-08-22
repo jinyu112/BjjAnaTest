@@ -13,7 +13,7 @@ import java.util.List;
 import example.org.bjjanatest.Tech;
 
 public class TechDataSource {
-    SQLiteOpenHelper dbhelper;
+    SQLiteOpenHelper dbhelper; //should these be private?
     SQLiteDatabase database;
     private static int techLen = 0;
     private static final String LOGTAG = "BJJTRAINING";
@@ -68,6 +68,7 @@ public class TechDataSource {
                 techs.add(tech);
             }
         }
+        cursor.close();
         return techs;
     }
 

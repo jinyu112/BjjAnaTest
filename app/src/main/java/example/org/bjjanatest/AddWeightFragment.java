@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 
@@ -34,9 +35,6 @@ public class AddWeightFragment extends Fragment {
     WeightDataSource dataSource;
     private static final String LOGTAG = "BJJTRAINING";
     private static LineChart lineChart; //should this be static?
-    private String minDateStr = "19000101";
-    private String maxDateStr = "19000101";
-    private int minDateIndex = 0;
 
 
     public AddWeightFragment () {
@@ -77,6 +75,16 @@ public class AddWeightFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.weight_frag,container,false);
         lineChart = (LineChart) rootView.findViewById(R.id.weightGraph);
         displayWeightData(refreshDisplay());
+
+        Button button = (Button) rootView.findViewById(R.id.clearAllWeightButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dataSource.removeAllWeights();
+                lineChart.clearValues();
+                //lineChart.clear();
+            }
+        });
         return rootView;
     }
 
@@ -101,63 +109,185 @@ public class AddWeightFragment extends Fragment {
     }
 
     public List<Weight> refreshDisplay() {
-        List<Weight> weights = dataSource.findAll();
-        minDateStr=dataSource.getMinDateStr();
-        maxDateStr=dataSource.getMinDateStr();
-        minDateIndex=dataSource.getMinDateIndex();
-        return weights;
+        return dataSource.findAll();
     }
 
     //This function graphs the weight data points
     public void displayWeightData(List<Weight> weights) {
-        Weight weight;
-        int numDays=0; //number of days between the earliest date and the current date
-        String dateStr;
-        int date;
+        Weight weight, prevWeight=new Weight();
+        int numDays=0; //number of days between the the previous date
+        int date, prevDate=19000101;
+        double minWeight=9999;
+        boolean firstPass=true;
+        int index=0; //this is the x axis index (ie the data point (index,weight) is plotted)
+        int tempYear, tempMonth, tempDay;
+        int[] tempDateArray = new int[3];
 
-        ArrayList<Entry> valsComp1 = new ArrayList<Entry>();
-        ArrayList<String> xVals = new ArrayList<String>();
-        Entry c1e1;
+        ArrayList<Entry> dataPoints = new ArrayList<Entry>();
+        ArrayList<String> xStrings = new ArrayList<String>();
+        Entry entry;
 
+        //setup data points for plotting
+        //mysqlite already orders the data by date
         for ( int i = 0; i < weights.size(); i++ )
         {
             weight = weights.get(i);
-            dateStr = weight.getDateStr();
-            date = Integer.parseInt(dateStr);
-            numDays=determineDaysBetween(dateStr, minDateStr);
-            c1e1 = new Entry((float) weight.getMass(), i);
-            valsComp1.add(c1e1);
-            xVals.add(dateStr);
-        }
-        LineDataSet setComp1 = new LineDataSet(valsComp1, "weight");
-        setComp1.setDrawValues(false);
-        setComp1.setAxisDependency(YAxis.AxisDependency.LEFT);
-        ArrayList<LineDataSet> dataSets = new ArrayList<LineDataSet>();
-        dataSets.add(setComp1);
+            date = weight.getDate();
+            Log.i(LOGTAG,"weight ID: " + weight.getId());
+            //this following code creates space between data points that are more than
+            //a day apart
+            if (firstPass) {
+                minWeight=weight.getMass();
+                firstPass=false;
+                numDays=0;
+            }
+            else {
+                if (weight.getMass() < minWeight) {
+                    minWeight = weight.getMass(); //determine the minimum weight
+                }
 
-        LineData data = new LineData(xVals, dataSets);
-        lineChart.setData(data);
-        lineChart.invalidate();
+                //check if more than a day apart, if so calculate how many days and cap at 7
+                if (date-prevDate!=1) { //date should be later than prevDate
+                    numDays = determineDaysBetween(date, prevDate);
+                    if (numDays > 7) {
+                        numDays = 7;
+                    }
+                }
+                else numDays=1;
+            }
+
+            //if greater than 1 day apart, need to add extra labels on x axis
+            if (numDays>1) {
+                tempYear=prevWeight.getYear();
+                tempMonth=prevWeight.getMonth();
+                tempDay=prevWeight.getDay();
+                for (int j = 0; j <numDays-1; j++){
+                    tempDateArray=incrementDate(tempYear,tempMonth,tempDay); //add one day to date
+                    xStrings.add(formatDateStr(tempDateArray[0],tempDateArray[1],tempDateArray[2])); //format to string and add to labels
+                    index=index+1;
+                    //set previous date
+                    tempYear=tempDateArray[0];
+                    tempMonth=tempDateArray[1];
+                    tempDay=tempDateArray[2];
+                }
+            }
+
+            //then plot the actual data point
+            Log.i(LOGTAG,"index: " + index);
+            entry = new Entry((float) weight.getMass(), index);
+            dataPoints.add(entry);
+            xStrings.add(Integer.toString(date));
+            index=index+1;
+
+            prevWeight=weight;
+            prevDate=date; //save the previous date to make days between calculation
+        }
+
+        //plot the data
+        LineDataSet dataSet = new LineDataSet(dataPoints, "weight");
+        dataSet.setDrawValues(false);
+        dataSet.setAxisDependency(YAxis.AxisDependency.LEFT);
+        ArrayList<LineDataSet> dataSets = new ArrayList<LineDataSet>();
+        dataSets.add(dataSet);
+
+        LineData data = new LineData(xStrings, dataSets);
 
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setDrawGridLines(false);
+
+        YAxis yAxisL = lineChart.getAxisLeft();
+        yAxisL.setStartAtZero(false);
+        yAxisL.setAxisMinValue((float) minWeight * .95f);
+        yAxisL.setDrawGridLines(false);
+
+        YAxis yAxisR = lineChart.getAxisRight();
+        yAxisR.setDrawLabels(false);
+        lineChart.moveViewToX(index);
+        lineChart.setVisibleXRangeMaximum(30);
+        lineChart.setData(data);
+        lineChart.invalidate();
+
     }
 
-
-
-    public int determineDaysBetween(String currDate, String minDate) {
+    //This function calculates the number of days between two string dates
+    public int determineDaysBetween(int currDate, int prevDate) {
         SimpleDateFormat myFormat = new SimpleDateFormat("yyyyMMdd");
+        String currentDateTemp=Integer.toString(currDate);
+        String prevDateTemp=Integer.toString(prevDate);
         int numDaysBetween=0;
         try {
-            Date currDateObj = myFormat.parse(currDate);
-            Date minDateObj = myFormat.parse(minDate);
+            Date currDateObj = myFormat.parse(currentDateTemp);
+            Date minDateObj = myFormat.parse(prevDateTemp);
             long diff = currDateObj.getTime() - minDateObj.getTime();
             numDaysBetween = (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
         } catch (ParseException e) {
             e.printStackTrace();
             numDaysBetween=-1;
         }
-
         return numDaysBetween;
+    }
+
+    //this function increments the input date by 1 day
+    public int[] incrementDate(int yearIn, int monthIn, int dayIn) {
+        int[] dateArray= new int[3];
+        int month=monthIn;
+        int year=yearIn;
+        int day=dayIn;
+
+        day=day+1;
+        if (month==1 || month==3 || month==5 || month==7 || month==8 || month==10 || month==12) {
+            if (day==32){
+                month=month+1;
+                day=1;
+            }
+        }
+        else if (month==4 || month==6 || month==9 || month==11) {
+            if (day==31) {
+                month=month+1;
+                day=1;
+            }
+        }
+        else if (month==2) {
+            if (day==29) {
+                month=month+1;
+                day=1;
+            }
+        }
+        else {
+            year=year+1;
+            day=1;
+            month=1;
+        }
+
+        dateArray[0]= year;
+        dateArray[1]= month;
+        dateArray[2]= day;
+
+        return dateArray;
+    }
+
+    //this function returns a string with the correct date format for x axis labeling (similar to formatDate() in AddWeight activity)
+    public String formatDateStr(int yearIn, int monthIn, int dayIn) {
+        String tempMonth="";
+        String tempDay="";
+        String formattedDate="";
+
+        //add a 0 in front of the month if the month is less than 10
+        if (monthIn<10) {
+            tempMonth = "0" + Integer.toString(monthIn);
+        }
+        else tempMonth = Integer.toString(monthIn);
+
+        if (dayIn<10) {
+            tempDay = "0" + Integer.toString(dayIn);
+        }
+        else tempDay = Integer.toString(dayIn);
+
+        yearIn = yearIn + 2000;
+
+        formattedDate = Integer.toString(yearIn) + tempMonth + tempDay;
+
+        return formattedDate;
     }
 }
