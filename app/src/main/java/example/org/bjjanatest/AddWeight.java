@@ -123,14 +123,20 @@ public class AddWeight extends ActionBarActivity {
             dataSource.removeBoundaryDate(weight.getDate());
         }
 
-        dataSource.create(weight);
-        dataSource.close();
+        //prevent insensible date inputs (ie Feb 31)
+        if (checkValidDate(currMonth,currDay)) {
+            dataSource.create(weight);
+            dataSource.close();
+            Toast.makeText(this, "Weight saved.",
+                    Toast.LENGTH_LONG).show();
+            finish();
+        }
+        else {
+            Toast.makeText(this, "Invalid date.",
+                    Toast.LENGTH_LONG).show();
+        }
 
-        Toast.makeText(this, "Weight saved.",
-                Toast.LENGTH_LONG).show();
 
-        //need to prevent adding dates that don't make sense ie feb 30
-        finish();
     }
 
     public void deleteWeight(View view) {
@@ -203,5 +209,16 @@ public class AddWeight extends ActionBarActivity {
         formattedDateInt = Integer.parseInt(formattedDateStr);
 
         return formattedDateInt;
+    }
+
+    public boolean checkValidDate(int monthIn, int dayIn) {
+        boolean validDate = true;
+        if (monthIn==2 && dayIn>29) {
+            validDate = false;
+        }
+        if ((monthIn==4 || monthIn==6 || monthIn==9 || monthIn==11) && dayIn>30) {
+            validDate = false;
+        }
+        return validDate;
     }
 }

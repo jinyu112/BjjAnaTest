@@ -117,7 +117,7 @@ public class AddWeightFragment extends Fragment {
         Weight weight, prevWeight=new Weight();
         int numDays=0; //number of days between the the previous date
         int date, prevDate=19000101;
-        double minWeight=9999;
+        double minWeight=9999, maxWeight=9999;
         boolean firstPass=true;
         int index=0; //this is the x axis index (ie the data point (index,weight) is plotted)
         int tempYear, tempMonth, tempDay;
@@ -138,12 +138,17 @@ public class AddWeightFragment extends Fragment {
             //a day apart
             if (firstPass) {
                 minWeight=weight.getMass();
+                maxWeight=weight.getMass();
                 firstPass=false;
                 numDays=0;
             }
             else {
                 if (weight.getMass() < minWeight) {
-                    minWeight = weight.getMass(); //determine the minimum weight
+                    minWeight = weight.getMass(); //determine the minimum weight for y axis range
+                }
+
+                if (weight.getMass() > maxWeight) {
+                    maxWeight = weight.getMass(); //determine the max weight for y axis range
                 }
 
                 //check if more than a day apart, if so calculate how many days and cap at 7
@@ -198,7 +203,8 @@ public class AddWeightFragment extends Fragment {
 
         YAxis yAxisL = lineChart.getAxisLeft();
         yAxisL.setStartAtZero(false);
-        yAxisL.setAxisMinValue((float) minWeight * .95f);
+        yAxisL.setAxisMinValue((float)minWeight-1);
+        yAxisL.setAxisMaxValue((float) maxWeight+1);
         yAxisL.setDrawGridLines(false);
 
         YAxis yAxisR = lineChart.getAxisRight();
