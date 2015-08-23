@@ -53,8 +53,6 @@ public class AddWeightFragment extends Fragment {
         dataSource.open();
         Log.i(LOGTAG, "Weight frag onCreate called");
         setHasOptionsMenu(true);
-        Toast.makeText(this.getActivity(), "num weights: " + dataSource.getWeightLen(),Toast.LENGTH_SHORT).show();
-
     }
 
     @Override
@@ -90,7 +88,6 @@ public class AddWeightFragment extends Fragment {
             public void onClick(View v) {
                 dataSource.removeAllWeights();
                 lineChart.clearValues();
-                //lineChart.clear();
             }
         });
         return rootView;
@@ -100,7 +97,6 @@ public class AddWeightFragment extends Fragment {
     public void onResume() {
         super.onResume();
         dataSource.open(); //opens connection to the datasource
-        Toast.makeText(this.getActivity(), "num weights: " + dataSource.getWeightLen(),Toast.LENGTH_SHORT).show();
         displayWeightData(refreshDisplay());
     }
 
