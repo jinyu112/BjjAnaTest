@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -35,6 +36,10 @@ public class AddWeightFragment extends Fragment {
     WeightDataSource dataSource;
     private static final String LOGTAG = "BJJTRAINING";
     private static LineChart lineChart; //should this be static?
+    private static TextView tv_avgWeight;
+    private static TextView tv_maxWeight;
+    private static TextView tv_minWeight;
+    private static TextView tv_weightDiff;
 
 
     public AddWeightFragment () {
@@ -48,7 +53,7 @@ public class AddWeightFragment extends Fragment {
         dataSource.open();
         Log.i(LOGTAG, "Weight frag onCreate called");
         setHasOptionsMenu(true);
-        Toast.makeText(this.getActivity(), "num weights: " + dataSource.findAll().size(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(this.getActivity(), "num weights: " + dataSource.getWeightLen(),Toast.LENGTH_SHORT).show();
 
     }
 
@@ -74,8 +79,11 @@ public class AddWeightFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.weight_frag,container,false);
         lineChart = (LineChart) rootView.findViewById(R.id.weightGraph);
+        tv_avgWeight = (TextView) rootView.findViewById(R.id.avgWeight);
+        tv_maxWeight = (TextView) rootView.findViewById(R.id.maxWeight);
+        tv_minWeight = (TextView) rootView.findViewById(R.id.minWeight);
+        tv_weightDiff = (TextView) rootView.findViewById(R.id.weightDiff);
         displayWeightData(refreshDisplay());
-
         Button button = (Button) rootView.findViewById(R.id.clearAllWeightButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,7 +100,7 @@ public class AddWeightFragment extends Fragment {
     public void onResume() {
         super.onResume();
         dataSource.open(); //opens connection to the datasource
-        Toast.makeText(this.getActivity(), "num weights: " + dataSource.findAll().size(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(this.getActivity(), "num weights: " + dataSource.getWeightLen(),Toast.LENGTH_SHORT).show();
         displayWeightData(refreshDisplay());
     }
 
@@ -117,11 +125,15 @@ public class AddWeightFragment extends Fragment {
         Weight weight, prevWeight=new Weight();
         int numDays=0; //number of days between the the previous date
         int date, prevDate=19000101;
-        double minWeight=9999, maxWeight=9999;
-        boolean firstPass=true;
         int index=0; //this is the x axis index (ie the data point (index,weight) is plotted)
         int tempYear, tempMonth, tempDay;
+        int weightLen=1;
         int[] tempDateArray = new int[3];
+        double minWeight=9999, maxWeight=9999, avgWeight=0, weightDiff=0;
+        double sumWeights=0;
+        double firstWeight=0, lastWeight=0;
+        boolean firstPass=true;
+
 
         ArrayList<Entry> dataPoints = new ArrayList<Entry>();
         ArrayList<String> xStrings = new ArrayList<String>();
@@ -129,16 +141,19 @@ public class AddWeightFragment extends Fragment {
 
         //setup data points for plotting
         //mysqlite already orders the data by date
-        for ( int i = 0; i < weights.size(); i++ )
+        weightLen=weights.size();
+        for ( int i = 0; i < weightLen; i++ )
         {
             weight = weights.get(i);
+            sumWeights = sumWeights + weight.getMass();
             date = weight.getDate();
-            Log.i(LOGTAG,"weight ID: " + weight.getId());
+
             //this following code creates space between data points that are more than
             //a day apart
             if (firstPass) {
                 minWeight=weight.getMass();
                 maxWeight=weight.getMass();
+                firstWeight=weight.getMass();
                 firstPass=false;
                 numDays=0;
             }
@@ -178,7 +193,6 @@ public class AddWeightFragment extends Fragment {
             }
 
             //then plot the actual data point
-            Log.i(LOGTAG,"index: " + index);
             entry = new Entry((float) weight.getMass(), index);
             dataPoints.add(entry);
             xStrings.add(Integer.toString(date));
@@ -186,6 +200,10 @@ public class AddWeightFragment extends Fragment {
 
             prevWeight=weight;
             prevDate=date; //save the previous date to make days between calculation
+
+            if (i==weightLen-1) {
+                lastWeight = weight.getMass();
+            }
         }
 
         //plot the data
@@ -203,8 +221,8 @@ public class AddWeightFragment extends Fragment {
 
         YAxis yAxisL = lineChart.getAxisLeft();
         yAxisL.setStartAtZero(false);
-        yAxisL.setAxisMinValue((float)minWeight-1);
-        yAxisL.setAxisMaxValue((float) maxWeight+1);
+        yAxisL.setAxisMinValue((float) minWeight - 1);
+        yAxisL.setAxisMaxValue((float) maxWeight + 1);
         yAxisL.setDrawGridLines(false);
 
         YAxis yAxisR = lineChart.getAxisRight();
@@ -213,6 +231,20 @@ public class AddWeightFragment extends Fragment {
         lineChart.setVisibleXRangeMaximum(30);
         lineChart.setData(data);
         lineChart.invalidate();
+
+        //Show the weight statistics in the TVs
+        avgWeight = sumWeights/weightLen;
+
+        tv_avgWeight.setText(Double.toString(Math.round((avgWeight) * 10) / 10.0));
+
+        tv_maxWeight.setText(Double.toString(Math.round((maxWeight) * 10) / 10.0));
+
+        tv_minWeight.setText(Double.toString(Math.round((minWeight) * 10) / 10.0));
+        weightDiff=Math.abs(firstWeight - lastWeight);
+        if (firstWeight>lastWeight) {
+            tv_weightDiff.setText("You have lost " + Double.toString(Math.round((weightDiff) * 10) / 10.0) + " pounds.");
+        }
+        else tv_weightDiff.setText("You have gained " + Double.toString(Math.round((weightDiff) * 10) / 10.0) + " pounds.");
 
     }
 
