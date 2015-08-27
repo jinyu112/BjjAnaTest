@@ -1,5 +1,6 @@
 package example.org.bjjanatest;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
@@ -7,8 +8,24 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.github.mikephil.charting.charts.HorizontalBarChart;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
+import com.github.mikephil.charting.utils.PercentFormatter;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import example.org.bjjanatest.db.TournDataSource;
@@ -18,6 +35,9 @@ public class MainContentFragment extends Fragment {
 
     //database related
     TournDataSource dataSource;
+    private static HorizontalBarChart horizontalBarChart_OffPerc;
+    private static HorizontalBarChart horizontalBarChart_TournAvg;
+    private static PieChart pieChart_TournTotals;
 
     public MainContentFragment (){
             }
@@ -26,6 +46,70 @@ public class MainContentFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.main_content_frag,container,false);
         dataSource = new TournDataSource(getActivity());
+        horizontalBarChart_OffPerc = (HorizontalBarChart) rootView.findViewById(R.id.tournOffPercChart);
+        horizontalBarChart_OffPerc.setDrawValueAboveBar(true);
+        horizontalBarChart_OffPerc.setDescription("");
+        horizontalBarChart_OffPerc.animateY(1000);
+        horizontalBarChart_OffPerc.setPinchZoom(false);
+        horizontalBarChart_OffPerc.setTouchEnabled(false);
+        horizontalBarChart_OffPerc.getLegend().setEnabled(false);
+
+        XAxis xl_offperc = horizontalBarChart_OffPerc.getXAxis();
+        xl_offperc.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xl_offperc.setDrawGridLines(false);
+        xl_offperc.setEnabled(false);
+
+        YAxis yl_offperc = horizontalBarChart_OffPerc.getAxisLeft();
+        yl_offperc.setDrawLabels(false);
+        yl_offperc.setEnabled(false);
+        yl_offperc.setAxisMaxValue(100f);
+
+        YAxis yr_offperc = horizontalBarChart_OffPerc.getAxisRight();
+        yr_offperc.setDrawLabels(false);
+        yr_offperc.setEnabled(false);
+        yr_offperc.setAxisMaxValue(100f);
+
+
+        //Tournament average horizon bar chart
+        horizontalBarChart_TournAvg = (HorizontalBarChart) rootView.findViewById(R.id.tournAvgChart);
+        horizontalBarChart_TournAvg.setDrawValueAboveBar(true);
+        horizontalBarChart_TournAvg.setDescription("");
+        horizontalBarChart_TournAvg.animateY(1000);
+        horizontalBarChart_TournAvg.setPinchZoom(false);
+        horizontalBarChart_TournAvg.setTouchEnabled(false);
+        horizontalBarChart_TournAvg.getLegend().setEnabled(false);
+
+
+        XAxis xl_avg = horizontalBarChart_TournAvg.getXAxis();
+        xl_avg.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xl_avg.setDrawGridLines(false);
+        xl_avg.setEnabled(false);
+
+        YAxis yl_avg = horizontalBarChart_TournAvg.getAxisLeft();
+        yl_avg.setDrawLabels(false);
+        yl_avg.setEnabled(false);
+
+        YAxis yr_avg = horizontalBarChart_TournAvg.getAxisRight();
+        yr_avg.setDrawLabels(false);
+        yr_avg.setEnabled(false);
+
+
+
+        //pie chart
+        pieChart_TournTotals = (PieChart) rootView.findViewById(R.id.pieChartTotals);
+        pieChart_TournTotals.setDescription("");
+        pieChart_TournTotals.setDrawHoleEnabled(true);
+        pieChart_TournTotals.setHoleColorTransparent(true);
+        pieChart_TournTotals.setTransparentCircleColor(Color.WHITE);
+        pieChart_TournTotals.setTransparentCircleAlpha(110);
+        pieChart_TournTotals.getLegend().setEnabled(false);
+
+        pieChart_TournTotals.setHoleRadius(58f);
+        pieChart_TournTotals.setTransparentCircleRadius(61f);
+        pieChart_TournTotals.setDrawCenterText(true);
+
+        pieChart_TournTotals.setRotationAngle(0);
+        pieChart_TournTotals.setRotationEnabled(true);
         return rootView;
     }
 
@@ -33,86 +117,121 @@ public class MainContentFragment extends Fragment {
         List<Tourn> tourns = dataSource.findAll();
         if (tourns.size()!=0) {
 
-            tv = (TextView) getView().findViewById(R.id.main_ptsScored);
-            tv.setText(String.format("%d",dataSource.getTotalPts()));
-
-            tv = (TextView) getView().findViewById(R.id.main_ptsAllowed);
-            tv.setText(String.format("%d",dataSource.getTotalPtsAllowed()));
-
-            tv = (TextView) getView().findViewById(R.id.main_tdPerc);
-            tv.setText(String.format("%2.2f",dataSource.getTdSucPerc()));
-
-            tv = (TextView) getView().findViewById(R.id.main_passperc);
-            tv.setText(String.format("%2.2f",dataSource.getPassSucPerc()));
-
-            tv = (TextView) getView().findViewById(R.id.main_swpPerc);
-            tv.setText(String.format("%2.2f",dataSource.getSweepSucPerc()));
-
-            tv = (TextView) getView().findViewById(R.id.main_subPerc);
-            tv.setText(String.format("%2.2f",dataSource.getSubSucPerc()));
-
             tv = (TextView) getView().findViewById(R.id.main_avgMatchTime);
             tv.setText(String.format("%5.2f",dataSource.getAvgMatchTime()));
 
-            tv = (TextView) getView().findViewById(R.id.main_numTourn);
-            tv.setText(String.format("%d",dataSource.getTournLen()));
-
-            tv = (TextView) getView().findViewById(R.id.main_tdsAtt);
-            tv.setText(String.format("%d",dataSource.getTotalTdAtt()));
-
-            tv = (TextView) getView().findViewById(R.id.main_tdsScored);
-            tv.setText(String.format("%d",dataSource.getTotalTdSuc()));
-
-            tv = (TextView) getView().findViewById(R.id.main_passesAtt);
-            tv.setText(String.format("%d",dataSource.getTotalPassAtt()));
-
-            tv = (TextView) getView().findViewById(R.id.main_passesScored);
-            tv.setText(String.format("%d",dataSource.getTotalPassSuc()));
-
-            tv = (TextView) getView().findViewById(R.id.main_sweepsAtt);
-            tv.setText(String.format("%d",dataSource.getTotalSweepAtt()));
-
-            tv = (TextView) getView().findViewById(R.id.main_sweepsScored);
-            tv.setText(String.format("%d",dataSource.getTotalSweepSuc()));
-
-            tv = (TextView) getView().findViewById(R.id.main_subAtt);
-            tv.setText(String.format("%d",dataSource.getTotalSubAtt()));
-
-            tv = (TextView) getView().findViewById(R.id.main_subsScored);
-            tv.setText(String.format("%d",dataSource.getTotalSubSuc()));
-
-            tv = (TextView) getView().findViewById(R.id.main_numBackTakes);
-            tv.setText(String.format("%d",dataSource.getNumBackTakes()));
-
-            tv = (TextView) getView().findViewById(R.id.main_numMounts);
-            tv.setText(String.format("%d",dataSource.getNumMounts()));
-
-            tv = (TextView) getView().findViewById(R.id.main_avgTds);
-            tv.setText(String.format("%5.2f",dataSource.getAvgTdScored()));
-
-            tv = (TextView) getView().findViewById(R.id.main_avgTdsAtt);
-            tv.setText(String.format("%5.2f",dataSource.getAvgTdAtt()));
-
-            tv = (TextView) getView().findViewById(R.id.main_avgPass);
-            tv.setText(String.format("%5.2f",dataSource.getAvgPassesScored()));
-
-            tv = (TextView) getView().findViewById(R.id.main_avgPassAtt);
-            tv.setText(String.format("%5.2f",dataSource.getAvgPassesAtt()));
-
-            tv = (TextView) getView().findViewById(R.id.main_avgSweep);
-            tv.setText(String.format("%5.2f",dataSource.getAvgSweepsScored()));
-
-            tv = (TextView) getView().findViewById(R.id.main_avgSweepAtt);
-            tv.setText(String.format("%5.2f",dataSource.getAvgSweepsAtt()));
-
-            tv = (TextView) getView().findViewById(R.id.main_avgSub);
-            tv.setText(String.format("%5.2f",dataSource.getAvgSubsScored()));
-
-            tv = (TextView) getView().findViewById(R.id.main_avgSubAtt);
-            tv.setText(String.format("%5.2f",dataSource.getAvgSubsAtt()));
-
             tv = (TextView) getView().findViewById(R.id.main_record);
             tv.setText(String.format("%d W-%d L",dataSource.getWins(),dataSource.getTournLen()-dataSource.getWins()));
+
+            //set colors
+            ArrayList<Integer> colors = new ArrayList<Integer>();
+            colors.add(ColorTemplate.getHoloBlue());
+
+            //plot offense percentage data
+            ArrayList<BarEntry> dataPoints_Avg = new ArrayList<BarEntry>();
+            ArrayList<String> xAxisStrings = new ArrayList<String>();
+            BarEntry entry;
+
+            entry = new BarEntry ((float) dataSource.getAvgTdScored(), 0);
+            dataPoints_Avg.add(entry);
+            xAxisStrings.add("");
+
+            entry = new BarEntry ((float) dataSource.getAvgTdAtt(), 1);
+            dataPoints_Avg.add(entry);
+            xAxisStrings.add("");
+
+            entry = new BarEntry((float) dataSource.getAvgPassesScored(), 2);
+            dataPoints_Avg.add(entry);
+            xAxisStrings.add("");
+
+            entry = new BarEntry((float) dataSource.getAvgPassesAtt(), 3);
+            dataPoints_Avg.add(entry);
+            xAxisStrings.add("");
+
+            entry = new BarEntry ((float) dataSource.getAvgSweepsScored(), 4);
+            dataPoints_Avg.add(entry);
+            xAxisStrings.add("");
+
+            entry = new BarEntry ((float) dataSource.getAvgSweepsAtt(), 5);
+            dataPoints_Avg.add(entry);
+            xAxisStrings.add("");
+
+            entry = new BarEntry((float) dataSource.getAvgSubsScored(), 6);
+            dataPoints_Avg.add(entry);
+            xAxisStrings.add("");
+
+            entry = new BarEntry((float) dataSource.getAvgSubsAtt(), 7);
+            dataPoints_Avg.add(entry);
+            xAxisStrings.add("");
+
+            BarDataSet set1 = new BarDataSet(dataPoints_Avg, "Tournament Offsense Percentages");
+            set1.setBarSpacePercent(0f);
+            set1.setColors(colors);
+
+            ArrayList<BarDataSet> dataSets = new ArrayList<BarDataSet>();
+            dataSets.add(set1);
+
+            BarData data = new BarData(xAxisStrings, dataSets);
+
+            horizontalBarChart_TournAvg.setData(data);
+            horizontalBarChart_TournAvg.invalidate();
+
+
+            //plot offense percentage data
+            ArrayList<BarEntry> dataPoints_OffPerc = new ArrayList<BarEntry>();
+            ArrayList<String> xAxisStrings_OffPerc = new ArrayList<String>();
+
+            entry = new BarEntry ((float) dataSource.getTdSucPerc()*100, 0);
+            dataPoints_OffPerc.add(entry);
+            xAxisStrings_OffPerc.add("TD %");
+
+            entry = new BarEntry((float) dataSource.getPassSucPerc()*100, 1);
+            dataPoints_OffPerc.add(entry);
+            xAxisStrings_OffPerc.add("Pass %");
+
+            entry = new BarEntry((float) dataSource.getSweepSucPerc()*100, 2);
+            dataPoints_OffPerc.add(entry);
+            xAxisStrings_OffPerc.add("Sweep %");
+
+            entry = new BarEntry((float) dataSource.getSubSucPerc()*100, 3);
+            dataPoints_OffPerc.add(entry);
+            xAxisStrings_OffPerc.add("Sub %");
+
+            BarDataSet set1_OffPerc = new BarDataSet(dataPoints_OffPerc, "Tournament Offsense Percentages");
+            set1_OffPerc.setColors(colors);
+            set1_OffPerc.setBarSpacePercent(0f);
+
+            ArrayList<BarDataSet> dataSets_OffPerc = new ArrayList<BarDataSet>();
+            dataSets_OffPerc.add(set1_OffPerc);
+
+            BarData data_OffPerc = new BarData(xAxisStrings_OffPerc, dataSets_OffPerc);
+
+            horizontalBarChart_OffPerc.setData(data_OffPerc);
+            horizontalBarChart_OffPerc.invalidate();
+
+            //plot point totals
+            ArrayList<Entry> dataPoints_PtsTotals = new ArrayList<Entry>();
+            ArrayList<String> xAxisStrings_Totals = new ArrayList<String>();
+
+            dataPoints_PtsTotals.add(new Entry(Math.round(dataSource.getTotalPts()),0));
+            xAxisStrings_Totals.add("Points Scored");
+
+            dataPoints_PtsTotals.add(new Entry(Math.round(dataSource.getTotalPtsAllowed()), 1));
+            xAxisStrings_Totals.add("Points Allowed");
+
+            PieDataSet dataSet_Totals = new PieDataSet(dataPoints_PtsTotals, "Point Totals");
+            dataSet_Totals.setSliceSpace(3f);
+            dataSet_Totals.setSelectionShift(5f);
+
+            PieData data_Totals = new PieData(xAxisStrings_Totals, dataSet_Totals);
+            data_Totals.setValueFormatter(new IntValueFormatter()); //format the values a integers
+
+            dataSet_Totals.setColors(colors);
+
+            pieChart_TournTotals.setData(data_Totals);
+            pieChart_TournTotals.highlightValues(null);
+
+            pieChart_TournTotals.invalidate();
 
         }
         else {

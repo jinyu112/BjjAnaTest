@@ -75,13 +75,28 @@ public class AddWeightFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.weight_frag,container,false);
+        View rootView = inflater.inflate(R.layout.weight_frag, container, false);
+
+        //define line chart and its settings
         lineChart = (LineChart) rootView.findViewById(R.id.weightGraph);
+        XAxis xAxis = lineChart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setDrawGridLines(false);
+
+        YAxis yAxisL = lineChart.getAxisLeft();
+        yAxisL.setStartAtZero(false);
+        yAxisL.setDrawGridLines(false);
+
+        YAxis yAxisR = lineChart.getAxisRight();
+        yAxisR.setDrawLabels(false);
+
+        //define text views
         tv_avgWeight = (TextView) rootView.findViewById(R.id.avgWeight);
         tv_maxWeight = (TextView) rootView.findViewById(R.id.maxWeight);
         tv_minWeight = (TextView) rootView.findViewById(R.id.minWeight);
         tv_weightDiff = (TextView) rootView.findViewById(R.id.weightDiff);
-        displayWeightData(refreshDisplay());
+
+        //define clear data button
         Button button = (Button) rootView.findViewById(R.id.clearAllWeightButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,6 +105,8 @@ public class AddWeightFragment extends Fragment {
                 lineChart.clearValues();
             }
         });
+
+        displayWeightData(refreshDisplay());
         return rootView;
     }
 
@@ -188,7 +205,7 @@ public class AddWeightFragment extends Fragment {
                 }
             }
 
-            //then plot the actual data point
+            //then add the actual data point
             entry = new Entry((float) weight.getMass(), index);
             dataPoints.add(entry);
             xStrings.add(Integer.toString(date));
@@ -211,20 +228,12 @@ public class AddWeightFragment extends Fragment {
 
         LineData data = new LineData(xStrings, dataSets);
 
-        XAxis xAxis = lineChart.getXAxis();
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setDrawGridLines(false);
-
         YAxis yAxisL = lineChart.getAxisLeft();
-        yAxisL.setStartAtZero(false);
         yAxisL.setAxisMinValue((float) minWeight - 1);
         yAxisL.setAxisMaxValue((float) maxWeight + 1);
-        yAxisL.setDrawGridLines(false);
 
-        YAxis yAxisR = lineChart.getAxisRight();
-        yAxisR.setDrawLabels(false);
-        lineChart.moveViewToX(index);
         lineChart.setVisibleXRangeMaximum(30);
+        lineChart.moveViewToX(index);
         lineChart.setData(data);
         lineChart.invalidate();
 

@@ -135,7 +135,6 @@ public class TournDataSource {
             totalWins = 0;
             while (cursor.moveToNext()) {
                 Tourn tourn = new Tourn();
-                Log.i(LOGTAG,"findall: tournid " + cursor.getLong(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_ID)));
                 tourn.setId(cursor.getLong(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_ID)));
                 tourn.setTournName(cursor.getString(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_TOURN_NAME)));
                 tourn.setMatchTime(cursor.getDouble(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_MATCH_TIME)));
