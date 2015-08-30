@@ -1,16 +1,24 @@
 package example.org.bjjanatest;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.ArrayDeque;
 
 import example.org.bjjanatest.db.TournDataSource;
 
@@ -23,8 +31,11 @@ public class AddTourney extends ActionBarActivity {
     private static EditText et;
     private static Button button_minus;
     private static Button button_plus;
+
+    private static String[] weightSpinnerStrArray;
+    private static String[] beltSpinnerStrArray;
     private static final String LOGTAG = "BJJTRAINING";
-    private TournDataSource dataSource;
+    private static TournDataSource dataSource; // should this be static??????
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +47,6 @@ public class AddTourney extends ActionBarActivity {
         dataSource.open();
 
 //        set a generic plus and minus click listener object and use that for all the setOnClickListener methods??????
-
         button_minus = (Button) findViewById(R.id.ptsScoredMinus);
         button_plus = (Button) findViewById(R.id.ptsScoredPlus);
         tv = (TextView) findViewById(R.id.pointsScored);
@@ -115,25 +125,6 @@ public class AddTourney extends ActionBarActivity {
 
         MinusOnClickListener tdSucMinusListener = new MinusOnClickListener(tvatt,tvsuc);
         button_minus.setOnClickListener(tdSucMinusListener);
-        ////// back take and mount
-
-        button_minus = (Button) findViewById(R.id.backTakeMinus);
-        button_plus = (Button) findViewById(R.id.backTakePlus);
-        tvsuc = (TextView) findViewById(R.id.numBackTakes);
-        PlusOnClickListener backTakePlusListener = new PlusOnClickListener(tvsuc);
-        button_plus.setOnClickListener(backTakePlusListener);
-
-        MinusOnClickListener backTakeMinusListener = new MinusOnClickListener(tvsuc);
-        button_minus.setOnClickListener(backTakeMinusListener);
-
-        button_minus = (Button) findViewById(R.id.mountMinus);
-        button_plus = (Button) findViewById(R.id.mountPlus);
-        tvsuc = (TextView) findViewById(R.id.numMount);
-        PlusOnClickListener mountPlusListener = new PlusOnClickListener(tvsuc);
-        button_plus.setOnClickListener(mountPlusListener);
-
-        MinusOnClickListener mountMinusListener = new MinusOnClickListener(tvsuc);
-        button_minus.setOnClickListener(mountMinusListener);
         //////
 
         button_minus = (Button) findViewById(R.id.subAttMinus);
@@ -144,10 +135,11 @@ public class AddTourney extends ActionBarActivity {
 
         MinusOnClickListener subAttMinusListener = new MinusOnClickListener(tvatt);
         button_minus.setOnClickListener(subAttMinusListener);
-
         //////
 
+        this.weightSpinnerStrArray = new String[] {"127 and below", "127-141.5 lbs", "141.5-154.5 lbs", "154.5-168 lbs", "168-181.5 lbs", "181.5-195 lbs", "195-208 lbs","208-222 lbs","222+ lbs","Open Light","Open Heavy"};
 
+        this.beltSpinnerStrArray = new String[] {"White","Blue","Purple","Brown","Black","NoGi Novice", "NoGi Intermed.","NoGi Adv."};
 
     }
 
@@ -174,57 +166,60 @@ public class AddTourney extends ActionBarActivity {
     }
 
     public void saveTournament(View view){
-        Tourn tourn = new Tourn();
-        tv = (TextView) findViewById(R.id.pointsScored);
-        tourn.setPointsScored(Integer.parseInt(tv.getText().toString()));
+        final Tourn tourn = new Tourn();
+        try {
+            tv = (TextView) findViewById(R.id.pointsScored);
+            tourn.setPointsScored(Integer.parseInt(tv.getText().toString()));
 
-        tv = (TextView) findViewById(R.id.pointsAllowed);
-        tourn.setPointsAllowed(Integer.parseInt(tv.getText().toString()));
+            tv = (TextView) findViewById(R.id.pointsAllowed);
+            tourn.setPointsAllowed(Integer.parseInt(tv.getText().toString()));
 
-        tv = (TextView) findViewById(R.id.sweepAttempted);
-        tourn.setSweepAttempted(Integer.parseInt(tv.getText().toString()));
+            tv = (TextView) findViewById(R.id.sweepAttempted);
+            tourn.setSweepAttempted(Integer.parseInt(tv.getText().toString()));
 
-        tv = (TextView) findViewById(R.id.sweepSuccessful);
-        tourn.setSweepSuccessful(Integer.parseInt(tv.getText().toString()));
+            tv = (TextView) findViewById(R.id.sweepSuccessful);
+            tourn.setSweepSuccessful(Integer.parseInt(tv.getText().toString()));
 
-        tv = (TextView) findViewById(R.id.passAtt);
-        tourn.setPassAttempted(Integer.parseInt(tv.getText().toString()));
+            tv = (TextView) findViewById(R.id.passAtt);
+            tourn.setPassAttempted(Integer.parseInt(tv.getText().toString()));
 
-        tv = (TextView) findViewById(R.id.passSuc);
-        tourn.setPassSuccessful(Integer.parseInt(tv.getText().toString()));
+            tv = (TextView) findViewById(R.id.passSuc);
+            tourn.setPassSuccessful(Integer.parseInt(tv.getText().toString()));
 
-        tv = (TextView) findViewById(R.id.tdAtt);
-        tourn.setTdAttempted(Integer.parseInt(tv.getText().toString()));
+            tv = (TextView) findViewById(R.id.tdAtt);
+            tourn.setTdAttempted(Integer.parseInt(tv.getText().toString()));
 
-        tv = (TextView) findViewById(R.id.tdSuc);
-        tourn.setTdSuccessful(Integer.parseInt(tv.getText().toString()));
+            tv = (TextView) findViewById(R.id.tdSuc);
+            tourn.setTdSuccessful(Integer.parseInt(tv.getText().toString()));
 
-        tv = (TextView) findViewById(R.id.numBackTakes);
-        tourn.setNumBackTakes(Integer.parseInt(tv.getText().toString()));
+            tv = (TextView) findViewById(R.id.subAtt);
+            tourn.setSubAttempted(Integer.parseInt(tv.getText().toString()));
+        } catch (NumberFormatException ex) {
+            System.err.println("Caught NumberFormatException in AddTourney Activity (metric input): "
+                    +  ex.getMessage());
+        }
 
-        tv = (TextView) findViewById(R.id.numMount);
-        tourn.setNumMounts(Integer.parseInt(tv.getText().toString()));
+        CheckBox cbWin = (CheckBox) findViewById(R.id.winCheck);
+        CheckBox cbSub = (CheckBox) findViewById(R.id.subCheck);
 
-        tv = (TextView) findViewById(R.id.subAtt);
-        tourn.setSubAttempted(Integer.parseInt(tv.getText().toString()));
+        // if the submission checkbox is checked
+        if (cbSub.isChecked()) {
+            tourn.setSubSuccessful(1);
+            cbWin.setChecked(true);
+        }
+        else {
+            tourn.setSubSuccessful(0);
+        }
 
-        CheckBox cb = (CheckBox) findViewById(R.id.winCheck);
-        if (cb.isChecked()) {
+        // if the wind checkbox is checked
+        if (cbWin.isChecked()) {
             tourn.setWin(1);
         }
         else {
             tourn.setWin(0);
         }
 
-        cb = (CheckBox) findViewById(R.id.subCheck);
-        if (cb.isChecked()) {
-            tourn.setSubSuccessful(1);
-            tourn.setWin(1);
-        }
-        else {
-            tourn.setSubSuccessful(0);
-        }
-
+        //Determine match outcome by points
         if (tourn.getPointsAllowed() < tourn.getPointsScored()) {
             tourn.setWin(1);
         }
@@ -232,15 +227,25 @@ public class AddTourney extends ActionBarActivity {
             tourn.setWin(0);
         }
 
-
-
-        //!!!!!!!!!!!!!!!move match time, name, belt, date inputs to a popup alert before saving
-        //!!!!!!!!!!!!!!also provide safeguard for empty fields
+        //Set the match time
         et = (EditText) findViewById(R.id.matchTimeMinEV);
-        double minutes = Double.parseDouble(et.getText().toString());
+        double minutes = 0.0;
+        try {
+            minutes = Double.parseDouble(et.getText().toString());
+        } catch (NumberFormatException ex) {
+            System.err.println("Caught NumberFormatException in AddTourney Activity (minutes): "
+                    +  ex.getMessage());
+        }
 
         et = (EditText) findViewById(R.id.matchTimeSecEV);
-        double seconds = Double.parseDouble(et.getText().toString());
+
+        double seconds = 0.0;
+        try {
+            seconds = Double.parseDouble(et.getText().toString());
+        } catch (NumberFormatException ex) {
+            System.err.println("Caught NumberFormatException in AddTourney Activity (seconds): "
+                    +  ex.getMessage());
+        }
         if (seconds > 60.0) {
             seconds = 60.0;
         }
@@ -248,11 +253,78 @@ public class AddTourney extends ActionBarActivity {
 
         tourn.setMatchTime(minutes+sec2min);
 
-        et = (EditText) findViewById(R.id.tournNameEV);
-        tourn.setTournName(et.getText().toString());
+        //setting up alert dialog
+        LayoutInflater li = LayoutInflater.from(this);
+        View promptsView = li.inflate(R.layout.alert_dialog_tourn, null);
 
-        tourn = dataSource.create(tourn);
-        finish();
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+        // set alert_dialog_tourn.xml to alertdialog builder
+        alertDialogBuilder.setView(promptsView);
+
+        final EditText tournNameET = (EditText) promptsView.findViewById(R.id.alertDialog_TournName); //these must be final to go into the alert dialog
+
+        final Spinner weightClass_Spinner = (Spinner) promptsView.findViewById(R.id.alertDialog_WeightClass);
+
+        final Spinner belt_Spinner = (Spinner) promptsView.findViewById(R.id.alertDialog_Belt);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, weightSpinnerStrArray);
+        weightClass_Spinner.setAdapter(adapter);
+
+        adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, beltSpinnerStrArray);
+        belt_Spinner.setAdapter(adapter);
+
+        // set alert dialog message
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton("OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                                //Set the tournament match name
+                                String tempTournName = tournNameET.getText().toString();
+                                if (tempTournName != null && !tempTournName.isEmpty()) {
+                                    tourn.setTournName(tempTournName);
+                                }
+                                else tourn.setTournName("Match Name");
+
+                                //Set the tournament match weight class
+                                int weightClassPos = 0;
+                                weightClassPos = weightClass_Spinner.getSelectedItemPosition();
+                                tourn.setWeightClass(weightClass_Spinner.getSelectedItemPosition());
+                                if (weightClassPos < weightSpinnerStrArray.length && weightClassPos >= 0) {
+                                    tourn.setWeightClass(weightClassPos);
+                                }
+                                else tourn.setWeightClass(0);
+
+                                //Set the tournament match belt class
+                                int beltPos = 0;
+                                beltPos = belt_Spinner.getSelectedItemPosition();
+                                if (beltPos < beltSpinnerStrArray.length && beltPos >= 0) {
+                                    tourn.setBelt(beltSpinnerStrArray[beltPos]);
+                                } else {
+                                    tourn.setBelt("White");
+                                }
+
+                                dataSource.create(tourn);
+                                finish();
+                            }
+                        })
+                .setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
+
     }
 
     @Override

@@ -50,12 +50,6 @@ public class ViewTourn extends ActionBarActivity {
         tv = (TextView) findViewById(R.id.view_tdSuc);
         tv.setText(String.valueOf(tourn.getTdSuccessful()));
 
-        tv = (TextView) findViewById(R.id.view_numBackTakes);
-        tv.setText(String.valueOf(tourn.getNumBackTakes()));
-
-        tv = (TextView) findViewById(R.id.view_numMounts);
-        tv.setText(String.valueOf(tourn.getNumMounts()));
-
         tv = (TextView) findViewById(R.id.view_matchTime);
         tv.setText(String.valueOf(tourn.getMatchTime()));
     }

@@ -19,15 +19,13 @@ public class Tourn implements Parcelable{
     private int sweepSuccessful;
     private int tdAttempted;
     private int tdSuccessful;
-    private int numBackTakes;
-    private int numMounts;
     private double matchTime;
     private int win; //1 == win, 0 == loss
 
     public Tourn() {
         id = 0;
         tournName = "IBJJF";
-        belt = "white";
+        belt = "White";
         weightClass = 0;
         date = 0;
         pointsAllowed = 0;
@@ -40,8 +38,6 @@ public class Tourn implements Parcelable{
         sweepSuccessful = 0;
         tdAttempted = 0;
         tdSuccessful = 0;
-        numBackTakes = 0;
-        numMounts = 0;
         matchTime = 0.0;
         win = 0;
     }
@@ -166,22 +162,6 @@ public class Tourn implements Parcelable{
         tdSuccessful = num;
     }
 
-    public int getNumBackTakes() {
-        return this.numBackTakes;
-    }
-
-    public void setNumBackTakes(int num) {
-        numBackTakes = num;
-    }
-
-    public int getNumMounts() {
-        return this.numMounts;
-    }
-
-    public void setNumMounts(int num) {
-        numMounts = num;
-    }
-
     public double getMatchTime() {
         return this.matchTime;
     }
@@ -216,8 +196,6 @@ public class Tourn implements Parcelable{
         sweepSuccessful = in.readInt();
         tdAttempted = in.readInt();
         tdSuccessful = in.readInt();
-        numBackTakes = in.readInt();
-        numMounts = in.readInt();
         matchTime = in.readDouble();
         win = in.readInt();
     }
@@ -244,8 +222,6 @@ public class Tourn implements Parcelable{
         dest.writeInt(sweepSuccessful);
         dest.writeInt(tdAttempted);
         dest.writeInt(tdSuccessful);
-        dest.writeInt(numBackTakes);
-        dest.writeInt(numMounts);
         dest.writeDouble(matchTime);
         dest.writeInt(win);
     }

@@ -50,12 +50,6 @@ public class ViewTrain extends ActionBarActivity {
         tv = (TextView) findViewById(R.id.view_tdSuc_train);
         tv.setText(String.valueOf(train.getTdSuccessful()));
 
-        tv = (TextView) findViewById(R.id.view_numBackTakes_train);
-        tv.setText(String.valueOf(train.getNumBackTakes()));
-
-        tv = (TextView) findViewById(R.id.view_numMounts_train);
-        tv.setText(String.valueOf(train.getNumMounts()));
-
         tv = (TextView) findViewById(R.id.view_matchTime_train);
         tv.setText(String.valueOf(train.getMatchTime()));
     }

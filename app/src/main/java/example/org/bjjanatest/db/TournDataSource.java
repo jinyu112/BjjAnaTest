@@ -31,8 +31,6 @@ public class TournDataSource {
     private static int totalTdSuc = 0;
     private static int totalSubAtt = 0;
     private static int totalSubSuc = 0;
-    private static int totalBackTakes = 0;
-    private static int totalMounts = 0;
     private static double totalMatchTime = 0.0;
     private static double avgTdScored = 0.0;
     private static double avgPassesScored = 0.0;
@@ -61,8 +59,6 @@ public class TournDataSource {
             trainingDBOpenHelper.COLUMN_SWEEP_SUCCESS,
             trainingDBOpenHelper.COLUMN_TD_ATTEMPTED,
             trainingDBOpenHelper.COLUMN_TD_SUCCESS,
-            trainingDBOpenHelper.COLUMN_BACK_TAKES,
-            trainingDBOpenHelper.COLUMN_MOUNTS,
             trainingDBOpenHelper.COLUMN_MATCH_TIME,
             trainingDBOpenHelper.COLUMN_WIN};
 
@@ -98,8 +94,6 @@ public class TournDataSource {
         values.put(trainingDBOpenHelper.COLUMN_SWEEP_SUCCESS,tourn.getSweepSuccessful());
         values.put(trainingDBOpenHelper.COLUMN_TD_ATTEMPTED,tourn.getTdAttempted());
         values.put(trainingDBOpenHelper.COLUMN_TD_SUCCESS,tourn.getTdSuccessful());
-        values.put(trainingDBOpenHelper.COLUMN_BACK_TAKES,tourn.getNumBackTakes());
-        values.put(trainingDBOpenHelper.COLUMN_MOUNTS,tourn.getNumMounts());
         values.put(trainingDBOpenHelper.COLUMN_MATCH_TIME,tourn.getMatchTime());
         values.put(trainingDBOpenHelper.COLUMN_WIN,tourn.getWin());
         long insertId = database.insert(trainingDBOpenHelper.TABLE_TOURN,null,values);
@@ -130,8 +124,6 @@ public class TournDataSource {
             sweepSucPerc = 0.0;
             subSucPerc = 0.0;
             avgMatchTime = 0.0;
-            totalBackTakes = 0;
-            totalMounts = 0;
             totalWins = 0;
             while (cursor.moveToNext()) {
                 Tourn tourn = new Tourn();
@@ -151,8 +143,6 @@ public class TournDataSource {
                 tourn.setSweepSuccessful(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_SWEEP_SUCCESS)));
                 tourn.setTdAttempted(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_TD_ATTEMPTED)));
                 tourn.setTdSuccessful(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_TD_SUCCESS)));
-                tourn.setNumBackTakes(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_BACK_TAKES)));
-                tourn.setNumMounts(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_MOUNTS)));
                 tourn.setWin(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_WIN)));
 
 
@@ -167,8 +157,6 @@ public class TournDataSource {
                 totalSubAtt     = totalSubAtt + tourn.getSubAttempted();
                 totalSubSuc     = totalSubSuc + tourn.getSubSuccessful();
                 totalMatchTime  = totalMatchTime + tourn.getMatchTime();
-                totalBackTakes  = totalBackTakes + tourn.getNumBackTakes();
-                totalMounts     = totalMounts + tourn.getNumMounts();
                 totalWins       = totalWins + tourn.getWin();
 
                 tourns.add(tourn);
@@ -276,10 +264,6 @@ public boolean removeFromTourns(Tourn tourn) {
     public int getTournLen() {
         return tournLen;
     }
-
-    public int getNumBackTakes() {return totalBackTakes;}
-
-    public int getNumMounts() {return totalMounts;}
 
     public double getAvgTdScored() {return avgTdScored;}
 

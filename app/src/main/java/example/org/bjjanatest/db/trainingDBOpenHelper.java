@@ -29,8 +29,6 @@ public class trainingDBOpenHelper extends SQLiteOpenHelper{
     public static final String COLUMN_SWEEP_SUCCESS         = "sweepSuccess";
     public static final String COLUMN_TD_ATTEMPTED      = "tdAttempted";
     public static final String COLUMN_TD_SUCCESS        = "tdSuccess";
-    public static final String COLUMN_BACK_TAKES        = "numBackTakes";
-    public static final String COLUMN_MOUNTS           = "numMounts";
     public static final String COLUMN_MATCH_TIME        = "matchTime";
     public static final String COLUMN_WIN               = "win";
 
@@ -50,8 +48,6 @@ public class trainingDBOpenHelper extends SQLiteOpenHelper{
     public static final String COLUMN_SWEEP_SUCCESS_TRAIN         = "sweepSuccess";
     public static final String COLUMN_TD_ATTEMPTED_TRAIN      = "tdAttempted";
     public static final String COLUMN_TD_SUCCESS_TRAIN        = "tdSuccess";
-    public static final String COLUMN_BACK_TAKES_TRAIN        = "numBackTakes";
-    public static final String COLUMN_MOUNTS_TRAIN           = "numMounts";
     public static final String COLUMN_MATCH_TIME_TRAIN        = "matchTime";
 
     public static final String TABLE_TECH       = "tech";
@@ -88,8 +84,6 @@ public class trainingDBOpenHelper extends SQLiteOpenHelper{
                     COLUMN_SWEEP_SUCCESS + " NUMERIC, " +
                     COLUMN_TD_ATTEMPTED + " NUMERIC, " +
                     COLUMN_TD_SUCCESS + " NUMERIC, " +
-                    COLUMN_BACK_TAKES + " NUMERIC, " +
-                    COLUMN_MOUNTS + " NUMERIC, " +
                     COLUMN_MATCH_TIME + " NUMERIC, " +
                     COLUMN_WIN + " NUMERIC " +
                     ")"; //this string is VERY important. the individual strings must have exactly one space in between them in the sql statement
@@ -110,8 +104,6 @@ public class trainingDBOpenHelper extends SQLiteOpenHelper{
                     COLUMN_SWEEP_SUCCESS_TRAIN + " NUMERIC, " +
                     COLUMN_TD_ATTEMPTED_TRAIN + " NUMERIC, " +
                     COLUMN_TD_SUCCESS_TRAIN + " NUMERIC, " +
-                    COLUMN_BACK_TAKES_TRAIN + " NUMERIC, " +
-                    COLUMN_MOUNTS_TRAIN + " NUMERIC, " +
                     COLUMN_MATCH_TIME_TRAIN + " NUMERIC " +
                     ")"; //this string is VERY important. the individual strings must have exactly one space in between them in the sql statement
 

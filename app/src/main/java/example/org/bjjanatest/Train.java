@@ -21,15 +21,13 @@ public class Train implements Parcelable {
     private int sweepSuccessful;
     private int tdAttempted;
     private int tdSuccessful;
-    private int numBackTakes;
-    private int numMounts;
     private double matchTime;
 
     public Train() {
         id = 0;
         trainName = "match";
-        belt = "white";
-        beltOpp="white";
+        belt = "White";
+        beltOpp="White";
         pointsAllowed = 0;
         pointsScored = 0;
         subAttempted = 0;
@@ -40,8 +38,6 @@ public class Train implements Parcelable {
         sweepSuccessful = 0;
         tdAttempted = 0;
         tdSuccessful = 0;
-        numBackTakes = 0;
-        numMounts = 0;
         matchTime = 0.0;
     }
 
@@ -157,22 +153,6 @@ public class Train implements Parcelable {
         tdSuccessful = num;
     }
 
-    public int getNumBackTakes() {
-        return this.numBackTakes;
-    }
-
-    public void setNumBackTakes(int num) {
-        numBackTakes = num;
-    }
-
-    public int getNumMounts() {
-        return this.numMounts;
-    }
-
-    public void setNumMounts(int num) {
-        numMounts = num;
-    }
-
     public double getMatchTime() {
         return this.matchTime;
     }
@@ -198,8 +178,6 @@ public class Train implements Parcelable {
         sweepSuccessful = in.readInt();
         tdAttempted = in.readInt();
         tdSuccessful = in.readInt();
-        numBackTakes = in.readInt();
-        numMounts = in.readInt();
         matchTime = in.readDouble();
     }
 
@@ -224,8 +202,6 @@ public class Train implements Parcelable {
         dest.writeInt(sweepSuccessful);
         dest.writeInt(tdAttempted);
         dest.writeInt(tdSuccessful);
-        dest.writeInt(numBackTakes);
-        dest.writeInt(numMounts);
         dest.writeDouble(matchTime);
     }
 

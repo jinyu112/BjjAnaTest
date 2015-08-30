@@ -113,25 +113,6 @@ public class AddTraining extends ActionBarActivity {
 
         MinusOnClickListener tdSucMinusListener = new MinusOnClickListener(tvatt,tvsuc);
         button_minus.setOnClickListener(tdSucMinusListener);
-        ////// back take and mount
-
-        button_minus = (Button) findViewById(R.id.backTakeMinus_train);
-        button_plus = (Button) findViewById(R.id.backTakePlus_train);
-        tvsuc = (TextView) findViewById(R.id.numBackTakes_train);
-        PlusOnClickListener backTakePlusListener = new PlusOnClickListener(tvsuc);
-        button_plus.setOnClickListener(backTakePlusListener);
-
-        MinusOnClickListener backTakeMinusListener = new MinusOnClickListener(tvsuc);
-        button_minus.setOnClickListener(backTakeMinusListener);
-
-        button_minus = (Button) findViewById(R.id.mountMinus_train);
-        button_plus = (Button) findViewById(R.id.mountPlus_train);
-        tvsuc = (TextView) findViewById(R.id.numMount_train);
-        PlusOnClickListener mountPlusListener = new PlusOnClickListener(tvsuc);
-        button_plus.setOnClickListener(mountPlusListener);
-
-        MinusOnClickListener mountMinusListener = new MinusOnClickListener(tvsuc);
-        button_minus.setOnClickListener(mountMinusListener);
         //////
 
         button_minus = (Button) findViewById(R.id.subAttMinus_train);
@@ -206,12 +187,6 @@ public class AddTraining extends ActionBarActivity {
 
         tv = (TextView) findViewById(R.id.tdSuc_train);
         train.setTdSuccessful(Integer.parseInt(tv.getText().toString()));
-
-        tv = (TextView) findViewById(R.id.numBackTakes_train);
-        train.setNumBackTakes(Integer.parseInt(tv.getText().toString()));
-
-        tv = (TextView) findViewById(R.id.numMount_train);
-        train.setNumMounts(Integer.parseInt(tv.getText().toString()));
 
         tv = (TextView) findViewById(R.id.subAtt_train);
         train.setSubAttempted(Integer.parseInt(tv.getText().toString()));

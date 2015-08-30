@@ -32,8 +32,6 @@ public class TrainDataSource {
     private static int totalTdSuc = 0;
     private static int totalSubAtt = 0;
     private static int totalSubSuc = 0;
-    private static int totalBackTakes = 0;
-    private static int totalMounts = 0;
     private static double totalMatchTime = 0.0;
     private static double avgTdScored = 0.0;
     private static double avgPassesScored = 0.0;
@@ -60,8 +58,6 @@ public class TrainDataSource {
             trainingDBOpenHelper.COLUMN_SWEEP_SUCCESS_TRAIN,
             trainingDBOpenHelper.COLUMN_TD_ATTEMPTED_TRAIN,
             trainingDBOpenHelper.COLUMN_TD_SUCCESS_TRAIN,
-            trainingDBOpenHelper.COLUMN_BACK_TAKES_TRAIN,
-            trainingDBOpenHelper.COLUMN_MOUNTS_TRAIN,
             trainingDBOpenHelper.COLUMN_MATCH_TIME_TRAIN};
 
     public TrainDataSource (Context context) {
@@ -95,8 +91,6 @@ public class TrainDataSource {
         values.put(trainingDBOpenHelper.COLUMN_SWEEP_SUCCESS_TRAIN,train.getSweepSuccessful());
         values.put(trainingDBOpenHelper.COLUMN_TD_ATTEMPTED_TRAIN,train.getTdAttempted());
         values.put(trainingDBOpenHelper.COLUMN_TD_SUCCESS_TRAIN,train.getTdSuccessful());
-        values.put(trainingDBOpenHelper.COLUMN_BACK_TAKES_TRAIN,train.getNumBackTakes());
-        values.put(trainingDBOpenHelper.COLUMN_MOUNTS_TRAIN,train.getNumMounts());
         values.put(trainingDBOpenHelper.COLUMN_MATCH_TIME_TRAIN,train.getMatchTime());
         long insertId = database.insert(trainingDBOpenHelper.TABLE_TRAIN,null,values);
         Log.i(LOGTAG,"train ID: " + insertId);
@@ -126,8 +120,6 @@ public class TrainDataSource {
             sweepSucPerc = 0.0;
             subSucPerc = 0.0;
             avgMatchTime = 0.0;
-            totalBackTakes = 0;
-            totalMounts = 0;
             while (cursor.moveToNext()) {
                 Train train = new Train();
                 Log.i(LOGTAG, "findall: trainid " + cursor.getLong(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_ID_TRAIN)));
@@ -146,9 +138,6 @@ public class TrainDataSource {
                 train.setSweepSuccessful(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_SWEEP_SUCCESS_TRAIN)));
                 train.setTdAttempted(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_TD_ATTEMPTED_TRAIN)));
                 train.setTdSuccessful(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_TD_SUCCESS_TRAIN)));
-                train.setNumBackTakes(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_BACK_TAKES_TRAIN)));
-                train.setNumMounts(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_MOUNTS_TRAIN)));
-
 
                 totalPts        = totalPts + train.getPointsScored();
                 totalPtsAllowed = totalPtsAllowed + train.getPointsAllowed();
@@ -161,8 +150,6 @@ public class TrainDataSource {
                 totalSubAtt     = totalSubAtt + train.getSubAttempted();
                 totalSubSuc     = totalSubSuc + train.getSubSuccessful();
                 totalMatchTime  = totalMatchTime + train.getMatchTime();
-                totalBackTakes  = totalBackTakes + train.getNumBackTakes();
-                totalMounts     = totalMounts + train.getNumMounts();
 
                 trains.add(train);
             }
@@ -270,10 +257,6 @@ public class TrainDataSource {
     public int getTrainLen() {
         return trainLen;
     }
-
-    public int getNumBackTakes() {return totalBackTakes;}
-
-    public int getNumMounts() {return totalMounts;}
 
     public double getAvgTdScored() {return avgTdScored;}
 
