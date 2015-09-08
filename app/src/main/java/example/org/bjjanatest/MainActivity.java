@@ -68,7 +68,7 @@ public class MainActivity extends ActionBarActivity {
         dlDrawer.addNavItem("Training Sessions", "Training Sessions", TrainingListFragment.class);
         dlDrawer.addNavItem("Techniques", "Technique List", TechListFragment.class);
         dlDrawer.addNavItem("Weight Tracker", "Weight Tracker", AddWeightFragment.class);
-        dlDrawer.addNavItem("Time Tracker", "Time Tracker", TournListFragment.class);
+        dlDrawer.addNavItem("Time Tracker", "Time Tracker", AddTimeFragment.class);
         dlDrawer.addNavItem("About", "About", TournListFragment.class);
         // Select default
         if (savedInstanceState == null) {
