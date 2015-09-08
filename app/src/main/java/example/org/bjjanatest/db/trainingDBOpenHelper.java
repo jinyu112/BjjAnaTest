@@ -66,7 +66,6 @@ public class trainingDBOpenHelper extends SQLiteOpenHelper{
     public static final String COLUMN_WEIGHT_DATE       = "weightDate";
 
 
-
     private static final String TABLE_CREATE =
             "CREATE TABLE " + TABLE_TOURN + " (" +
                     COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -125,7 +124,6 @@ public class trainingDBOpenHelper extends SQLiteOpenHelper{
                     COLUMN_WEIGHT_YEAR + " NUMERIC, " +
                     COLUMN_WEIGHT_DATE + " NUMERIC NOT NULL UNIQUE ON CONFLICT REPLACE " +
                     ")";
-
 
     public trainingDBOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

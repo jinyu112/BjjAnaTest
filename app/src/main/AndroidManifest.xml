@@ -44,6 +44,15 @@
             android:name=".EditTech"
             android:label="@string/title_activity_edit_tech" >
         </activity>
+        <activity
+            android:name=".AddWeight"
+            android:label="@string/title_activity_add_weight" >
+        </activity>
+        <activity
+            android:name=".AddTime"
+            android:label="@string/title_activity_add_time" >
+        </activity>
+
 
         <activity
             android:name=".ItemListActivity"
