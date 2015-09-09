@@ -10,16 +10,26 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class AddTimeFragment extends Fragment {
 
     private static final String LOGTAG = "BJJTRAINING";
+    private static final String filename = "myTimeData";
+    private static TextView tv_totalTime;
+    private static TextView tv_avgTimePerWeek;
+    private static TextView tv_totalSessions;
+    private static TextView tv_avgSessionsPerWeek;
 
 
     public AddTimeFragment () {
@@ -53,22 +63,84 @@ public class AddTimeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.time_frag, container, false);
+
+        //define text views
+        tv_totalTime = (TextView) rootView.findViewById(R.id.totalTime);
+        tv_avgTimePerWeek = (TextView) rootView.findViewById(R.id.avgTime);
+        tv_totalSessions = (TextView) rootView.findViewById(R.id.totalSessions);
+        tv_avgSessionsPerWeek = (TextView) rootView.findViewById(R.id.avgSessions);
+
+        //define clear data button
+        Button button = (Button) rootView.findViewById(R.id.clearAllTimeButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (deleteTimeData()) {
+                    Toast toast;
+                    toast=Toast.makeText(getActivity(), "Data cleared.", Toast.LENGTH_SHORT);
+                    toast.show();
+                    tv_totalTime.setText("0");
+                    tv_avgTimePerWeek.setText("0");
+                    tv_totalSessions.setText("0");
+                    tv_avgSessionsPerWeek.setText("0");
+                }
+            }
+        });
+
+        displayTimeData();
         return rootView;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        displayTimeData();
+    }
+
     //This function graphs the weight data points
-    public void displayTimeData(List<Time> times) {
-        Time time = new Time();
-        double sumTimes = 0.0;
-        int date = 19000101;
-        int timeLen=times.size();
-        for ( int i = 0; i < timeLen; i++ )
-        {
-            time = times.get(i);
-            sumTimes = sumTimes + time.getHours();
-            date = time.getDate();
+    public void displayTimeData() {
+        String timeDataForDisplay[] = new String[]{"0", "0", "0", "0"};
+        int minDateInt=19000101;
+        int maxDateInt=minDateInt;
+        int numDaysBetween=0;
+        double weeks = 0.0;
+        double avgTimePerWeek=0.0;
+        double avgSessPerWeek=0.0;
+        if (fileExistance(filename)) {
+            timeDataForDisplay=readTimeDataInternal();
+            try {
+                minDateInt = Integer.parseInt(timeDataForDisplay[1]);
+                maxDateInt = Integer.parseInt(timeDataForDisplay[2]);
+            } catch (NumberFormatException ex) {
+                System.err.println("Caught NumberFormatException in AddTimeFragment fragment: "
+                        +  ex.getMessage());
+            }
+            numDaysBetween=determineDaysBetween(maxDateInt,minDateInt);
+            Log.i(LOGTAG, "number of days: " + numDaysBetween );
+            if (numDaysBetween < 7) {
+                weeks=1;
+            }
+            else weeks = (double) numDaysBetween/7.0;
+            try {
+                avgTimePerWeek = (double) Double.parseDouble(timeDataForDisplay[3])/weeks;
+                avgSessPerWeek = (double) Integer.parseInt(timeDataForDisplay[0])/weeks;
+            } catch (NumberFormatException ex) {
+                System.err.println("Caught NumberFormatException in AddTimeFragment fragment: "
+                        +  ex.getMessage());
+            }
 
-
+            avgTimePerWeek = Math.round(avgTimePerWeek*10)/10.0;
+            avgSessPerWeek = Math.round(avgSessPerWeek*10)/10.0;
+            tv_totalTime.setText(timeDataForDisplay[3]);
+            tv_avgTimePerWeek.setText(Double.toString(avgTimePerWeek));
+            tv_totalSessions.setText(timeDataForDisplay[0]);
+            tv_avgSessionsPerWeek.setText(Double.toString(avgSessPerWeek));
+        }
+        else {
+            tv_totalTime.setText("0");
+            tv_avgTimePerWeek.setText("0");
+            tv_totalSessions.setText("0");
+            tv_avgSessionsPerWeek.setText("0");
         }
 
     }
@@ -152,5 +224,37 @@ public class AddTimeFragment extends Fragment {
         formattedDate = Integer.toString(yearIn) + tempMonth + tempDay;
 
         return formattedDate;
+    }
+
+    public String[] readTimeDataInternal() {
+        String timeDataArrayRetrieved[] = new String[]{"0", "0", "0", "0"};
+        try {
+            FileInputStream fin = getActivity().openFileInput(filename);
+            ObjectInputStream ois = new ObjectInputStream(fin);
+            timeDataArrayRetrieved = (String[]) ois.readObject();
+            ois.close();
+            fin.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        Log.i(LOGTAG, "sessions: " + timeDataArrayRetrieved[0] );
+        Log.i(LOGTAG, "mindate: " + timeDataArrayRetrieved[1] );
+        Log.i(LOGTAG, "maxdate: " + timeDataArrayRetrieved[2] );
+        Log.i(LOGTAG, "hours: " + timeDataArrayRetrieved[3] );
+        return timeDataArrayRetrieved;
+    }
+
+    public boolean fileExistance(String fname){
+        File file = getActivity().getFileStreamPath(fname);
+        return file.exists();
+    }
+
+    //
+    public boolean deleteTimeData() {
+        File dir = getActivity().getFilesDir();
+        File file = new File(dir, filename);
+        boolean deleted = file.delete();
+        return deleted;
     }
 }

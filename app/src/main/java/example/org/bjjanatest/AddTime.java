@@ -1,7 +1,6 @@
 package example.org.bjjanatest;
 
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Gravity;
@@ -113,17 +112,16 @@ public class AddTime extends ActionBarActivity {
         time.setYear(currYear);
         time.setDate(formatDate(currYear, currMonth, currDay));
 
-        timeDataArray[0]="1";
-        timeDataArray[1]=Integer.toString(time.getDate());
-        timeDataArray[2]=Integer.toString(time.getDate());
-        timeDataArray[3]=Double.toString(time.getHours());
-
-        Log.i(LOGTAG, Integer.toString(currYear) + Integer.toString(currMonth) + Integer.toString(currDay) );
+        timeDataArray[0]="1";                               // training session increment
+        timeDataArray[1]=Integer.toString(time.getDate());  // minimum date
+        timeDataArray[2]=Integer.toString(time.getDate());  // maximum date
+        timeDataArray[3]=Double.toString(time.getHours());  // total hours trained
 
         //prevent insensible date inputs (ie Feb 31)
         if (checkValidDate(currMonth,currDay)) {
             Toast.makeText(this, "Time saved.",
                     Toast.LENGTH_LONG).show();
+            saveTimeDataInternal(timeDataArray);
             finish();
         }
         else {
@@ -131,32 +129,6 @@ public class AddTime extends ActionBarActivity {
                     Toast.LENGTH_LONG).show();
         }
 
-    }
-
-    public void deleteTime(View view) {
-        int dateTemp=19000101;
-        boolean removalSuccess=false;
-
-        spin = (Spinner) findViewById(R.id.day_spinner_time);
-        currDay = spin.getSelectedItemPosition()+1; //day is index PLUS 1
-
-        spin = (Spinner) findViewById(R.id.month_spinner_time);
-        currMonth = spin.getSelectedItemPosition()+1;
-
-        spin = (Spinner) findViewById(R.id.year_spinner_time);
-        currYear = spin.getSelectedItemPosition()+1;
-
-        dateTemp=formatDate(currYear, currMonth, currDay);
-
-        if (removalSuccess) {
-            Toast.makeText(this, "Time deleted",
-                    Toast.LENGTH_LONG).show();
-        }
-        else {
-            Toast.makeText(this, "No time deleted.",
-                    Toast.LENGTH_LONG).show();
-        }
-        finish();
     }
 
     public int formatDate(int yearIn, int monthIn, int dayIn) {
@@ -211,7 +183,7 @@ public class AddTime extends ActionBarActivity {
             }
 
             timeDataArray[0] = Integer.toString(Integer.parseInt(timeDataArray[0]) + Integer.parseInt(timeDataArrayRetreived[0]));
-            timeDataArray[3] = Integer.toString(Integer.parseInt(timeDataArray[3]) + Integer.parseInt(timeDataArrayRetreived[3]));
+            timeDataArray[3] = Double.toString(Double.parseDouble(timeDataArray[3]) + Double.parseDouble(timeDataArrayRetreived[3]));
 
             try {
                 outputStream = openFileOutput(filename, this.MODE_PRIVATE);
