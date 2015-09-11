@@ -99,7 +99,7 @@
                 android:layout_height="40dp"
                 android:gravity="center"
                 android:onClick="finishEditTechnique"
-                android:text="Done" />
+                android:text="Save" />
         </LinearLayout>
 
     </LinearLayout>

@@ -65,6 +65,11 @@ public class trainingDBOpenHelper extends SQLiteOpenHelper{
     public static final String COLUMN_WEIGHT_YEAR       = "weightYear";
     public static final String COLUMN_WEIGHT_DATE       = "weightDate";
 
+    public static final String TABLE_DRILLS       = "drill";
+    public static final String COLUMN_ID_DRILL       = "drillId";
+    public static final String COLUMN_DRILL_NAME       = "drillName";
+    public static final String COLUMN_DRILL_TOTAL_REPS       = "drillReps";
+
 
     private static final String TABLE_CREATE =
             "CREATE TABLE " + TABLE_TOURN + " (" +
@@ -125,6 +130,13 @@ public class trainingDBOpenHelper extends SQLiteOpenHelper{
                     COLUMN_WEIGHT_DATE + " NUMERIC NOT NULL UNIQUE ON CONFLICT REPLACE " +
                     ")";
 
+    private static final String TABLE_CREATE_DRILL =
+            "CREATE TABLE " + TABLE_DRILLS + " (" +
+                    COLUMN_ID_DRILL + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    COLUMN_DRILL_NAME + " TEXT NOT NULL, " +
+                    COLUMN_DRILL_TOTAL_REPS + " NUMERIC NOT NULL " +
+                    ")";
+
     public trainingDBOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -140,6 +152,8 @@ public class trainingDBOpenHelper extends SQLiteOpenHelper{
         Log.i(LOGTAG, "Table tech has been created.");
         db.execSQL(TABLE_CREATE_WEIGHT);
         Log.i(LOGTAG, "Table weight has been created.");
+        db.execSQL(TABLE_CREATE_DRILL);
+        Log.i(LOGTAG, "Table drill has been created.");
     }
 
     @Override
@@ -148,6 +162,7 @@ public class trainingDBOpenHelper extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_TRAIN);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_TECH);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_WEIGHT);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_DRILLS);
         onCreate(db);
     }
 

@@ -11,6 +11,8 @@
     <string name="title_activity_view_train">ViewTrain</string>
     <string name="title_activity_add_weight">AddWeight</string>
     <string name="title_activity_add_time">AddTime</string>
+    <string name="title_activity_add_drill">AddDrill</string>
+    <string name="title_activity_edit_drill">EditDrill</string>
 
     <string name="pts_scored">Points Scored: </string>
     <string name="pts_allowed">Points Allowed: </string>
@@ -53,6 +55,12 @@
     <string name="edit_tech_activity">Edit Technique</string>
     <string name="title_activity_view_tech">ViewTech</string>
     <string name="title_activity_edit_tech">EditTech</string>
+    <string name="drill_activity">Add drill.</string>
+    <string name="drill_activity_edit">Add drill.</string>
+    <string name="drill_name">Drill Name:</string>
+    <string name="drill_add_reps">Add reps to total:</string>
+    <string name="drill_total_reps">Total reps performed:</string>
+    <string name="drill_track">Track this drill in stats?</string>
 
 
     <string name="weight_add">Add</string>

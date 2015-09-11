@@ -49,22 +49,22 @@ public class MainContentFragment extends Fragment {
         horizontalBarChart_OffPerc = (HorizontalBarChart) rootView.findViewById(R.id.tournOffPercChart);
         horizontalBarChart_OffPerc.setDrawValueAboveBar(true);
         horizontalBarChart_OffPerc.setDescription("");
-        horizontalBarChart_OffPerc.animateY(1000);
+        //horizontalBarChart_OffPerc.animateY(1000);
         horizontalBarChart_OffPerc.setPinchZoom(false);
         horizontalBarChart_OffPerc.setTouchEnabled(false);
         horizontalBarChart_OffPerc.getLegend().setEnabled(false);
 
-        XAxis xl_offperc = horizontalBarChart_OffPerc.getXAxis();
+        XAxis xl_offperc = horizontalBarChart_OffPerc.getXAxis(); //actual data on the x axis (horizontal chart only)
         xl_offperc.setPosition(XAxis.XAxisPosition.BOTTOM);
         xl_offperc.setDrawGridLines(false);
         xl_offperc.setEnabled(false);
 
-        YAxis yl_offperc = horizontalBarChart_OffPerc.getAxisLeft();
+        YAxis yl_offperc = horizontalBarChart_OffPerc.getAxisLeft(); //left y axis
         yl_offperc.setDrawLabels(false);
         yl_offperc.setEnabled(false);
         yl_offperc.setAxisMaxValue(100f);
 
-        YAxis yr_offperc = horizontalBarChart_OffPerc.getAxisRight();
+        YAxis yr_offperc = horizontalBarChart_OffPerc.getAxisRight(); //right y axis
         yr_offperc.setDrawLabels(false);
         yr_offperc.setEnabled(false);
         yr_offperc.setAxisMaxValue(100f);
@@ -74,22 +74,22 @@ public class MainContentFragment extends Fragment {
         horizontalBarChart_TournAvg = (HorizontalBarChart) rootView.findViewById(R.id.tournAvgChart);
         horizontalBarChart_TournAvg.setDrawValueAboveBar(true);
         horizontalBarChart_TournAvg.setDescription("");
-        horizontalBarChart_TournAvg.animateY(1000);
+        //horizontalBarChart_TournAvg.animateY(1000);
         horizontalBarChart_TournAvg.setPinchZoom(false);
         horizontalBarChart_TournAvg.setTouchEnabled(false);
         horizontalBarChart_TournAvg.getLegend().setEnabled(false);
 
 
-        XAxis xl_avg = horizontalBarChart_TournAvg.getXAxis();
+        XAxis xl_avg = horizontalBarChart_TournAvg.getXAxis();  //actual data on the x axis (horizontal chart only)
         xl_avg.setPosition(XAxis.XAxisPosition.BOTTOM);
         xl_avg.setDrawGridLines(false);
         xl_avg.setEnabled(false);
 
-        YAxis yl_avg = horizontalBarChart_TournAvg.getAxisLeft();
+        YAxis yl_avg = horizontalBarChart_TournAvg.getAxisLeft(); //left y axis
         yl_avg.setDrawLabels(false);
         yl_avg.setEnabled(false);
 
-        YAxis yr_avg = horizontalBarChart_TournAvg.getAxisRight();
+        YAxis yr_avg = horizontalBarChart_TournAvg.getAxisRight(); //right y axis
         yr_avg.setDrawLabels(false);
         yr_avg.setEnabled(false);
 

@@ -65,6 +65,7 @@ public class MainActivity extends ActionBarActivity {
         // Add nav items
         dlDrawer.addNavItem("My Stats", "My Statistics", MainContentFragment.class);
         dlDrawer.addNavItem("Tournaments", "Tournaments", TournListFragment.class);
+        dlDrawer.addNavItem("Drills", "Drills Rep Tracker", DrillListFragment.class);
         dlDrawer.addNavItem("Techniques", "Technique List", TechListFragment.class);
         dlDrawer.addNavItem("Weight Tracker", "Weight Tracker", AddWeightFragment.class);
         dlDrawer.addNavItem("Time Tracker", "Time Tracker", AddTimeFragment.class);
@@ -75,7 +76,6 @@ public class MainActivity extends ActionBarActivity {
         }
         dataSource = new TournDataSource(this);
 
-//        getStats();
     }
 
     @Override
