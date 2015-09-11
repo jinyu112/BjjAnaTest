@@ -7,6 +7,7 @@ package example.org.bjjanatest;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -75,29 +76,38 @@ public class FragmentNavigationDrawer extends DrawerLayout {
     /**
      * Swaps fragments in the main content view
      */
-    public void selectDrawerItem(int position) {
-        // Create a new fragment and specify the planet to show based on
-        // position
-        FragmentNavItem navItem = drawerNavItems.get(position);
-        Fragment fragment = null;
-        try {
-            fragment = navItem.getFragmentClass().newInstance();
-            Bundle args = navItem.getFragmentArgs();
-            if (args != null) {
-                fragment.setArguments(args);
+    public void selectDrawerItem(final int position) {
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Create a new fragment and specify the planet to show based on
+                // position
+                FragmentNavItem navItem = drawerNavItems.get(position);
+                Fragment fragment = null;
+                try {
+                    fragment = navItem.getFragmentClass().newInstance();
+                    Bundle args = navItem.getFragmentArgs();
+                    if (args != null) {
+                        fragment.setArguments(args);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                // Insert the fragment by replacing any existing fragment
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(drawerContainerRes, fragment).commit();
+
+                // Highlight the selected item, update the title, and close the drawer
+                lvDrawer.setItemChecked(position, true);
+                setTitle(navItem.getTitle());
+                closeDrawer(lvDrawer);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        }, 150); //delays closing drawer by 150 ms to stop lagging
 
-        // Insert the fragment by replacing any existing fragment
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(drawerContainerRes, fragment).commit();
 
-        // Highlight the selected item, update the title, and close the drawer
-        lvDrawer.setItemChecked(position, true);
-        setTitle(navItem.getTitle());
-        closeDrawer(lvDrawer);
+
     }
 
 
