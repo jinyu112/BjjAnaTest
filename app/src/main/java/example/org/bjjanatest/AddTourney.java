@@ -223,7 +223,11 @@ public class AddTourney extends ActionBarActivity {
         if (tourn.getPointsAllowed() < tourn.getPointsScored()) {
             tourn.setWin(1);
         }
-        else if (tourn.getPointsAllowed() > tourn.getPointsScored()) {
+        else if (tourn.getPointsAllowed() == tourn.getPointsScored()) {
+            if (cbWin.isChecked()) tourn.setWin(1);
+            else tourn.setWin(0);
+        }
+        else {
             tourn.setWin(0);
         }
 
