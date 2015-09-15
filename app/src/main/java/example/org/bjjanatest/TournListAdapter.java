@@ -14,7 +14,7 @@ import android.widget.TextView;
 import java.util.List;
 
 public class TournListAdapter extends ArrayAdapter<Tourn> {
-    Context context; //should these be private variables?
+    private Context context; //should these be private variables?
     private static List<Tourn> tourns; //should this be private and static?
     private static final String LOGTAG = "BJJTRAINING";
     private static final String BELT_ARRAY[] =

@@ -201,6 +201,29 @@ public boolean removeFromTourns(Tourn tourn) {
     return (result==1);
 }
 
+    public void update(Tourn tourn) {
+        ContentValues values = new ContentValues();
+        values.put(trainingDBOpenHelper.COLUMN_WEIGHT,tourn.getWeightClass());
+        values.put(trainingDBOpenHelper.COLUMN_TOURN_NAME,tourn.getTournName());
+        values.put(trainingDBOpenHelper.COLUMN_BELT,tourn.getBelt());
+        values.put(trainingDBOpenHelper.COLUMN_DATE,tourn.getDate());
+        values.put(trainingDBOpenHelper.COLUMN_PTS_ALLOWED,tourn.getPointsAllowed());
+        values.put(trainingDBOpenHelper.COLUMN_PTS_SCORED,tourn.getPointsScored());
+        values.put(trainingDBOpenHelper.COLUMN_SUB_ATTEMPT,tourn.getSubAttempted());
+        values.put(trainingDBOpenHelper.COLUMN_SUB_SUCCESS,tourn.getSubSuccessful());
+        values.put(trainingDBOpenHelper.COLUMN_PASS_ATTEMPTED,tourn.getPassAttempted());
+        values.put(trainingDBOpenHelper.COLUMN_PASS_SUCCESS,tourn.getPassSuccessful());
+        values.put(trainingDBOpenHelper.COLUMN_SWEEP_ATTEMPTED,tourn.getSweepAttempted());
+        values.put(trainingDBOpenHelper.COLUMN_SWEEP_SUCCESS,tourn.getSweepSuccessful());
+        values.put(trainingDBOpenHelper.COLUMN_TD_ATTEMPTED,tourn.getTdAttempted());
+        values.put(trainingDBOpenHelper.COLUMN_TD_SUCCESS,tourn.getTdSuccessful());
+        values.put(trainingDBOpenHelper.COLUMN_MATCH_TIME,tourn.getMatchTime());
+        values.put(trainingDBOpenHelper.COLUMN_WIN,tourn.getWin());
+        database.update(trainingDBOpenHelper.TABLE_TOURN,values,trainingDBOpenHelper.COLUMN_ID + "=" + tourn.getId(),null);
+
+    }
+
+
     public int getTotalPts() {
         return totalPts;
     }

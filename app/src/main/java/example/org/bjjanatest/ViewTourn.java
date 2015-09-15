@@ -1,6 +1,7 @@
 package example.org.bjjanatest;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
@@ -55,6 +56,14 @@ public class ViewTourn extends ActionBarActivity {
     }
 
     public void finishViewTourn(View view) {
+        finish();
+    }
+
+    public void editTourn (View view) {
+        Intent intent = new Intent(this,EditTourn.class);
+        intent.putExtra("tourn_obj_edit",tourn);
+        startActivity(intent);
+        dataSource.close();
         finish();
     }
 

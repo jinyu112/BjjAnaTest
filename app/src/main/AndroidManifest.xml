@@ -63,6 +63,11 @@
             android:label="@string/title_activity_edit_drill" >
         </activity>
 
+        <activity
+            android:name=".EditTourn"
+            android:label="@string/title_activity_edit_tourn" >
+        </activity>
+
 
 
         <activity

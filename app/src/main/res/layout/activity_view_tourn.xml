@@ -245,7 +245,7 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -256,19 +256,27 @@
             android:layout_height="40dp"
             android:gravity="center"
             android:onClick="deleteTourn"
-            android:layout_alignParentLeft="true"
             android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:text="Delete" />
-
+        <Button
+            android:id="@+id/view_edit_tourn"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:onClick="editTourn"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="Edit" />
         <Button
             android:id="@+id/view_finish_view_tourn"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:gravity="center"
             android:onClick="finishViewTourn"
-            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:text="Back" />
-    </RelativeLayout>
+    </LinearLayout>
 
 </LinearLayout>
