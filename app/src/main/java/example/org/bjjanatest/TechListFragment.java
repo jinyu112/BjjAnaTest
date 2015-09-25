@@ -37,6 +37,7 @@ public class TechListFragment extends android.support.v4.app.ListFragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.menu_add_tech, menu);
+        menu.getItem(0).setIcon(R.drawable.plus_50);
     }
 
     @Override

@@ -57,6 +57,7 @@ public class AddWeightFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.menu_add_weight, menu);
+        menu.getItem(0).setIcon(R.drawable.plus_50);
     }
 
     @Override

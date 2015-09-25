@@ -46,6 +46,7 @@ public class AddTimeFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.menu_add_time, menu);
+        menu.getItem(0).setIcon(R.drawable.plus_50);
     }
 
     @Override

@@ -38,6 +38,7 @@ public class DrillListFragment extends ListFragment{
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.menu_add_drill, menu);
+        menu.getItem(0).setIcon(R.drawable.plus_50);
     }
 
     @Override
