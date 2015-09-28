@@ -477,11 +477,13 @@
                     android:gravity="center"
                     android:orientation="horizontal">
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/save_tourn_edit"
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"
+                        android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:src="@drawable/ok_100"
+                        android:background="@android:color/transparent"
                         android:onClick="saveTournament_edit"
                         android:text="Save Tournament" />
                 </LinearLayout>

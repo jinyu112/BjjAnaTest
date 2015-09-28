@@ -83,4 +83,10 @@ public class EditDrill extends ActionBarActivity{
         dataSource.close();
         finish();
     }
+
+    //back
+    public void backEditDrill(View view) {
+        dataSource.close();
+        finish();
+    }
 }

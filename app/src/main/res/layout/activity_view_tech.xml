@@ -7,11 +7,25 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="10">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/view_tech_activity" />
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -38,7 +52,13 @@
 
 
     </RelativeLayout>
+        </LinearLayout>
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -64,6 +84,12 @@
             android:text="" />
 
     </RelativeLayout>
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -78,6 +104,14 @@
             android:gravity="center_vertical"
             android:text="@string/tech_note" />
         </LinearLayout>
+            </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5">
+
 <LinearLayout
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
@@ -93,13 +127,25 @@
             android:text="" />
 
     </LinearLayout>
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="horizontal">
-        <Button
+        android:orientation="horizontal"
+        android:weightSum="3">
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+        <ImageButton
             android:id="@+id/view_del_view_tech"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
@@ -107,25 +153,46 @@
             android:onClick="deleteTech"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:src="@drawable/trash_50"
+            android:background="@android:color/transparent"
             android:text="Delete" />
-        <Button
+            </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+        <ImageButton
             android:id="@+id/view_edit_tech"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:gravity="center"
             android:onClick="editTech"
             android:layout_marginLeft="10dp"
+            android:src="@drawable/edit_50"
+            android:background="@android:color/transparent"
             android:layout_marginRight="10dp"
             android:text="Edit" />
-        <Button
+            </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+        <ImageButton
             android:id="@+id/view_finish_view_tech"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:gravity="center"
+            android:src="@drawable/previous_50"
+            android:background="@android:color/transparent"
             android:onClick="finishViewTech"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:text="Back" />
+            </LinearLayout>
     </LinearLayout>
+        </LinearLayout>
+        </LinearLayout>
 
 </LinearLayout>

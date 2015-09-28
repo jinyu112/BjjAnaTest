@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -72,7 +73,7 @@ public class AddTimeFragment extends Fragment {
         tv_avgSessionsPerWeek = (TextView) rootView.findViewById(R.id.avgSessions);
 
         //define clear data button
-        Button button = (Button) rootView.findViewById(R.id.clearAllTimeButton);
+        ImageButton button = (ImageButton) rootView.findViewById(R.id.clearAllTimeButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

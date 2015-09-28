@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
@@ -96,7 +97,7 @@ public class AddWeightFragment extends Fragment {
         tv_weightDiff = (TextView) rootView.findViewById(R.id.weightDiff);
 
         //define clear data button
-        Button button = (Button) rootView.findViewById(R.id.clearAllWeightButton);
+        ImageButton button = (ImageButton) rootView.findViewById(R.id.clearAllWeightButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -228,8 +229,6 @@ public class AddWeightFragment extends Fragment {
         LineData data = new LineData(xStrings, dataSets);
 
         YAxis yAxisL = lineChart.getAxisLeft();
-        yAxisL.setAxisMinValue((float) minWeight - 1);
-        yAxisL.setAxisMaxValue((float) maxWeight + 1);
 
         lineChart.setVisibleXRangeMaximum(30);
         lineChart.moveViewToX(index);
@@ -241,9 +240,22 @@ public class AddWeightFragment extends Fragment {
 
         tv_avgWeight.setText(Double.toString(Math.round((avgWeight) * 10) / 10.0));
 
-        tv_maxWeight.setText(Double.toString(Math.round((maxWeight) * 10) / 10.0));
+        if (weightLen>0) {
+            tv_maxWeight.setText(Double.toString(Math.round((maxWeight) * 10) / 10.0));
 
-        tv_minWeight.setText(Double.toString(Math.round((minWeight) * 10) / 10.0));
+            tv_minWeight.setText(Double.toString(Math.round((minWeight) * 10) / 10.0));
+
+            yAxisL.setAxisMinValue((float) minWeight - 1);
+            yAxisL.setAxisMaxValue((float) maxWeight + 1);
+        }
+        else {
+            tv_maxWeight.setText("0.0");
+
+            tv_minWeight.setText("0.0");
+
+            yAxisL.setAxisMinValue((float) 0);
+            yAxisL.setAxisMaxValue((float) 100);
+        }
         weightDiff=Math.abs(firstWeight - lastWeight);
         if (firstWeight>lastWeight) {
             tv_weightDiff.setText("You have lost " + Double.toString(Math.round((weightDiff) * 10) / 10.0) + " pounds.");
