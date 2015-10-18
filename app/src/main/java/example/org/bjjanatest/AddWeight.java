@@ -25,7 +25,7 @@ public class AddWeight extends ActionBarActivity {
     private String[] arrayDaySpinner;
     private String[] arrayYearSpinner;
     private Spinner spin;
-    private static EditText ev;
+    private static MyEditText ev;
     private static int currDay;
     private static int currMonth;
     private static int currYear;
@@ -89,7 +89,7 @@ public class AddWeight extends ActionBarActivity {
         spin.setSelection(currYear);
         Log.i(LOGTAG, "year: " + currYear);
 
-        ev = (EditText) findViewById(R.id.weightEV);
+        ev = (MyEditText) findViewById(R.id.weightEV);
         ev.setText("0.0");
         ev.setGravity(Gravity.CENTER_HORIZONTAL);
 
@@ -97,7 +97,7 @@ public class AddWeight extends ActionBarActivity {
 
     public void saveWeight(View view) {
         Weight weight = new Weight();
-        ev = (EditText) findViewById(R.id.weightEV);
+        ev = (MyEditText) findViewById(R.id.weightEV);
         double mass = Double.parseDouble(ev.getText().toString());
         spin = (Spinner) findViewById(R.id.day_spinner);
         currDay = spin.getSelectedItemPosition()+1; //day is index PLUS 1

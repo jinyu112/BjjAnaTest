@@ -23,21 +23,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="11"
+        android:layout_weight="12.5"
         android:gravity="center">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-        <TextView
+        <example.org.bjjanatest.MyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="10dp"
             android:text="Average weight: " />
 
-        <TextView
+        <example.org.bjjanatest.MyTextView
             android:id="@+id/avgWeight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,21 +50,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="11"
+        android:layout_weight="12.5"
         android:gravity="center">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <TextView
+            <example.org.bjjanatest.MyTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="10dp"
                 android:text="Max weight: " />
 
-            <TextView
+            <example.org.bjjanatest.MyTextView
                 android:id="@+id/maxWeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -78,21 +78,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="11"
+        android:layout_weight="12.5"
         android:gravity="center">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <TextView
+            <example.org.bjjanatest.MyTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="10dp"
                 android:text="Min weight: " />
 
-            <TextView
+            <example.org.bjjanatest.MyTextView
                 android:id="@+id/minWeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -103,35 +103,36 @@
         </LinearLayout>
 
 
-
+    <View
+        style="@style/DividerLine" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="11"
+            android:layout_weight="12.5"
             android:gravity="center">
-            <TextView
+            <example.org.bjjanatest.MyTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/weightDiff"/>
         </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        android:layout_weight="1"></LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"
-        android:gravity="end">
-        <ImageButton
-            android:id="@+id/clearAllWeightButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:src="@drawable/trash_50"
-            android:background="@android:color/transparent"
-            android:text="Clear All Data" />
-    </LinearLayout>
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:orientation="vertical"-->
+        <!--android:layout_weight="1"></LinearLayout>-->
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="5"-->
+        <!--android:gravity="end">-->
+        <!--<ImageButton-->
+            <!--android:id="@+id/clearAllWeightButton"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="center"-->
+            <!--android:src="@drawable/trash_50"-->
+            <!--android:background="@android:color/transparent"-->
+            <!--android:text="Clear All Data" />-->
+    <!--</LinearLayout>-->
 </LinearLayout>

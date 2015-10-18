@@ -28,13 +28,13 @@ public class TrainListAdapter  extends ArrayAdapter<Train> {
 
         Train train = trains.get(position);
 
-        TextView tv = (TextView) view.findViewById(R.id.train_list_item_name);
+        MyTextView tv = (MyTextView) view.findViewById(R.id.train_list_item_name);
         tv.setText(train.getTrainName());
 
-        tv = (TextView) view.findViewById(R.id.train_list_item_belt);
+        tv = (MyTextView) view.findViewById(R.id.train_list_item_belt);
         tv.setText(train.getBelt());
 
-        tv = (TextView) view.findViewById(R.id.train_list_item_matchTime);
+        tv = (MyTextView) view.findViewById(R.id.train_list_item_matchTime);
         tv.setText(String.format("%5.2f",train.getMatchTime()));
 
         return view;

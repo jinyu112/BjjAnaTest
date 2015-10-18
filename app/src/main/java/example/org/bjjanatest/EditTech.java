@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -45,6 +46,7 @@ public class EditTech extends ActionBarActivity {
         ev = (EditText) findViewById(R.id.edit_techNoteEV);
         ev.setText(tech.getTechNote());
 
+
         //need to add youtube url
 
     }
@@ -56,10 +58,10 @@ public class EditTech extends ActionBarActivity {
         int i = spin.getSelectedItemPosition();
         techNew.setTechType(i);
 
-        EditText ev = (EditText) findViewById(R.id.edit_techNameEV);
+        MyEditText ev = (MyEditText) findViewById(R.id.edit_techNameEV);
         techNew.setTechName(ev.getText().toString());
 
-        ev = (EditText) findViewById(R.id.edit_techNoteEV);
+        ev = (MyEditText) findViewById(R.id.edit_techNoteEV);
         techNew.setTechNote(ev.getText().toString());
 
 

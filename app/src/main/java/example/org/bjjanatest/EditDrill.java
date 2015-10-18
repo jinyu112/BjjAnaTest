@@ -34,11 +34,11 @@ public class EditDrill extends ActionBarActivity{
         drill = data.getParcelable("drill_obj_edit");
 
         //displaying the total reps
-        TextView tv = (TextView) findViewById(R.id.drillRepTotalTV_Edit);
+        MyTextView tv = (MyTextView) findViewById(R.id.drillRepTotalTV_Edit);
         tv.setText(Integer.toString(drill.getDrillRepTotal()));
 
         //dispaying the drill name
-        EditText ev = (EditText) findViewById(R.id.drillNameEV_Edit);
+        MyEditText ev = (MyEditText) findViewById(R.id.drillNameEV_Edit);
         ev.setText(drill.getDrillName());
 
     }
@@ -68,7 +68,7 @@ public class EditDrill extends ActionBarActivity{
         drillNew.setDrillRepTotal(drill.getDrillRepTotal() + addedReps);
 
         //update name
-        ev = (EditText) findViewById(R.id.drillNameEV_Edit);
+        ev = (MyEditText) findViewById(R.id.drillNameEV_Edit);
         drillNew.setDrillName(ev.getText().toString());
 
         //update the row in the database

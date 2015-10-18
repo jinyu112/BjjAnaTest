@@ -1,12 +1,9 @@
 package example.org.bjjanatest;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,19 +13,16 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
-
-import java.util.ArrayDeque;
 
 import example.org.bjjanatest.db.TournDataSource;
 
 
 public class AddTourney extends ActionBarActivity {
 
-    private static TextView tv;
-    private static TextView tvatt;
-    private static TextView tvsuc;
-    private static EditText et;
+    private static MyTextView tv;
+    private static MyTextView tvatt;
+    private static MyTextView tvsuc;
+    private static MyEditText et;
     private static Button button_minus;
     private static Button button_plus;
 
@@ -49,7 +43,7 @@ public class AddTourney extends ActionBarActivity {
 //        set a generic plus and minus click listener object and use that for all the setOnClickListener methods??????
         button_minus = (Button) findViewById(R.id.ptsScoredMinus);
         button_plus = (Button) findViewById(R.id.ptsScoredPlus);
-        tv = (TextView) findViewById(R.id.pointsScored);
+        tv = (MyTextView) findViewById(R.id.pointsScored);
         PlusOnClickListener ptsScoredPlusListener = new PlusOnClickListener(tv);
         button_plus.setOnClickListener(ptsScoredPlusListener);
 
@@ -59,7 +53,7 @@ public class AddTourney extends ActionBarActivity {
 
         button_minus = (Button) findViewById(R.id.ptsAllowedMinus);
         button_plus = (Button) findViewById(R.id.ptsAllowedPlus);
-        tv = (TextView) findViewById(R.id.pointsAllowed);
+        tv = (MyTextView) findViewById(R.id.pointsAllowed);
         PlusOnClickListener ptsAllowedPlusListener = new PlusOnClickListener(tv);
         button_plus.setOnClickListener(ptsAllowedPlusListener);
 
@@ -69,7 +63,7 @@ public class AddTourney extends ActionBarActivity {
 
         button_minus = (Button) findViewById(R.id.swpAttMinus);
         button_plus = (Button) findViewById(R.id.swpsAttPlus);
-        tvatt = (TextView) findViewById(R.id.sweepAttempted);
+        tvatt = (MyTextView) findViewById(R.id.sweepAttempted);
         PlusOnClickListener swpAttPlusListener = new PlusOnClickListener(tvatt);
         button_plus.setOnClickListener(swpAttPlusListener);
 
@@ -78,8 +72,8 @@ public class AddTourney extends ActionBarActivity {
 
         button_minus = (Button) findViewById(R.id.swpSucMinus);
         button_plus = (Button) findViewById(R.id.swpsSucPlus);
-        tvatt = (TextView) findViewById(R.id.sweepAttempted);
-        tvsuc = (TextView) findViewById(R.id.sweepSuccessful);
+        tvatt = (MyTextView) findViewById(R.id.sweepAttempted);
+        tvsuc = (MyTextView) findViewById(R.id.sweepSuccessful);
         PlusOnClickListener swpSucPlusListener = new PlusOnClickListener(tvatt,tvsuc);
         button_plus.setOnClickListener(swpSucPlusListener);
 
@@ -89,7 +83,7 @@ public class AddTourney extends ActionBarActivity {
 
         button_minus = (Button) findViewById(R.id.passAttMinus);
         button_plus = (Button) findViewById(R.id.passAttPlus);
-        tvatt = (TextView) findViewById(R.id.passAtt);
+        tvatt = (MyTextView) findViewById(R.id.passAtt);
         PlusOnClickListener passAttPlusListener = new PlusOnClickListener(tvatt);
         button_plus.setOnClickListener(passAttPlusListener);
 
@@ -98,8 +92,8 @@ public class AddTourney extends ActionBarActivity {
 
         button_minus = (Button) findViewById(R.id.passSucMinus);
         button_plus = (Button) findViewById(R.id.passSucPlus);
-        tvatt = (TextView) findViewById(R.id.passAtt);
-        tvsuc = (TextView) findViewById(R.id.passSuc);
+        tvatt = (MyTextView) findViewById(R.id.passAtt);
+        tvsuc = (MyTextView) findViewById(R.id.passSuc);
         PlusOnClickListener passSucPlusListener = new PlusOnClickListener(tvatt,tvsuc);
         button_plus.setOnClickListener(passSucPlusListener);
 
@@ -109,7 +103,7 @@ public class AddTourney extends ActionBarActivity {
 
         button_minus = (Button) findViewById(R.id.tdAttMinus);
         button_plus = (Button) findViewById(R.id.tdAttPlus);
-        tvatt = (TextView) findViewById(R.id.tdAtt);
+        tvatt = (MyTextView) findViewById(R.id.tdAtt);
         PlusOnClickListener tdAttPlusListener = new PlusOnClickListener(tvatt);
         button_plus.setOnClickListener(tdAttPlusListener);
 
@@ -118,8 +112,8 @@ public class AddTourney extends ActionBarActivity {
 
         button_minus = (Button) findViewById(R.id.tdSucMinus);
         button_plus = (Button) findViewById(R.id.tdSucPlus);
-        tvatt = (TextView) findViewById(R.id.tdAtt);
-        tvsuc = (TextView) findViewById(R.id.tdSuc);
+        tvatt = (MyTextView) findViewById(R.id.tdAtt);
+        tvsuc = (MyTextView) findViewById(R.id.tdSuc);
         PlusOnClickListener tdSucPlusListener = new PlusOnClickListener(tvatt,tvsuc);
         button_plus.setOnClickListener(tdSucPlusListener);
 
@@ -129,7 +123,7 @@ public class AddTourney extends ActionBarActivity {
 
         button_minus = (Button) findViewById(R.id.subAttMinus);
         button_plus = (Button) findViewById(R.id.subAttPlus);
-        tvatt = (TextView) findViewById(R.id.subAtt);
+        tvatt = (MyTextView) findViewById(R.id.subAtt);
         PlusOnClickListener subAttPlusListener = new PlusOnClickListener(tvatt);
         button_plus.setOnClickListener(subAttPlusListener);
 
@@ -168,31 +162,31 @@ public class AddTourney extends ActionBarActivity {
     public void saveTournament(View view){
         final Tourn tourn = new Tourn();
         try {
-            tv = (TextView) findViewById(R.id.pointsScored);
+            tv = (MyTextView) findViewById(R.id.pointsScored);
             tourn.setPointsScored(Integer.parseInt(tv.getText().toString()));
 
-            tv = (TextView) findViewById(R.id.pointsAllowed);
+            tv = (MyTextView) findViewById(R.id.pointsAllowed);
             tourn.setPointsAllowed(Integer.parseInt(tv.getText().toString()));
 
-            tv = (TextView) findViewById(R.id.sweepAttempted);
+            tv = (MyTextView) findViewById(R.id.sweepAttempted);
             tourn.setSweepAttempted(Integer.parseInt(tv.getText().toString()));
 
-            tv = (TextView) findViewById(R.id.sweepSuccessful);
+            tv = (MyTextView) findViewById(R.id.sweepSuccessful);
             tourn.setSweepSuccessful(Integer.parseInt(tv.getText().toString()));
 
-            tv = (TextView) findViewById(R.id.passAtt);
+            tv = (MyTextView) findViewById(R.id.passAtt);
             tourn.setPassAttempted(Integer.parseInt(tv.getText().toString()));
 
-            tv = (TextView) findViewById(R.id.passSuc);
+            tv = (MyTextView) findViewById(R.id.passSuc);
             tourn.setPassSuccessful(Integer.parseInt(tv.getText().toString()));
 
-            tv = (TextView) findViewById(R.id.tdAtt);
+            tv = (MyTextView) findViewById(R.id.tdAtt);
             tourn.setTdAttempted(Integer.parseInt(tv.getText().toString()));
 
-            tv = (TextView) findViewById(R.id.tdSuc);
+            tv = (MyTextView) findViewById(R.id.tdSuc);
             tourn.setTdSuccessful(Integer.parseInt(tv.getText().toString()));
 
-            tv = (TextView) findViewById(R.id.subAtt);
+            tv = (MyTextView) findViewById(R.id.subAtt);
             tourn.setSubAttempted(Integer.parseInt(tv.getText().toString()));
         } catch (NumberFormatException ex) {
             System.err.println("Caught NumberFormatException in AddTourney Activity (metric input): "
@@ -232,7 +226,7 @@ public class AddTourney extends ActionBarActivity {
         }
 
         //Set the match time
-        et = (EditText) findViewById(R.id.matchTimeMinEV);
+        et = (MyEditText) findViewById(R.id.matchTimeMinEV);
         double minutes = 0.0;
         try {
             minutes = Double.parseDouble(et.getText().toString());
@@ -241,7 +235,7 @@ public class AddTourney extends ActionBarActivity {
                     +  ex.getMessage());
         }
 
-        et = (EditText) findViewById(R.id.matchTimeSecEV);
+        et = (MyEditText) findViewById(R.id.matchTimeSecEV);
 
         double seconds = 0.0;
         try {

@@ -17,7 +17,7 @@ public class AddTech extends ActionBarActivity{
     private String[] arraySpinner;
     private static Spinner spin;
     private TechDataSource dataSource;
-    private static TextView tv;
+    private static MyTextView tv;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,10 +60,10 @@ public class AddTech extends ActionBarActivity{
     public void saveTechnique(View view){
         Tech tech = new Tech();
 
-        tv = (TextView) findViewById(R.id.techNameEV);
+        tv = (MyTextView) findViewById(R.id.techNameEV);
         tech.setTechName(tv.getText().toString());
 
-        tv = (TextView) findViewById(R.id.techNoteEV);
+        tv = (MyTextView) findViewById(R.id.techNoteEV);
         tech.setTechNote(tv.getText().toString());
 
         spin = (Spinner) findViewById(R.id.techType);

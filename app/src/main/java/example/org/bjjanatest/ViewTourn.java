@@ -26,32 +26,32 @@ public class ViewTourn extends ActionBarActivity {
         Bundle data = getIntent().getExtras();
         tourn = data.getParcelable("tourn_obj");
 
-        TextView tv;
-        tv = (TextView) findViewById(R.id.view_pointsScored);
+        MyTextView tv;
+        tv = (MyTextView) findViewById(R.id.view_pointsScored);
         tv.setText(String.valueOf(tourn.getPointsScored()));
 
-        tv = (TextView) findViewById(R.id.view_pointsAllowed);
+        tv = (MyTextView) findViewById(R.id.view_pointsAllowed);
         tv.setText(String.valueOf(tourn.getPointsAllowed()));
 
-        tv = (TextView) findViewById(R.id.view_sweepAttempted);
+        tv = (MyTextView) findViewById(R.id.view_sweepAttempted);
         tv.setText(String.valueOf(tourn.getSweepAttempted()));
 
-        tv = (TextView) findViewById(R.id.view_sweepSuccessful);
+        tv = (MyTextView) findViewById(R.id.view_sweepSuccessful);
         tv.setText(String.valueOf(tourn.getSweepSuccessful()));
 
-        tv = (TextView) findViewById(R.id.view_passAtt);
+        tv = (MyTextView) findViewById(R.id.view_passAtt);
         tv.setText(String.valueOf(tourn.getPassAttempted()));
 
-        tv = (TextView) findViewById(R.id.view_passSuc);
+        tv = (MyTextView) findViewById(R.id.view_passSuc);
         tv.setText(String.valueOf(tourn.getPassSuccessful()));
 
-        tv = (TextView) findViewById(R.id.view_tdAtt);
+        tv = (MyTextView) findViewById(R.id.view_tdAtt);
         tv.setText(String.valueOf(tourn.getTdAttempted()));
 
-        tv = (TextView) findViewById(R.id.view_tdSuc);
+        tv = (MyTextView) findViewById(R.id.view_tdSuc);
         tv.setText(String.valueOf(tourn.getTdSuccessful()));
 
-        tv = (TextView) findViewById(R.id.view_matchTime);
+        tv = (MyTextView) findViewById(R.id.view_matchTime);
         tv.setText(String.valueOf(tourn.getMatchTime()));
     }
 

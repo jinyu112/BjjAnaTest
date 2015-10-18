@@ -31,7 +31,7 @@ import java.util.List;
 import example.org.bjjanatest.db.TournDataSource;
 
 public class MainContentFragment extends Fragment {
-    private TextView tv;
+    private MyTextView tv;
 
     //database related
     TournDataSource dataSource;
@@ -117,10 +117,10 @@ public class MainContentFragment extends Fragment {
         List<Tourn> tourns = dataSource.findAll();
         if (tourns.size()!=0) {
 
-            tv = (TextView) getView().findViewById(R.id.main_avgMatchTime);
+            tv = (MyTextView) getView().findViewById(R.id.main_avgMatchTime);
             tv.setText(String.format("%5.2f",dataSource.getAvgMatchTime()));
 
-            tv = (TextView) getView().findViewById(R.id.main_record);
+            tv = (MyTextView) getView().findViewById(R.id.main_record);
             tv.setText(String.format("%d W-%d L",dataSource.getWins(),dataSource.getTournLen()-dataSource.getWins()));
 
             //set colors

@@ -14,9 +14,8 @@ import example.org.bjjanatest.db.DrillDataSource;
 
 public class AddDrill extends ActionBarActivity {
     private DrillDataSource dataSource;
-    private static TextView tv;
     private static CheckBox cb;
-    private static EditText ev;
+    private static MyEditText ev;
 
     public AddDrill() {
 
@@ -57,11 +56,11 @@ public class AddDrill extends ActionBarActivity {
     public void saveDrill(View view){
         Drill drill = new Drill();
 
-        tv = (TextView) findViewById(R.id.drillNameEV);
-        drill.setDrillName(tv.getText().toString());
+        ev = (MyEditText) findViewById(R.id.drillNameEV);
+        drill.setDrillName(ev.getText().toString());
 
         // Add reps to total
-        ev = (EditText) findViewById(R.id.drillRepTotalEV);
+        ev = (MyEditText) findViewById(R.id.drillRepTotalEV);
         String repTotalStr = "0";
         int addedReps = 0;
         repTotalStr = ev.getText().toString();

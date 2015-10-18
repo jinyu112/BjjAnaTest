@@ -33,7 +33,7 @@ public class TournListAdapter extends ArrayAdapter<Tourn> {
 
         Tourn tourn = tourns.get(position);
 
-        TextView tv = (TextView) view.findViewById(R.id.tourn_list_item_name);
+        MyTextView tv = (MyTextView) view.findViewById(R.id.tourn_list_item_name);
         tv.setText(tourn.getTournName());
 
         ImageView iv = (ImageView) view.findViewById(R.id.tourn_list_item_belt);
@@ -55,7 +55,7 @@ public class TournListAdapter extends ArrayAdapter<Tourn> {
         }
         else iv.setImageResource(R.drawable.nogi);
 
-        tv = (TextView) view.findViewById(R.id.tourn_list_item_win);
+        tv = (MyTextView) view.findViewById(R.id.tourn_list_item_win);
         if (tourn.getWin() == 1) {
             tv.setText("WIN");
             tv.setTextColor(Color.GREEN);

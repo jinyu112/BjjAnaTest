@@ -27,10 +27,10 @@ public class AddTimeFragment extends Fragment {
 
     private static final String LOGTAG = "BJJTRAINING";
     private static final String filename = "myTimeData";
-    private static TextView tv_totalTime;
-    private static TextView tv_avgTimePerWeek;
-    private static TextView tv_totalSessions;
-    private static TextView tv_avgSessionsPerWeek;
+    private static MyTextView tv_totalTime;
+    private static MyTextView tv_avgTimePerWeek;
+    private static MyTextView tv_totalSessions;
+    private static MyTextView tv_avgSessionsPerWeek;
 
 
     public AddTimeFragment () {
@@ -67,27 +67,10 @@ public class AddTimeFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.time_frag, container, false);
 
         //define text views
-        tv_totalTime = (TextView) rootView.findViewById(R.id.totalTime);
-        tv_avgTimePerWeek = (TextView) rootView.findViewById(R.id.avgTime);
-        tv_totalSessions = (TextView) rootView.findViewById(R.id.totalSessions);
-        tv_avgSessionsPerWeek = (TextView) rootView.findViewById(R.id.avgSessions);
-
-        //define clear data button
-        ImageButton button = (ImageButton) rootView.findViewById(R.id.clearAllTimeButton);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (deleteTimeData()) {
-                    Toast toast;
-                    toast=Toast.makeText(getActivity(), "Data cleared.", Toast.LENGTH_SHORT);
-                    toast.show();
-                    tv_totalTime.setText("0");
-                    tv_avgTimePerWeek.setText("0");
-                    tv_totalSessions.setText("0");
-                    tv_avgSessionsPerWeek.setText("0");
-                }
-            }
-        });
+        tv_totalTime = (MyTextView) rootView.findViewById(R.id.totalTime);
+        tv_avgTimePerWeek = (MyTextView) rootView.findViewById(R.id.avgTime);
+        tv_totalSessions = (MyTextView) rootView.findViewById(R.id.totalSessions);
+        tv_avgSessionsPerWeek = (MyTextView) rootView.findViewById(R.id.avgSessions);
 
         displayTimeData();
         return rootView;

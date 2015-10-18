@@ -45,7 +45,7 @@ public class DrillListAdapter extends ArrayAdapter{
         Drill drill = drills.get(position);
 
         //setting the drill name
-        TextView tv = (TextView) view.findViewById(R.id.drill_list_item_name);
+        MyTextView tv = (MyTextView) view.findViewById(R.id.drill_list_item_name);
         tv.setText(drill.getDrillName());
 
         //graphing the rep bar chart

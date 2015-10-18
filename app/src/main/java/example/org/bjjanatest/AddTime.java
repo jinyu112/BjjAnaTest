@@ -25,7 +25,7 @@ public class AddTime extends ActionBarActivity {
     private String[] arrayDaySpinner;
     private String[] arrayYearSpinner;
     private Spinner spin;
-    private static EditText ev;
+    private static MyEditText ev;
     private static int currDay;
     private static int currMonth;
     private static int currYear;
@@ -87,7 +87,7 @@ public class AddTime extends ActionBarActivity {
         spin.setSelection(currYear);
         Log.i(LOGTAG, "year: " + currYear);
 
-        ev = (EditText) findViewById(R.id.timeEV);
+        ev = (MyEditText) findViewById(R.id.timeEV);
         ev.setText("0.0");
         ev.setGravity(Gravity.CENTER_HORIZONTAL);
     }
@@ -95,7 +95,7 @@ public class AddTime extends ActionBarActivity {
     public void saveTime(View view) {
         Time time = new Time();
         String timeDataArray[] = new String[] {"0", "0", "0", "0"};
-        ev = (EditText) findViewById(R.id.timeEV);
+        ev = (MyEditText) findViewById(R.id.timeEV);
         double hours = Double.parseDouble(ev.getText().toString());
         spin = (Spinner) findViewById(R.id.day_spinner_time);
         currDay = spin.getSelectedItemPosition()+1; //day is index PLUS 1

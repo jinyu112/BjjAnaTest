@@ -1,34 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    style="@style/BaseRelativeLayout_0dpPadding"
     tools:context="example.org.bjjanatest.AddTech">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none">
+        style="@style/TopContent"
+        android:layout_alignParentTop="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentTop="true">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-
-        <TextView
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="16dp"
+                android:paddingTop="16dp"
+                style="@style/PaddingStyle">
+        <example.org.bjjanatest.MyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tech_activity" />
+                </LinearLayout>
+
+
+        <!--divider line-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/PaddingStyle"
+            android:orientation="vertical">
+            <View
+                style="@style/DividerLine" />
+        </LinearLayout>
+        <!--divider line-->
+
 
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp"
+            style="@style/PaddingStyle">
 
-            <TextView
+            <example.org.bjjanatest.MyTextView
                 android:id="@+id/techNameLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -36,8 +62,13 @@
                 android:layout_centerVertical="true"
                 android:gravity="center_vertical"
                 android:text="@string/tech_name" />
-
-            <EditText
+            <LinearLayout
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                android:layout_width="0px"
+                android:layout_height="0px">
+            </LinearLayout>
+            <example.org.bjjanatest.MyEditText
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/techNameEV"
@@ -51,9 +82,12 @@
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp"
+            style="@style/PaddingStyle">
 
-            <TextView
+            <example.org.bjjanatest.MyTextView
                 android:id="@+id/techTypeLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -75,18 +109,28 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp"
+            style="@style/PaddingStyle">
 
-            <TextView
+            <example.org.bjjanatest.MyTextView
                 android:id="@+id/techNotesLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:text="@string/tech_note" />
-
-            <EditText
+            </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp"
+            style="@style/PaddingStyle">
+            <example.org.bjjanatest.MyEditText
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="wrap_content"
                 android:maxLength="1000"
                 android:id="@+id/techNoteEV"
                 android:gravity="start"
@@ -94,11 +138,39 @@
 
         </LinearLayout>
 
+    </LinearLayout>
+    </RelativeLayout>
+</ScrollView>
+
+
+
+
+
+
+
+
+
+
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:orientation="horizontal"
+        android:layout_above="@+id/bottombar_edittourn">
+        <View
+            style="@style/DividerLine" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/bottombar_edittourn"
+        style="@style/BottomActionBar">
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            >
 
             <ImageButton
                 android:id="@+id/save_tech"
@@ -111,8 +183,6 @@
                 android:text="Save Technique" />
         </LinearLayout>
 
-    </LinearLayout>
-    </ScrollView>
-
-</LinearLayout>
+        </RelativeLayout>
+</RelativeLayout>
 

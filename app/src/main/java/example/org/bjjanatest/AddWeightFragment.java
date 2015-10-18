@@ -35,10 +35,10 @@ public class AddWeightFragment extends Fragment {
     WeightDataSource dataSource;
     private static final String LOGTAG = "BJJTRAINING";
     private static LineChart lineChart; //should this be static?
-    private static TextView tv_avgWeight;
-    private static TextView tv_maxWeight;
-    private static TextView tv_minWeight;
-    private static TextView tv_weightDiff;
+    private static MyTextView tv_avgWeight;
+    private static MyTextView tv_maxWeight;
+    private static MyTextView tv_minWeight;
+    private static MyTextView tv_weightDiff;
 
 
     public AddWeightFragment () {
@@ -91,20 +91,20 @@ public class AddWeightFragment extends Fragment {
         yAxisR.setDrawLabels(false);
 
         //define text views
-        tv_avgWeight = (TextView) rootView.findViewById(R.id.avgWeight);
-        tv_maxWeight = (TextView) rootView.findViewById(R.id.maxWeight);
-        tv_minWeight = (TextView) rootView.findViewById(R.id.minWeight);
-        tv_weightDiff = (TextView) rootView.findViewById(R.id.weightDiff);
+        tv_avgWeight = (MyTextView) rootView.findViewById(R.id.avgWeight);
+        tv_maxWeight = (MyTextView) rootView.findViewById(R.id.maxWeight);
+        tv_minWeight = (MyTextView) rootView.findViewById(R.id.minWeight);
+        tv_weightDiff = (MyTextView) rootView.findViewById(R.id.weightDiff);
 
-        //define clear data button
-        ImageButton button = (ImageButton) rootView.findViewById(R.id.clearAllWeightButton);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dataSource.removeAllWeights();
-                lineChart.clearValues();
-            }
-        });
+//        //define clear data button
+//        ImageButton button = (ImageButton) rootView.findViewById(R.id.clearAllWeightButton);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                dataSource.removeAllWeights();
+//                lineChart.clearValues();
+//            }
+//        });
 
         displayWeightData(refreshDisplay());
         return rootView;

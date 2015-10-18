@@ -6,21 +6,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="23"
+        android:layout_weight="25"
         android:gravity="center">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <TextView
+            <example.org.bjjanatest.MyTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="10dp"
                 android:text="Total training time (hours): " />
 
-            <TextView
+            <example.org.bjjanatest.MyTextView
                 android:id="@+id/totalTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -33,21 +33,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="23"
+        android:layout_weight="25"
         android:gravity="center">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <TextView
+            <example.org.bjjanatest.MyTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="10dp"
                 android:text="Average time per week: " />
 
-            <TextView
+            <example.org.bjjanatest.MyTextView
                 android:id="@+id/avgTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -60,20 +60,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="23"
+        android:layout_weight="25"
         android:gravity="center">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <TextView
+            <example.org.bjjanatest.MyTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="10dp"
                 android:text="Total training sessions: " />
 
-            <TextView
+            <example.org.bjjanatest.MyTextView
                 android:id="@+id/totalSessions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -86,20 +86,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="23"
+        android:layout_weight="25"
         android:gravity="center">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <TextView
+            <example.org.bjjanatest.MyTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="10dp"
                 android:text="Average sessions per week: " />
 
-            <TextView
+            <example.org.bjjanatest.MyTextView
                 android:id="@+id/avgSessions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -110,24 +110,6 @@
 
     </LinearLayout>
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:orientation="vertical"
-    android:layout_weight="3"></LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"
-        android:gravity="end">
-<ImageButton
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:src="@drawable/trash_50"
-    android:background="@android:color/transparent"
-    android:text="Clear All Data"
-    android:id="@+id/clearAllTimeButton"/>
 
-    </LinearLayout>
 
 </LinearLayout>

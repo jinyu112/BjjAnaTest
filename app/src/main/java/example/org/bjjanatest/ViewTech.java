@@ -27,10 +27,10 @@ public class ViewTech extends ActionBarActivity {
         Bundle data = getIntent().getExtras();
         tech = data.getParcelable("tech_obj");
 
-        TextView tv = (TextView) findViewById(R.id.view_techName);
+        MyTextView tv = (MyTextView) findViewById(R.id.view_techName);
         tv.setText(tech.getTechName());
 
-        tv = (TextView) findViewById(R.id.view_techType);
+        tv = (MyTextView) findViewById(R.id.view_techType);
         int techType = tech.getTechType();
         if (techType==0) {
             tv.setText("Position");
@@ -51,7 +51,7 @@ public class ViewTech extends ActionBarActivity {
             tv.setText("Defense");
         }
 
-        tv = (TextView) findViewById(R.id.view_techNotes);
+        tv = (MyTextView) findViewById(R.id.view_techNotes);
         tv.setText(tech.getTechNote());
     }
 

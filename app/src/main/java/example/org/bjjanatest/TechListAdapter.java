@@ -30,10 +30,10 @@ public class TechListAdapter extends ArrayAdapter<Tech> {
 
         Tech tech = techs.get(position);
 
-        TextView tv = (TextView) view.findViewById(R.id.tech_list_item_name);
+        MyTextView tv = (MyTextView) view.findViewById(R.id.tech_list_item_name);
         tv.setText(tech.getTechName());
 
-        tv = (TextView) view.findViewById(R.id.tech_list_item_cat);
+        tv = (MyTextView) view.findViewById(R.id.tech_list_item_cat);
         if (tech.getTechType()==0) {
             tv.setText("Position");
         }

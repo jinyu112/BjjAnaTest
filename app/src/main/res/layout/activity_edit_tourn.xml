@@ -1,494 +1,548 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="0dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
     tools:context="example.org.bjjanatest.AddTourney">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="none">
+
+<ScrollView
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    style="@style/TopContent"
+    android:layout_alignParentTop="true">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-
-                <TextView
+                android:layout_height="wrap_content"
+                android:paddingBottom="16dp"
+                android:paddingTop="16dp"
+                style="@style/PaddingStyle">
+                <example.org.bjjanatest.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/tourney_activity_edit" />
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/ptsScoredLabel_edit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:gravity="center_vertical"
-                        android:text="@string/pts_scored" />
-
-                    <TextView
-                        android:id="@+id/pointsScored_edit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="10dp"
-                        android:layout_toLeftOf="@+id/ptsScoredPlus_edit"
-                        android:gravity="center_vertical"
-                        android:text="0" />
-
-                    <Button
-                        android:id="@+id/ptsScoredPlus_edit"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_toLeftOf="@+id/ptsScoredMinus_edit"
-                        android:text="+" />
-
-                    <Button
-                        android:id="@+id/ptsScoredMinus_edit"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentRight="true"
-                        android:text="-" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/ptsAllowedLabel_edit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:gravity="center_vertical"
-                        android:text="@string/pts_allowed" />
-
-                    <TextView
-                        android:id="@+id/pointsAllowed_edit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="10dp"
-                        android:layout_toLeftOf="@+id/ptsAllowedPlus_edit"
-                        android:gravity="center_vertical"
-                        android:text="0" />
-
-                    <Button
-                        android:id="@+id/ptsAllowedPlus_edit"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_toLeftOf="@+id/ptsAllowedMinus_edit"
-                        android:text="+" />
-
-                    <Button
-                        android:id="@+id/ptsAllowedMinus_edit"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentRight="true"
-                        android:text="-" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/sweepAttemptedLabel_edit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:text="@string/swp_att" />
-
-                    <TextView
-                        android:id="@+id/sweepAttempted_edit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="10dp"
-                        android:layout_toLeftOf="@+id/swpsAttPlus_edit"
-                        android:text="0" />
-
-                    <Button
-                        android:id="@+id/swpsAttPlus_edit"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_toLeftOf="@+id/swpAttMinus_edit"
-                        android:text="+" />
-
-                    <Button
-                        android:id="@+id/swpAttMinus_edit"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentRight="true"
-                        android:text="-" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/sweepSuccLabel_edit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:text="@string/swp_suc" />
-
-                    <TextView
-                        android:id="@+id/sweepSuccessful_edit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="10dp"
-                        android:layout_toLeftOf="@+id/swpsSucPlus_edit"
-                        android:text="0" />
-
-                    <Button
-                        android:id="@+id/swpsSucPlus_edit"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_toLeftOf="@+id/swpSucMinus_edit"
-                        android:text="+" />
-
-                    <Button
-                        android:id="@+id/swpSucMinus_edit"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentRight="true"
-                        android:text="-" />
-                </RelativeLayout>
-
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/passAttLabel_edit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:text="@string/pass_att" />
-
-                    <TextView
-                        android:id="@+id/passAtt_edit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="10dp"
-                        android:layout_toLeftOf="@+id/passAttPlus_edit"
-                        android:text="0" />
-
-                    <Button
-                        android:id="@+id/passAttPlus_edit"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_toLeftOf="@+id/passAttMinus_edit"
-                        android:text="+" />
-
-                    <Button
-                        android:id="@+id/passAttMinus_edit"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentRight="true"
-                        android:text="-" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/passSucLabel_edit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:text="@string/pass_suc" />
-
-                    <TextView
-                        android:id="@+id/passSuc_edit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="10dp"
-                        android:layout_toLeftOf="@+id/passSucPlus_edit"
-                        android:text="0" />
-
-                    <Button
-                        android:id="@+id/passSucPlus_edit"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_toLeftOf="@+id/passSucMinus_edit"
-                        android:text="+" />
-
-                    <Button
-                        android:id="@+id/passSucMinus_edit"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentRight="true"
-                        android:text="-" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/tdAttLabel_edit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:text="@string/td_att" />
-
-                    <TextView
-                        android:id="@+id/tdAtt_edit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="10dp"
-                        android:layout_toLeftOf="@+id/tdAttPlus_edit"
-                        android:text="0" />
-
-                    <Button
-                        android:id="@+id/tdAttPlus_edit"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_toLeftOf="@+id/tdAttMinus_edit"
-                        android:text="+" />
-
-                    <Button
-                        android:id="@+id/tdAttMinus_edit"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentRight="true"
-                        android:text="-" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/tdSucLabel_edit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:text="@string/td_suc" />
-
-                    <TextView
-                        android:id="@+id/tdSuc_edit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="10dp"
-                        android:layout_toLeftOf="@+id/tdSucPlus_edit"
-                        android:text="0" />
-
-                    <Button
-                        android:id="@+id/tdSucPlus_edit"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_toLeftOf="@+id/tdSucMinus_edit"
-                        android:text="+" />
-
-                    <Button
-                        android:id="@+id/tdSucMinus_edit"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentRight="true"
-                        android:text="-" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/subAttLabel_edit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:text="@string/sub_att" />
-
-                    <TextView
-                        android:id="@+id/subAtt_edit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="10dp"
-                        android:layout_toLeftOf="@+id/subAttPlus_edit"
-                        android:text="0" />
-
-                    <Button
-                        android:id="@+id/subAttPlus_edit"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_toLeftOf="@+id/subAttMinus_edit"
-                        android:text="+" />
-
-                    <Button
-                        android:id="@+id/subAttMinus_edit"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentRight="true"
-                        android:text="-" />
-                </RelativeLayout>
-
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/subSucLabel_edit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:text="@string/sub_suc" />
-
-                    <CheckBox
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:id="@+id/subCheck_edit"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="10dp"/>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/winLabel_edit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:text="@string/win" />
-
-                    <CheckBox
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:id="@+id/winCheck_edit"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="10dp"/>
-                </RelativeLayout>
-
-
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/matchTimeLabel_edit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:text="@string/match_time" />
-
-                    <EditText
-                        android:layout_width="60dp"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/matchTimeMinEV_edit"
-                        android:layout_toLeftOf="@+id/minLabel_edit"
-                        android:singleLine="true"
-                        android:maxLength="2"
-                        android:inputType="number"
-                        android:textAlignment="center"
-                        android:text="0"/>
-                    <TextView
-                        android:id="@+id/minLabel_edit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="10dp"
-                        android:layout_toLeftOf="@+id/matchTimeSecEV_edit"
-                        android:text="min" />
-
-                    <EditText
-                        android:layout_width="60dp"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/matchTimeSecEV_edit"
-                        android:singleLine="true"
-                        android:layout_toLeftOf="@+id/secLabel_edit"
-                        android:maxLength="2"
-                        android:textAlignment="center"
-                        android:inputType="number"
-                        android:text="00"/>
-                    <TextView
-                        android:id="@+id/secLabel_edit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="10dp"
-                        android:layout_alignParentRight="true"
-                        android:text="sec" />
-                </RelativeLayout>
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageButton
-                        android:id="@+id/save_tourn_edit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:src="@drawable/ok_100"
-                        android:background="@android:color/transparent"
-                        android:onClick="saveTournament_edit"
-                        android:text="Save Tournament" />
-                </LinearLayout>
-
             </LinearLayout>
-        </ScrollView>
 
+            <!--divider line-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/PaddingStyle"
+                android:orientation="vertical">
+                <View
+                    style="@style/DividerLine" />
+            </LinearLayout>
+            <!--divider line-->
+
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                style="@style/PaddingStyle">
+
+                <example.org.bjjanatest.MyTextView
+                    android:id="@+id/ptsScoredLabel_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:text="@string/pts_scored" />
+
+                <example.org.bjjanatest.MyTextView
+                    android:id="@+id/pointsScored_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/ptsScoredPlus_edit"
+                    android:gravity="center_vertical"
+                    android:text="0" />
+
+                <Button
+                    android:id="@+id/ptsScoredPlus_edit"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_toLeftOf="@+id/ptsScoredMinus_edit"
+                    android:text="+" />
+
+                <Button
+                    android:id="@+id/ptsScoredMinus_edit"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:text="-" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                style="@style/PaddingStyle">
+
+                <example.org.bjjanatest.MyTextView
+                    android:id="@+id/ptsAllowedLabel_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:text="@string/pts_allowed" />
+
+                <example.org.bjjanatest.MyTextView
+                    android:id="@+id/pointsAllowed_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/ptsAllowedPlus_edit"
+                    android:gravity="center_vertical"
+                    android:text="0" />
+
+                <Button
+                    android:id="@+id/ptsAllowedPlus_edit"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_toLeftOf="@+id/ptsAllowedMinus_edit"
+                    android:text="+" />
+
+                <Button
+                    android:id="@+id/ptsAllowedMinus_edit"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:text="-" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                style="@style/PaddingStyle">
+
+                <example.org.bjjanatest.MyTextView
+                    android:id="@+id/sweepAttemptedLabel_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/swp_att" />
+
+                <example.org.bjjanatest.MyTextView
+                    android:id="@+id/sweepAttempted_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/swpsAttPlus_edit"
+                    android:text="0" />
+
+                <Button
+                    android:id="@+id/swpsAttPlus_edit"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_toLeftOf="@+id/swpAttMinus_edit"
+                    android:text="+" />
+
+                <Button
+                    android:id="@+id/swpAttMinus_edit"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:text="-" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                style="@style/PaddingStyle">
+
+                <example.org.bjjanatest.MyTextView
+                    android:id="@+id/sweepSuccLabel_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/swp_suc" />
+
+                <example.org.bjjanatest.MyTextView
+                    android:id="@+id/sweepSuccessful_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/swpsSucPlus_edit"
+                    android:text="0" />
+
+                <Button
+                    android:id="@+id/swpsSucPlus_edit"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_toLeftOf="@+id/swpSucMinus_edit"
+                    android:text="+" />
+
+                <Button
+                    android:id="@+id/swpSucMinus_edit"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:text="-" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                style="@style/PaddingStyle">
+
+                <example.org.bjjanatest.MyTextView
+                    android:id="@+id/passAttLabel_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/pass_att" />
+
+                <example.org.bjjanatest.MyTextView
+                    android:id="@+id/passAtt_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/passAttPlus_edit"
+                    android:text="0" />
+
+                <Button
+                    android:id="@+id/passAttPlus_edit"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_toLeftOf="@+id/passAttMinus_edit"
+                    android:text="+" />
+
+                <Button
+                    android:id="@+id/passAttMinus_edit"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:text="-" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                style="@style/PaddingStyle">
+
+                <example.org.bjjanatest.MyTextView
+                    android:id="@+id/passSucLabel_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/pass_suc" />
+
+                <example.org.bjjanatest.MyTextView
+                    android:id="@+id/passSuc_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/passSucPlus_edit"
+                    android:text="0" />
+
+                <Button
+                    android:id="@+id/passSucPlus_edit"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_toLeftOf="@+id/passSucMinus_edit"
+                    android:text="+" />
+
+                <Button
+                    android:id="@+id/passSucMinus_edit"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:text="-" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                style="@style/PaddingStyle">
+
+                <example.org.bjjanatest.MyTextView
+                    android:id="@+id/tdAttLabel_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/td_att" />
+
+                <example.org.bjjanatest.MyTextView
+                    android:id="@+id/tdAtt_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/tdAttPlus_edit"
+                    android:text="0" />
+
+                <Button
+                    android:id="@+id/tdAttPlus_edit"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_toLeftOf="@+id/tdAttMinus_edit"
+                    android:text="+" />
+
+                <Button
+                    android:id="@+id/tdAttMinus_edit"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:text="-" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                style="@style/PaddingStyle">
+
+                <example.org.bjjanatest.MyTextView
+                    android:id="@+id/tdSucLabel_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/td_suc" />
+
+                <example.org.bjjanatest.MyTextView
+                    android:id="@+id/tdSuc_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/tdSucPlus_edit"
+                    android:text="0" />
+
+                <Button
+                    android:id="@+id/tdSucPlus_edit"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_toLeftOf="@+id/tdSucMinus_edit"
+                    android:text="+" />
+
+                <Button
+                    android:id="@+id/tdSucMinus_edit"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:text="-" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                style="@style/PaddingStyle">
+
+                <example.org.bjjanatest.MyTextView
+                    android:id="@+id/subAttLabel_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/sub_att" />
+
+                <example.org.bjjanatest.MyTextView
+                    android:id="@+id/subAtt_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/subAttPlus_edit"
+                    android:text="0" />
+
+                <Button
+                    android:id="@+id/subAttPlus_edit"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_toLeftOf="@+id/subAttMinus_edit"
+                    android:text="+" />
+
+                <Button
+                    android:id="@+id/subAttMinus_edit"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:text="-" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                style="@style/PaddingStyle">
+
+                <example.org.bjjanatest.MyTextView
+                    android:id="@+id/subSucLabel_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/sub_suc" />
+
+                <CheckBox
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/subCheck_edit"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                style="@style/PaddingStyle">
+
+                <example.org.bjjanatest.MyTextView
+                    android:id="@+id/winLabel_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/win" />
+
+                <CheckBox
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/winCheck_edit"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"/>
+            </RelativeLayout>
+
+<!--&lt;!&ndash;filler test&ndash;&gt;-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="100dp"></LinearLayout>-->
+            <!--&lt;!&ndash;filler test&ndash;&gt;-->
+
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                style="@style/PaddingStyle">
+
+                <example.org.bjjanatest.MyTextView
+                    android:id="@+id/matchTimeLabel_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/match_time" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true" android:focusableInTouchMode="true"
+                    android:layout_toLeftOf="@+id/minLabel_edit">
+                <example.org.bjjanatest.MyEditText
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/matchTimeMinEV_edit"
+                    android:layout_toLeftOf="@+id/minLabel_edit"
+                    android:singleLine="true"
+                    android:maxLength="2"
+                    android:inputType="number"
+                    android:textAlignment="center"
+                    android:text="0"/>
 </LinearLayout>
+                <example.org.bjjanatest.MyTextView
+                    android:id="@+id/minLabel_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/matchTimeSecEV_edit"
+                    android:text="min" />
+
+                <example.org.bjjanatest.MyEditText
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/matchTimeSecEV_edit"
+                    android:singleLine="true"
+                    android:layout_toLeftOf="@+id/secLabel_edit"
+                    android:maxLength="2"
+                    android:textAlignment="center"
+                    android:inputType="number"
+                    android:text="00"/>
+                <example.org.bjjanatest.MyTextView
+                    android:id="@+id/secLabel_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentRight="true"
+                    android:text="sec" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>
+
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:orientation="horizontal"
+        android:layout_above="@+id/bottombar_edittourn">
+        <View
+            style="@style/DividerLine" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/bottombar_edittourn"
+        style="@style/BottomActionBar">
+        <ImageButton
+            android:id="@+id/save_tourn_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:src="@drawable/ok_100"
+            android:background="@android:color/transparent"
+            android:onClick="saveTournament_edit"
+            android:text="Save Tournament" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

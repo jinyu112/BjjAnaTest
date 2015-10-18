@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <TextView
+                <example.org.bjjanatest.MyTextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                    android:id="@+id/main_record_label"
@@ -31,7 +31,7 @@
                     android:text="@string/main_record_label"
                     android:textStyle="bold"
                     android:textSize="25sp"/>
-                <TextView
+                <example.org.bjjanatest.MyTextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/main_record"
@@ -50,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <TextView
+                <example.org.bjjanatest.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
@@ -64,14 +64,14 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <TextView
+                <example.org.bjjanatest.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="10dp"
                     android:text="Match Time: " />
 
-                <TextView
+                <example.org.bjjanatest.MyTextView
                     android:id="@+id/main_avgMatchTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -94,43 +94,43 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"></LinearLayout>
-                    <TextView
+                    <example.org.bjjanatest.MyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Sub Attempts"
                         android:layout_weight="1"/>
-                    <TextView
+                    <example.org.bjjanatest.MyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Subs "
                         android:layout_weight="1"/>
-                    <TextView
+                    <example.org.bjjanatest.MyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Sweep Attempts"
                         android:singleLine="true"
                         android:layout_weight="1"/>
-                    <TextView
+                    <example.org.bjjanatest.MyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Sweeps"
                         android:layout_weight="1"/>
-                    <TextView
+                    <example.org.bjjanatest.MyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Pass Attempts"
                         android:layout_weight="1"/>
-                    <TextView
+                    <example.org.bjjanatest.MyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Passes"
                         android:layout_weight="1"/>
-                    <TextView
+                    <example.org.bjjanatest.MyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="TD Attempts"
                         android:layout_weight="1"/>
-                    <TextView
+                    <example.org.bjjanatest.MyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="TDs"
@@ -159,7 +159,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <TextView
+                <example.org.bjjanatest.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
@@ -181,22 +181,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"></LinearLayout>
-                <TextView
+                <example.org.bjjanatest.MyTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Sub %"
                     android:layout_weight="1"/>
-                <TextView
+                <example.org.bjjanatest.MyTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Sweep %"
                     android:layout_weight="1"/>
-                <TextView
+                <example.org.bjjanatest.MyTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Pass %"
                     android:layout_weight="1"/>
-                <TextView
+                <example.org.bjjanatest.MyTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TD %"
@@ -222,7 +222,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <TextView
+                <example.org.bjjanatest.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
@@ -245,14 +245,14 @@
                 <!--android:gravity="center"-->
                 <!--android:orientation="horizontal">-->
 
-                <!--<TextView-->
+                <!--<example.org.bjjanatest.MyTextView-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
                     <!--android:layout_alignParentLeft="true"-->
                     <!--android:layout_marginLeft="10dp"-->
                     <!--android:text="Points Scored: " />-->
 
-                <!--<TextView-->
+                <!--<example.org.bjjanatest.MyTextView-->
                     <!--android:id="@+id/main_ptsScored"-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
@@ -268,14 +268,14 @@
                 <!--android:gravity="center"-->
                 <!--android:orientation="horizontal">-->
 
-                <!--<TextView-->
+                <!--<example.org.bjjanatest.MyTextView-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
                     <!--android:layout_alignParentLeft="true"-->
                     <!--android:layout_marginLeft="10dp"-->
                     <!--android:text="Points Allowed: " />-->
 
-                <!--<TextView-->
+                <!--<example.org.bjjanatest.MyTextView-->
                     <!--android:id="@+id/main_ptsAllowed"-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
@@ -291,14 +291,14 @@
                 <!--android:gravity="center"-->
                 <!--android:orientation="horizontal">-->
 
-                <!--<TextView-->
+                <!--<example.org.bjjanatest.MyTextView-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
                     <!--android:layout_alignParentLeft="true"-->
                     <!--android:layout_marginLeft="10dp"-->
                     <!--android:text="Number of Tournament Matches: " />-->
 
-                <!--<TextView-->
+                <!--<example.org.bjjanatest.MyTextView-->
                     <!--android:id="@+id/main_numTourn"-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
@@ -313,14 +313,14 @@
                 <!--android:gravity="center"-->
                 <!--android:orientation="horizontal">-->
 
-                <!--<TextView-->
+                <!--<example.org.bjjanatest.MyTextView-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
                     <!--android:layout_alignParentLeft="true"-->
                     <!--android:layout_marginLeft="10dp"-->
                     <!--android:text="Takedowns Attempted: " />-->
 
-                <!--<TextView-->
+                <!--<example.org.bjjanatest.MyTextView-->
                     <!--android:id="@+id/main_tdsAtt"-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
@@ -336,14 +336,14 @@
                 <!--android:gravity="center"-->
                 <!--android:orientation="horizontal">-->
 
-                <!--<TextView-->
+                <!--<example.org.bjjanatest.MyTextView-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
                     <!--android:layout_alignParentLeft="true"-->
                     <!--android:layout_marginLeft="10dp"-->
                     <!--android:text="Takedowns Scored: " />-->
 
-                <!--<TextView-->
+                <!--<example.org.bjjanatest.MyTextView-->
                     <!--android:id="@+id/main_tdsScored"-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
@@ -359,14 +359,14 @@
                 <!--android:gravity="center"-->
                 <!--android:orientation="horizontal">-->
 
-                <!--<TextView-->
+                <!--<example.org.bjjanatest.MyTextView-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
                     <!--android:layout_alignParentLeft="true"-->
                     <!--android:layout_marginLeft="10dp"-->
                     <!--android:text="Passes Attempted: " />-->
 
-                <!--<TextView-->
+                <!--<example.org.bjjanatest.MyTextView-->
                     <!--android:id="@+id/main_passesAtt"-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
@@ -382,14 +382,14 @@
                 <!--android:gravity="center"-->
                 <!--android:orientation="horizontal">-->
 
-                <!--<TextView-->
+                <!--<example.org.bjjanatest.MyTextView-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
                     <!--android:layout_alignParentLeft="true"-->
                     <!--android:layout_marginLeft="10dp"-->
                     <!--android:text="Passes Scored: " />-->
 
-                <!--<TextView-->
+                <!--<example.org.bjjanatest.MyTextView-->
                     <!--android:id="@+id/main_passesScored"-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
@@ -405,14 +405,14 @@
                 <!--android:gravity="center"-->
                 <!--android:orientation="horizontal">-->
 
-                <!--<TextView-->
+                <!--<example.org.bjjanatest.MyTextView-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
                     <!--android:layout_alignParentLeft="true"-->
                     <!--android:layout_marginLeft="10dp"-->
                     <!--android:text="Sweeps Attempted: " />-->
 
-                <!--<TextView-->
+                <!--<example.org.bjjanatest.MyTextView-->
                     <!--android:id="@+id/main_sweepsAtt"-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
@@ -428,14 +428,14 @@
                 <!--android:gravity="center"-->
                 <!--android:orientation="horizontal">-->
 
-                <!--<TextView-->
+                <!--<example.org.bjjanatest.MyTextView-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
                     <!--android:layout_alignParentLeft="true"-->
                     <!--android:layout_marginLeft="10dp"-->
                     <!--android:text="Sweeps Scored: " />-->
 
-                <!--<TextView-->
+                <!--<example.org.bjjanatest.MyTextView-->
                     <!--android:id="@+id/main_sweepsScored"-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
@@ -451,14 +451,14 @@
                 <!--android:gravity="center"-->
                 <!--android:orientation="horizontal">-->
 
-                <!--<TextView-->
+                <!--<example.org.bjjanatest.MyTextView-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
                     <!--android:layout_alignParentLeft="true"-->
                     <!--android:layout_marginLeft="10dp"-->
                     <!--android:text="Back Takes: " />-->
 
-                <!--<TextView-->
+                <!--<example.org.bjjanatest.MyTextView-->
                     <!--android:id="@+id/main_numBackTakes"-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
@@ -475,14 +475,14 @@
                 <!--android:gravity="center"-->
                 <!--android:orientation="horizontal">-->
 
-                <!--<TextView-->
+                <!--<example.org.bjjanatest.MyTextView-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
                     <!--android:layout_alignParentLeft="true"-->
                     <!--android:layout_marginLeft="10dp"-->
                     <!--android:text="Mount Positions: " />-->
 
-                <!--<TextView-->
+                <!--<example.org.bjjanatest.MyTextView-->
                     <!--android:id="@+id/main_numMounts"-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
@@ -499,14 +499,14 @@
                 <!--android:gravity="center"-->
                 <!--android:orientation="horizontal">-->
 
-                <!--<TextView-->
+                <!--<example.org.bjjanatest.MyTextView-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
                     <!--android:layout_alignParentLeft="true"-->
                     <!--android:layout_marginLeft="10dp"-->
                     <!--android:text="Submissions Attempted: " />-->
 
-                <!--<TextView-->
+                <!--<example.org.bjjanatest.MyTextView-->
                     <!--android:id="@+id/main_subAtt"-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
@@ -522,14 +522,14 @@
                 <!--android:gravity="center"-->
                 <!--android:orientation="horizontal">-->
 
-                <!--<TextView-->
+                <!--<example.org.bjjanatest.MyTextView-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
                     <!--android:layout_alignParentLeft="true"-->
                     <!--android:layout_marginLeft="10dp"-->
                     <!--android:text="Submissions: " />-->
 
-                <!--<TextView-->
+                <!--<example.org.bjjanatest.MyTextView-->
                     <!--android:id="@+id/main_subsScored"-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
