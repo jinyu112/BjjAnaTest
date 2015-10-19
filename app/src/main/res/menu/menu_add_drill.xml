@@ -8,4 +8,9 @@
         android:orderInCategory="100"
         app:showAsAction="always|withText"
         android:title="@string/tourn_add"/>
+
+    <item
+        android:id="@+id/drill_del"
+        android:orderInCategory="100"
+        android:title="@string/drill_del"/>
 </menu>

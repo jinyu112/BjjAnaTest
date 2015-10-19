@@ -68,6 +68,12 @@ public class AddWeightFragment extends Fragment {
                 Intent intent = new Intent(getActivity(),AddWeight.class);
                 startActivity(intent);
                 Log.i(LOGTAG,"adding a new weight from the weight frag");
+
+                break;
+            case R.id.weight_del:
+                dataSource.removeAllWeights();
+                displayWeightData(refreshDisplay());
+                lineChart.clearValues();
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -95,16 +101,6 @@ public class AddWeightFragment extends Fragment {
         tv_maxWeight = (MyTextView) rootView.findViewById(R.id.maxWeight);
         tv_minWeight = (MyTextView) rootView.findViewById(R.id.minWeight);
         tv_weightDiff = (MyTextView) rootView.findViewById(R.id.weightDiff);
-
-//        //define clear data button
-//        ImageButton button = (ImageButton) rootView.findViewById(R.id.clearAllWeightButton);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                dataSource.removeAllWeights();
-//                lineChart.clearValues();
-//            }
-//        });
 
         displayWeightData(refreshDisplay());
         return rootView;
@@ -140,7 +136,7 @@ public class AddWeightFragment extends Fragment {
         int date, prevDate=19000101;
         int index=0; //this is the x axis index (ie the data point (index,weight) is plotted)
         int tempYear, tempMonth, tempDay;
-        int weightLen=1;
+        int weightLen=0;
         int[] tempDateArray = new int[3];
         double minWeight=9999, maxWeight=9999, avgWeight=0, weightDiff=0;
         double sumWeights=0;
@@ -157,6 +153,7 @@ public class AddWeightFragment extends Fragment {
         weightLen=weights.size();
         for ( int i = 0; i < weightLen; i++ )
         {
+
             weight = weights.get(i);
             sumWeights = sumWeights + weight.getMass();
             date = weight.getDate();
@@ -247,6 +244,8 @@ public class AddWeightFragment extends Fragment {
 
             yAxisL.setAxisMinValue((float) minWeight - 1);
             yAxisL.setAxisMaxValue((float) maxWeight + 1);
+            Log.i(LOGTAG, "max weight: " + maxWeight);
+            Log.i(LOGTAG, "min weight: " + minWeight);
         }
         else {
             tv_maxWeight.setText("0.0");
@@ -256,11 +255,14 @@ public class AddWeightFragment extends Fragment {
             yAxisL.setAxisMinValue((float) 0);
             yAxisL.setAxisMaxValue((float) 100);
         }
+
         weightDiff=Math.abs(firstWeight - lastWeight);
         if (firstWeight>lastWeight) {
             tv_weightDiff.setText("You have lost " + Double.toString(Math.round((weightDiff) * 10) / 10.0) + " pounds.");
         }
         else tv_weightDiff.setText("You have gained " + Double.toString(Math.round((weightDiff) * 10) / 10.0) + " pounds.");
+
+        lineChart.invalidate();
 
     }
 

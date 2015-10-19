@@ -48,6 +48,10 @@ public class TechListFragment extends android.support.v4.app.ListFragment {
                 startActivity(intent);
                 Log.i(LOGTAG,"adding a new tech from the tech list frag");
                 break;
+            case R.id.tech_del:
+                dataSource.removeAllTechs();
+                refreshDisplay();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

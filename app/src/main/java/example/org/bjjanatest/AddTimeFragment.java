@@ -58,6 +58,11 @@ public class AddTimeFragment extends Fragment {
                 startActivity(intent);
                 Log.i(LOGTAG,"adding a new weight from the weight frag");
                 break;
+            case R.id.time_del:
+                deleteTimeData();
+                displayTimeData();
+                break;
+
         }
         return super.onOptionsItemSelected(item);
     }

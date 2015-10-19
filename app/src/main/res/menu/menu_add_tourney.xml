@@ -10,4 +10,8 @@
         android:orderInCategory="100"
         app:showAsAction="always|withText"
         android:title="@string/tourn_add"/>
+    <item
+        android:id="@+id/tourn_del"
+        android:orderInCategory="100"
+        android:title="@string/tourn_del"/>
 </menu>

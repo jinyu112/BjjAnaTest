@@ -75,6 +75,10 @@ public class DrillDataSource {
         return (result==1);
     }
 
+    public void removeAllDrills() {
+        database.execSQL("delete from " + trainingDBOpenHelper.TABLE_DRILLS);
+    }
+
     public void update(Drill drill) {
         ContentValues values = new ContentValues();
         values.put(trainingDBOpenHelper.COLUMN_DRILL_NAME,drill.getDrillName());

@@ -48,6 +48,10 @@ public class DrillListFragment extends ListFragment{
                 Intent intent = new Intent(getActivity(),AddDrill.class);
                 startActivity(intent);
                 break;
+            case R.id.drill_del:
+                dataSource.removeAllDrills();
+                refreshDisplay();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

@@ -201,6 +201,11 @@ public boolean removeFromTourns(Tourn tourn) {
     return (result==1);
 }
 
+
+    public void removeAllTourns() {
+        database.execSQL("delete from " + trainingDBOpenHelper.TABLE_TOURN);
+    }
+
     public void update(Tourn tourn) {
         ContentValues values = new ContentValues();
         values.put(trainingDBOpenHelper.COLUMN_WEIGHT,tourn.getWeightClass());

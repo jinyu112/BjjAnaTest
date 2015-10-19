@@ -137,6 +137,7 @@ public class AddWeight extends ActionBarActivity {
         }
 
 
+
     }
 
     public void deleteWeight(View view) {

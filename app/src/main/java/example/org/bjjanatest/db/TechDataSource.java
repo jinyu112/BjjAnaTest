@@ -78,6 +78,10 @@ public class TechDataSource {
         return (result==1);
     }
 
+    public void removeAllTechs() {
+        database.execSQL("delete from " + trainingDBOpenHelper.TABLE_TECH);
+    }
+
     public void update(Tech tech) {
         ContentValues values = new ContentValues();
         //values.put(trainingDBOpenHelper.COLUMN_ID,tech.getId());

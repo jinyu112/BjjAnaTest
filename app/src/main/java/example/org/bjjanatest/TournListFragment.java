@@ -55,6 +55,10 @@ public class TournListFragment extends android.support.v4.app.ListFragment {
                 startActivity(intent);
                 Log.i(LOGTAG,"adding a new tourney from the tourn list frag");
                 break;
+            case R.id.tourn_del:
+                dataSource.removeAllTourns();
+                refreshDisplay();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

@@ -87,6 +87,7 @@ public class WeightDataSource {
 
     public void removeAllWeights() {
         database.execSQL("delete from " + trainingDBOpenHelper.TABLE_WEIGHT);
+        weightLen=0;
     }
 
     //this function serves to delete the latest OR earliest date in the database if the number of data points gets too large
