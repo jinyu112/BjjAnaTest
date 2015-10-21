@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ public class AddTech extends ActionBarActivity{
     private static Spinner spin;
     private TechDataSource dataSource;
     private static MyTextView tv;
+    private static MyEditText ev;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,11 +62,11 @@ public class AddTech extends ActionBarActivity{
     public void saveTechnique(View view){
         Tech tech = new Tech();
 
-        tv = (MyTextView) findViewById(R.id.techNameEV);
-        tech.setTechName(tv.getText().toString());
+        ev = (MyEditText) findViewById(R.id.techNameEV);
+        tech.setTechName(ev.getText().toString());
 
-        tv = (MyTextView) findViewById(R.id.techNoteEV);
-        tech.setTechNote(tv.getText().toString());
+        ev = (MyEditText) findViewById(R.id.techNoteEV);
+        tech.setTechNote(ev.getText().toString());
 
         spin = (Spinner) findViewById(R.id.techType);
         int i = spin.getSelectedItemPosition();

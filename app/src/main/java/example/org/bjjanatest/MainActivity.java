@@ -62,6 +62,7 @@ public class MainActivity extends ActionBarActivity {
         // Setup drawer view
         dlDrawer.setupDrawerConfiguration((ListView) findViewById(R.id.drawerList), toolbar,
                 R.layout.drawer_nav_item, R.id.mainContent);
+
         // Add nav items
         dlDrawer.addNavItem("My Stats", "My Statistics", MainContentFragment.class);
         dlDrawer.addNavItem("Tournaments", "Tournaments", TournListFragment.class);
@@ -70,6 +71,7 @@ public class MainActivity extends ActionBarActivity {
         dlDrawer.addNavItem("Weight Tracker", "Weight Tracker", AddWeightFragment.class);
         dlDrawer.addNavItem("Time Tracker", "Time Tracker", AddTimeFragment.class);
         dlDrawer.addNavItem("About", "About", AboutFragment.class);
+
         // Select default
         if (savedInstanceState == null) {
             dlDrawer.selectDrawerItem(0);

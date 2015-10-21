@@ -20,6 +20,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class FragmentNavigationDrawer extends DrawerLayout {
     private ActionBarDrawerToggle drawerToggle;
     private ListView lvDrawer;
     private Toolbar toolbar;
-    private ArrayAdapter<String> drawerAdapter;
+    private DrawerListAdapter drawerAdapter;
     private ArrayList<FragmentNavItem> drawerNavItems;
     private int drawerContainerRes;
 
@@ -48,8 +49,7 @@ public class FragmentNavigationDrawer extends DrawerLayout {
         // Setup navigation items array
         drawerNavItems = new ArrayList<FragmentNavigationDrawer.FragmentNavItem>();
         // Set the adapter for the list view
-        drawerAdapter = new ArrayAdapter<String>(getActivity(), drawerItemRes,
-                new ArrayList<String>());
+        drawerAdapter = new DrawerListAdapter(getActivity(), drawerItemRes, new ArrayList<String>(),new ArrayList<ImageView>());
         this.drawerContainerRes = drawerContainerRes;
         // Setup drawer list view and related adapter
         lvDrawer = drawerListView;
@@ -70,8 +70,12 @@ public class FragmentNavigationDrawer extends DrawerLayout {
     // addNavItem("First", "First Fragment", FirstFragment.class)
     public void addNavItem(String navTitle, String windowTitle, Class<? extends Fragment> fragmentClass) {
         drawerAdapter.add(navTitle);
+
         drawerNavItems.add(new FragmentNavItem(windowTitle, fragmentClass));
     }
+
+
+
 
     /**
      * Swaps fragments in the main content view

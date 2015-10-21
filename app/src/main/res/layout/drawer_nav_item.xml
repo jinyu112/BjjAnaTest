@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:layout_gravity="center_vertical">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/nav_drawer_pic"
+        android:paddingRight="16dp"
+        android:paddingLeft="16dp"/>
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@android:id/text1"
+    android:id="@+id/text1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:drawable/list_selector_background"
@@ -11,3 +24,5 @@
     android:textAppearance="?android:attr/textAppearanceListItemSmall"
     android:textSize="16sp"
     android:textColor="#111" />
+
+</LinearLayout>
