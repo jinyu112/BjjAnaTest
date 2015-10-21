@@ -41,7 +41,7 @@
                     android:onClick="deleteTourn"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/trash_50"
+                    android:src="@drawable/trash_100"
                     android:background="@android:color/transparent"
                     android:text="Delete" />
             </LinearLayout>
@@ -59,7 +59,7 @@
                     android:onClick="editTourn"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/edit_50"
+                    android:src="@drawable/edit_100"
                     android:background="@android:color/transparent"
                     android:text="Edit" />
             </LinearLayout>
@@ -76,7 +76,7 @@
                     android:onClick="finishViewTourn"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/previous_50"
+                    android:src="@drawable/previous_100"
                     android:background="@android:color/transparent"
                     android:text="Back" />
             </LinearLayout>

@@ -38,7 +38,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:onClick="deleteDrill"
-                        android:src="@drawable/trash_50"
+                        android:src="@drawable/trash_100"
                         android:background="@android:color/transparent"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
@@ -55,7 +55,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:onClick="finishEditDrill"
-                        android:src="@drawable/ok_50"
+                        android:src="@drawable/ok_100"
                         android:background="@android:color/transparent"
                         android:text="Save" /></LinearLayout>
                 <LinearLayout
@@ -69,7 +69,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:onClick="finishEditDrill"
-                        android:src="@drawable/previous_50"
+                        android:src="@drawable/previous_100"
                         android:background="@android:color/transparent"
                         android:text="Save" /></LinearLayout>
             </LinearLayout>

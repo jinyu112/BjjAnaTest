@@ -192,7 +192,7 @@
                 android:onClick="deleteTech"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/trash_50"
+                android:src="@drawable/trash_100"
                 android:background="@android:color/transparent"
                 android:text="Delete" />
         </LinearLayout>
@@ -208,7 +208,7 @@
                 android:gravity="center"
                 android:onClick="editTech"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/edit_50"
+                android:src="@drawable/edit_100"
                 android:background="@android:color/transparent"
                 android:layout_marginRight="10dp"
                 android:text="Edit" />
@@ -223,7 +223,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:gravity="center"
-                android:src="@drawable/previous_50"
+                android:src="@drawable/previous_100"
                 android:background="@android:color/transparent"
                 android:onClick="finishViewTech"
                 android:layout_marginLeft="10dp"
