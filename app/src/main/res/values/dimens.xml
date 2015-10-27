@@ -3,4 +3,5 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="time_text_size">35sp</dimen>
+    <dimen name="weight_text_size">20sp</dimen>
 </resources>

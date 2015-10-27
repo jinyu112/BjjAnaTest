@@ -33,6 +33,7 @@
         <example.org.bjjanatest.MyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="10dp"
             android:text="Average weight: " />
@@ -43,6 +44,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/weight_text_size"
             android:text="0" />
         </RelativeLayout>
         </LinearLayout>
@@ -60,6 +63,7 @@
             <example.org.bjjanatest.MyTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="10dp"
                 android:text="Max weight: " />
@@ -70,6 +74,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="10dp"
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/weight_text_size"
                 android:text="0" />
         </RelativeLayout>
         </LinearLayout>
@@ -89,6 +95,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
                 android:layout_marginLeft="10dp"
                 android:text="Min weight: " />
 
@@ -97,7 +104,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
                 android:layout_marginRight="10dp"
+                android:textSize="@dimen/weight_text_size"
                 android:text="0" />
         </RelativeLayout>
         </LinearLayout>
@@ -116,23 +125,5 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/weightDiff"/>
         </LinearLayout>
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="0dp"-->
-        <!--android:orientation="vertical"-->
-        <!--android:layout_weight="1"></LinearLayout>-->
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="0dp"-->
-        <!--android:layout_weight="5"-->
-        <!--android:gravity="end">-->
-        <!--<ImageButton-->
-            <!--android:id="@+id/clearAllWeightButton"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:gravity="center"-->
-            <!--android:src="@drawable/trash_50"-->
-            <!--android:background="@android:color/transparent"-->
-            <!--android:text="Clear All Data" />-->
-    <!--</LinearLayout>-->
+
 </LinearLayout>

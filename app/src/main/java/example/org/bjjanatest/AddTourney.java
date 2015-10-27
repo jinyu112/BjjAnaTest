@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import example.org.bjjanatest.db.TournDataSource;
 
@@ -161,6 +162,7 @@ public class AddTourney extends ActionBarActivity {
 
     public void saveTournament(View view){
         final Tourn tourn = new Tourn();
+        boolean sensibleData = true;
         try {
             tv = (MyTextView) findViewById(R.id.pointsScored);
             tourn.setPointsScored(Integer.parseInt(tv.getText().toString()));
@@ -274,54 +276,82 @@ public class AddTourney extends ActionBarActivity {
                 android.R.layout.simple_spinner_item, beltSpinnerStrArray);
         belt_Spinner.setAdapter(adapter);
 
+        //Perform tournament data checks
+        if (tourn.getPassAttempted()<tourn.getPassSuccessful()) {
+            sensibleData=false;
+            Toast.makeText(this, "Not enough pass attempts.",
+                    Toast.LENGTH_SHORT).show();
+        }
+        if (tourn.getTdAttempted()<tourn.getTdSuccessful()) {
+            sensibleData=false;
+            Toast.makeText(this, "Not enough TD attempts.",
+                    Toast.LENGTH_SHORT).show();
+        }
+        if (tourn.getSweepAttempted()<tourn.getSweepSuccessful()) {
+            sensibleData=false;
+            Toast.makeText(this, "Not enough sweep attempts.",
+                    Toast.LENGTH_SHORT).show();
+        }
+        if (tourn.getSubAttempted()<tourn.getSubSuccessful()) {
+            sensibleData=false;
+            Toast.makeText(this, "Not enough submission attempts.",
+                    Toast.LENGTH_SHORT).show();
+        }
+        if (tourn.getPointsScored()==0 && tourn.getWin()==1 && tourn.getSubSuccessful()!=1) {
+            sensibleData=false;
+            Toast.makeText(this, "Incorrect input data.",
+                    Toast.LENGTH_SHORT).show();
+        }
+
+
         // set alert dialog message
-        alertDialogBuilder
-                .setCancelable(false)
-                .setPositiveButton("OK",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
+        if (sensibleData) {
+            alertDialogBuilder
+                    .setCancelable(false)
+                    .setPositiveButton("OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
 
-                                //Set the tournament match name
-                                String tempTournName = tournNameET.getText().toString();
-                                if (tempTournName != null && !tempTournName.isEmpty()) {
-                                    tourn.setTournName(tempTournName);
+                                    //Set the tournament match name
+                                    String tempTournName = tournNameET.getText().toString();
+                                    if (tempTournName != null && !tempTournName.isEmpty()) {
+                                        tourn.setTournName(tempTournName);
+                                    } else tourn.setTournName("Match Name");
+
+                                    //Set the tournament match weight class
+                                    int weightClassPos = 0;
+                                    weightClassPos = weightClass_Spinner.getSelectedItemPosition();
+                                    tourn.setWeightClass(weightClass_Spinner.getSelectedItemPosition());
+                                    if (weightClassPos < weightSpinnerStrArray.length && weightClassPos >= 0) {
+                                        tourn.setWeightClass(weightClassPos);
+                                    } else tourn.setWeightClass(0);
+
+                                    //Set the tournament match belt class
+                                    int beltPos = 0;
+                                    beltPos = belt_Spinner.getSelectedItemPosition();
+                                    if (beltPos < beltSpinnerStrArray.length && beltPos >= 0) {
+                                        tourn.setBelt(beltSpinnerStrArray[beltPos]);
+                                    } else {
+                                        tourn.setBelt("White");
+                                    }
+
+                                    dataSource.create(tourn);
+                                    finish();
                                 }
-                                else tourn.setTournName("Match Name");
-
-                                //Set the tournament match weight class
-                                int weightClassPos = 0;
-                                weightClassPos = weightClass_Spinner.getSelectedItemPosition();
-                                tourn.setWeightClass(weightClass_Spinner.getSelectedItemPosition());
-                                if (weightClassPos < weightSpinnerStrArray.length && weightClassPos >= 0) {
-                                    tourn.setWeightClass(weightClassPos);
+                            })
+                    .setNegativeButton("Cancel",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
                                 }
-                                else tourn.setWeightClass(0);
+                            });
 
-                                //Set the tournament match belt class
-                                int beltPos = 0;
-                                beltPos = belt_Spinner.getSelectedItemPosition();
-                                if (beltPos < beltSpinnerStrArray.length && beltPos >= 0) {
-                                    tourn.setBelt(beltSpinnerStrArray[beltPos]);
-                                } else {
-                                    tourn.setBelt("White");
-                                }
+            // create alert dialog
+            AlertDialog alertDialog = alertDialogBuilder.create();
 
-                                dataSource.create(tourn);
-                                finish();
-                            }
-                        })
-                .setNegativeButton("Cancel",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-
-        // create alert dialog
-        AlertDialog alertDialog = alertDialogBuilder.create();
-
-        // show it
-        alertDialog.show();
+            // show it
+            alertDialog.show();
+        }
 
     }
 

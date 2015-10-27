@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import example.org.bjjanatest.db.TournDataSource;
 
@@ -200,6 +201,7 @@ public class EditTourn extends ActionBarActivity {
     }
 
     public void saveTournament_edit(View view){
+        boolean sensibleData = true;
         try {
             tv = (MyTextView) findViewById(R.id.pointsScored_edit);
             tourn.setPointsScored(Integer.parseInt(tv.getText().toString()));
@@ -290,8 +292,38 @@ public class EditTourn extends ActionBarActivity {
 
         tourn.setMatchTime(minutes+sec2min);
 
-        dataSource.update(tourn);
-        finish();
+        //Perform tournament data checks
+        if (tourn.getPassAttempted()<tourn.getPassSuccessful()) {
+            sensibleData=false;
+            Toast.makeText(this, "Not enough pass attempts.",
+                    Toast.LENGTH_SHORT).show();
+        }
+        if (tourn.getTdAttempted()<tourn.getTdSuccessful()) {
+            sensibleData=false;
+            Toast.makeText(this, "Not enough TD attempts.",
+                    Toast.LENGTH_SHORT).show();
+        }
+        if (tourn.getSweepAttempted()<tourn.getSweepSuccessful()) {
+            sensibleData=false;
+            Toast.makeText(this, "Not enough sweep attempts.",
+                    Toast.LENGTH_SHORT).show();
+        }
+        if (tourn.getSubAttempted()<tourn.getSubSuccessful()) {
+            sensibleData=false;
+            Toast.makeText(this, "Not enough submission attempts.",
+                    Toast.LENGTH_SHORT).show();
+        }
+        if (tourn.getPointsScored()==0 && tourn.getWin()==1 && tourn.getSubSuccessful()!=1) {
+            sensibleData=false;
+            Toast.makeText(this, "Incorrect input data.",
+                    Toast.LENGTH_SHORT).show();
+        }
+
+        if (sensibleData) {
+            dataSource.update(tourn);
+            finish();
+        }
+
 
     }
 
