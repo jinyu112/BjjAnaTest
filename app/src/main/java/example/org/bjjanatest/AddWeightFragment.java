@@ -75,6 +75,9 @@ public class AddWeightFragment extends Fragment {
                 displayWeightData(refreshDisplay());
                 lineChart.clearValues();
                 break;
+            case R.id.delete_weight_menu:
+                Intent intent1 = new Intent(getActivity(),DeleteWeight.class);
+                startActivity(intent1);
         }
         return super.onOptionsItemSelected(item);
     }

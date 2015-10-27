@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.widget.TextView;
 
 public class MyTextView extends TextView {
@@ -27,6 +28,7 @@ public class MyTextView extends TextView {
 //        Typeface tf = Typeface.createFromAsset(getContext().getAssets(),
 //                "fonts/HelveticaLTStd-Roman.otf");
         this.setTextColor(Color.parseColor("#262626"));
+        //this.setTextSize(TypedValue.COMPLEX_UNIT_SP,18);
 //        setTypeface(tf);
     }
 
