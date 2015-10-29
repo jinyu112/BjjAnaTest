@@ -93,4 +93,6 @@ public class TechDataSource {
 
     }
 
+    public int getTechLen() {return this.techLen;}
+
 }

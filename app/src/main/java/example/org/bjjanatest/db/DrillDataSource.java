@@ -90,4 +90,6 @@ public class DrillDataSource {
     public int getMaxReps() {
         return this.maxReps;
     }
+
+    public int getDrillLen() {return this.drillLen;}
 }

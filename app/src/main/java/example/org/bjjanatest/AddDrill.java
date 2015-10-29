@@ -9,13 +9,14 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import example.org.bjjanatest.db.DrillDataSource;
 
 public class AddDrill extends ActionBarActivity {
     private DrillDataSource dataSource;
-    private static CheckBox cb;
     private static MyEditText ev;
+    private static final int MAX_DRILL_DATABASE_ROWS = 49;
 
     public AddDrill() {
 
@@ -76,9 +77,16 @@ public class AddDrill extends ActionBarActivity {
         }
         drill.setDrillRepTotal(addedReps);
 
+        if (dataSource.getDrillLen()<=MAX_DRILL_DATABASE_ROWS) { //limit the number of saved drills
         dataSource.create(drill);
         dataSource.close();
         finish();
+        }
+        else {
+            Toast.makeText(this, "Drill limit reached.",
+                    Toast.LENGTH_SHORT).show();
+        }
+
     }
     @Override
     protected void onResume() {

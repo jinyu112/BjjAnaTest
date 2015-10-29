@@ -29,7 +29,7 @@ public class AddTourney extends ActionBarActivity {
 
     private static String[] weightSpinnerStrArray;
     private static String[] beltSpinnerStrArray;
-    private static final String LOGTAG = "BJJTRAINING";
+    private static final int MAX_TOURN_DATABASE_ROWS = 49;
     private static TournDataSource dataSource; // should this be static??????
 
     @Override
@@ -160,7 +160,7 @@ public class AddTourney extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void saveTournament(View view){
+    public void saveTournament(View view) {
         final Tourn tourn = new Tourn();
         boolean sensibleData = true;
         try {
@@ -192,7 +192,7 @@ public class AddTourney extends ActionBarActivity {
             tourn.setSubAttempted(Integer.parseInt(tv.getText().toString()));
         } catch (NumberFormatException ex) {
             System.err.println("Caught NumberFormatException in AddTourney Activity (metric input): "
-                    +  ex.getMessage());
+                    + ex.getMessage());
         }
 
         CheckBox cbWin = (CheckBox) findViewById(R.id.winCheck);
@@ -202,28 +202,24 @@ public class AddTourney extends ActionBarActivity {
         if (cbSub.isChecked()) {
             tourn.setSubSuccessful(1);
             cbWin.setChecked(true);
-        }
-        else {
+        } else {
             tourn.setSubSuccessful(0);
         }
 
         // if the wind checkbox is checked
         if (cbWin.isChecked()) {
             tourn.setWin(1);
-        }
-        else {
+        } else {
             tourn.setWin(0);
         }
 
         //Determine match outcome by points
         if (tourn.getPointsAllowed() < tourn.getPointsScored()) {
             tourn.setWin(1);
-        }
-        else if (tourn.getPointsAllowed() == tourn.getPointsScored()) {
+        } else if (tourn.getPointsAllowed() == tourn.getPointsScored()) {
             if (cbWin.isChecked()) tourn.setWin(1);
             else tourn.setWin(0);
-        }
-        else {
+        } else {
             tourn.setWin(0);
         }
 
@@ -234,7 +230,7 @@ public class AddTourney extends ActionBarActivity {
             minutes = Double.parseDouble(et.getText().toString());
         } catch (NumberFormatException ex) {
             System.err.println("Caught NumberFormatException in AddTourney Activity (minutes): "
-                    +  ex.getMessage());
+                    + ex.getMessage());
         }
 
         et = (MyEditText) findViewById(R.id.matchTimeSecEV);
@@ -244,14 +240,14 @@ public class AddTourney extends ActionBarActivity {
             seconds = Double.parseDouble(et.getText().toString());
         } catch (NumberFormatException ex) {
             System.err.println("Caught NumberFormatException in AddTourney Activity (seconds): "
-                    +  ex.getMessage());
+                    + ex.getMessage());
         }
         if (seconds > 60.0) {
             seconds = 60.0;
         }
-        double sec2min = seconds/60.0;
+        double sec2min = seconds / 60.0;
 
-        tourn.setMatchTime(minutes+sec2min);
+        tourn.setMatchTime(minutes + sec2min);
 
         //setting up alert dialog
         LayoutInflater li = LayoutInflater.from(this);
@@ -277,82 +273,87 @@ public class AddTourney extends ActionBarActivity {
         belt_Spinner.setAdapter(adapter);
 
         //Perform tournament data checks
-        if (tourn.getPassAttempted()<tourn.getPassSuccessful()) {
-            sensibleData=false;
+        if (tourn.getPassAttempted() < tourn.getPassSuccessful()) {
+            sensibleData = false;
             Toast.makeText(this, "Not enough pass attempts.",
                     Toast.LENGTH_SHORT).show();
         }
-        if (tourn.getTdAttempted()<tourn.getTdSuccessful()) {
-            sensibleData=false;
+        if (tourn.getTdAttempted() < tourn.getTdSuccessful()) {
+            sensibleData = false;
             Toast.makeText(this, "Not enough TD attempts.",
                     Toast.LENGTH_SHORT).show();
         }
-        if (tourn.getSweepAttempted()<tourn.getSweepSuccessful()) {
-            sensibleData=false;
+        if (tourn.getSweepAttempted() < tourn.getSweepSuccessful()) {
+            sensibleData = false;
             Toast.makeText(this, "Not enough sweep attempts.",
                     Toast.LENGTH_SHORT).show();
         }
-        if (tourn.getSubAttempted()<tourn.getSubSuccessful()) {
-            sensibleData=false;
+        if (tourn.getSubAttempted() < tourn.getSubSuccessful()) {
+            sensibleData = false;
             Toast.makeText(this, "Not enough submission attempts.",
                     Toast.LENGTH_SHORT).show();
         }
-        if (tourn.getPointsScored()==0 && tourn.getWin()==1 && tourn.getSubSuccessful()!=1) {
-            sensibleData=false;
+        if (tourn.getPointsScored() == 0 && tourn.getWin() == 1 && tourn.getSubSuccessful() != 1) {
+            sensibleData = false;
             Toast.makeText(this, "Incorrect input data.",
                     Toast.LENGTH_SHORT).show();
         }
 
 
         // set alert dialog message
-        if (sensibleData) {
-            alertDialogBuilder
-                    .setCancelable(false)
-                    .setPositiveButton("OK",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
+        if (dataSource.getTournLen() <= MAX_TOURN_DATABASE_ROWS) {
+            if (sensibleData) {
+                alertDialogBuilder
+                        .setCancelable(false)
+                        .setPositiveButton("OK",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
 
-                                    //Set the tournament match name
-                                    String tempTournName = tournNameET.getText().toString();
-                                    if (tempTournName != null && !tempTournName.isEmpty()) {
-                                        tourn.setTournName(tempTournName);
-                                    } else tourn.setTournName("Match Name");
+                                        //Set the tournament match name
+                                        String tempTournName = tournNameET.getText().toString();
+                                        if (tempTournName != null && !tempTournName.isEmpty()) {
+                                            tourn.setTournName(tempTournName);
+                                        } else tourn.setTournName("Match Name");
 
-                                    //Set the tournament match weight class
-                                    int weightClassPos = 0;
-                                    weightClassPos = weightClass_Spinner.getSelectedItemPosition();
-                                    tourn.setWeightClass(weightClass_Spinner.getSelectedItemPosition());
-                                    if (weightClassPos < weightSpinnerStrArray.length && weightClassPos >= 0) {
-                                        tourn.setWeightClass(weightClassPos);
-                                    } else tourn.setWeightClass(0);
+                                        //Set the tournament match weight class
+                                        int weightClassPos = 0;
+                                        weightClassPos = weightClass_Spinner.getSelectedItemPosition();
+                                        tourn.setWeightClass(weightClass_Spinner.getSelectedItemPosition());
+                                        if (weightClassPos < weightSpinnerStrArray.length && weightClassPos >= 0) {
+                                            tourn.setWeightClass(weightClassPos);
+                                        } else tourn.setWeightClass(0);
 
-                                    //Set the tournament match belt class
-                                    int beltPos = 0;
-                                    beltPos = belt_Spinner.getSelectedItemPosition();
-                                    if (beltPos < beltSpinnerStrArray.length && beltPos >= 0) {
-                                        tourn.setBelt(beltSpinnerStrArray[beltPos]);
-                                    } else {
-                                        tourn.setBelt("White");
+                                        //Set the tournament match belt class
+                                        int beltPos = 0;
+                                        beltPos = belt_Spinner.getSelectedItemPosition();
+                                        if (beltPos < beltSpinnerStrArray.length && beltPos >= 0) {
+                                            tourn.setBelt(beltSpinnerStrArray[beltPos]);
+                                        } else {
+                                            tourn.setBelt("White");
+                                        }
+
+                                        dataSource.create(tourn);
+                                        finish();
                                     }
+                                })
+                        .setNegativeButton("Cancel",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                    }
+                                });
 
-                                    dataSource.create(tourn);
-                                    finish();
-                                }
-                            })
-                    .setNegativeButton("Cancel",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                }
-                            });
+                // create alert dialog
+                AlertDialog alertDialog = alertDialogBuilder.create();
 
-            // create alert dialog
-            AlertDialog alertDialog = alertDialogBuilder.create();
+                // show it
+                alertDialog.show();
+            }
 
-            // show it
-            alertDialog.show();
+        } else {
+            Toast.makeText(this, "Tournament match limit reached.",
+                    Toast.LENGTH_SHORT).show();
         }
-
     }
 
     @Override

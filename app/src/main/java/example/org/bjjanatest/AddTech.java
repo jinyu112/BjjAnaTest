@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import example.org.bjjanatest.db.TechDataSource;
 
@@ -18,8 +19,8 @@ public class AddTech extends ActionBarActivity{
     private String[] arraySpinner;
     private static Spinner spin;
     private TechDataSource dataSource;
-    private static MyTextView tv;
     private static MyEditText ev;
+    private static final int MAX_TECH_DATABASE_ROWS = 49;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,10 +73,16 @@ public class AddTech extends ActionBarActivity{
         int i = spin.getSelectedItemPosition();
 
         tech.setTechType(i);
-        tech = dataSource.create(tech);
 
-        dataSource.close();
-        finish();
+        if (dataSource.getTechLen() <= MAX_TECH_DATABASE_ROWS) { //limit the number of saved techniques
+            tech = dataSource.create(tech);
+            dataSource.close();
+            finish();
+        }
+        else {
+            Toast.makeText(this, "Technique limit reached.",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
     @Override
     protected void onResume() {
