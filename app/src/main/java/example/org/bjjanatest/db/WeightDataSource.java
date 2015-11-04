@@ -19,6 +19,8 @@ public class WeightDataSource {
     SQLiteOpenHelper dbhelper;
     SQLiteDatabase database;
     private static long weightLen;
+    private static double minWeightDB = 0.0;
+    private static double maxWeightDB = 0.0;
     private static final String LOGTAG = "BJJTRAINING";
     private static final String[] allColumns = {
             trainingDBOpenHelper.COLUMN_ID_WEIGHT,
@@ -57,6 +59,9 @@ public class WeightDataSource {
     }
     
     public List<Weight> findAll() {
+        boolean firstPass=true;
+        minWeightDB = 0.0;
+        maxWeightDB = 0.0;
         List<Weight> weights = new ArrayList<Weight>();
         Cursor cursor = database.query(trainingDBOpenHelper.TABLE_WEIGHT, allColumns, null, null, null, null,
                 trainingDBOpenHelper.COLUMN_WEIGHT_DATE + " ASC");
@@ -72,12 +77,27 @@ public class WeightDataSource {
                 weight.setYear(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_WEIGHT_YEAR)));
                 weight.setDate(cursor.getInt(cursor.getColumnIndex(trainingDBOpenHelper.COLUMN_WEIGHT_DATE)));
                 weights.add(weight);
+                if (firstPass) {
+                    minWeightDB=weight.getMass();
+                    maxWeightDB=weight.getMass();
+                    firstPass=false;
+                }
+                else {
+                    if (weight.getMass() < minWeightDB) {
+                        minWeightDB = weight.getMass(); //determine the minimum weight for y axis range
+                    }
+
+                    if (weight.getMass() > maxWeightDB) {
+                        maxWeightDB = weight.getMass(); //determine the max weight for y axis range
+                    }
+                }
                 Log.i(LOGTAG, "weight mass: " + weight.getMass());
             }
         }
         cursor.close();
         return weights;
     }
+
 
     public boolean removeFromWeights(Weight weight) {
         String where = trainingDBOpenHelper.COLUMN_ID_WEIGHT + "=" + weight.getId(); //this string must be very carefully crafted or all data can be deleted
@@ -147,8 +167,6 @@ public class WeightDataSource {
         database.update(trainingDBOpenHelper.TABLE_WEIGHT,values,trainingDBOpenHelper.COLUMN_ID_WEIGHT + "=" + weight.getId(),null);
     }
 
-    public long getWeightLen() {return this.weightLen;}
-
     //Check to see if date already exists in the database, returns true if date already exists
     public boolean determineIfDateExistsInDB(int inputDate) {
         int count = -1;
@@ -165,4 +183,8 @@ public class WeightDataSource {
         }
         return count > 0;
     }
+
+    public long getWeightLen() {return this.weightLen;}
+    public double getMinWeightDB() {return this.minWeightDB;}
+    public double getMaxWeightDB() {return this.maxWeightDB;}
 }

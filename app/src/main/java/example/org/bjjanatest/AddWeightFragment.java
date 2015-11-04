@@ -39,6 +39,8 @@ public class AddWeightFragment extends Fragment {
     private static MyTextView tv_maxWeight;
     private static MyTextView tv_minWeight;
     private static MyTextView tv_weightDiff;
+    private static YAxis yAxisL;
+    private static YAxis yAxisR;
 
 
     public AddWeightFragment () {
@@ -92,11 +94,11 @@ public class AddWeightFragment extends Fragment {
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawGridLines(false);
 
-        YAxis yAxisL = lineChart.getAxisLeft();
+        yAxisL = lineChart.getAxisLeft();
         yAxisL.setStartAtZero(false);
         yAxisL.setDrawGridLines(false);
 
-        YAxis yAxisR = lineChart.getAxisRight();
+        yAxisR = lineChart.getAxisRight();
         yAxisR.setDrawLabels(false);
 
         //define text views
@@ -106,19 +108,37 @@ public class AddWeightFragment extends Fragment {
         tv_weightDiff = (MyTextView) rootView.findViewById(R.id.weightDiff);
 
         displayWeightData(refreshDisplay());
+        Log.i(LOGTAG, "oncreateview method");
         return rootView;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        dataSource.open(); //opens connection to the datasource
+        dataSource.findAll();
+        if (dataSource.getWeightLen()>0) {
+            yAxisL.setAxisMinValue((float) dataSource.getMinWeightDB() - 1);
+            yAxisL.setAxisMaxValue((float) dataSource.getMaxWeightDB() + 1);
+        }
+        else {
+            yAxisL.setAxisMinValue((float) 0);
+            yAxisL.setAxisMaxValue((float) 100);
+        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        dataSource.open(); //opens connection to the datasource
+        //dataSource.open(); //opens connection to the datasource
+        Log.i(LOGTAG, "on resume method");
         displayWeightData(refreshDisplay());
     }
 
     @Override
     public void onPause() {
         super.onPause();
+        Log.i(LOGTAG, "on pause method");
         dataSource.close();
     }
 
@@ -141,7 +161,7 @@ public class AddWeightFragment extends Fragment {
         int tempYear, tempMonth, tempDay;
         int weightLen=0;
         int[] tempDateArray = new int[3];
-        double minWeight=9999, maxWeight=9999, avgWeight=0, weightDiff=0;
+        double avgWeight=0, weightDiff=0;
         double sumWeights=0;
         double firstWeight=0, lastWeight=0;
         boolean firstPass=true;
@@ -164,21 +184,11 @@ public class AddWeightFragment extends Fragment {
             //this following code creates space between data points that are more than
             //a day apart
             if (firstPass) {
-                minWeight=weight.getMass();
-                maxWeight=weight.getMass();
                 firstWeight=weight.getMass();
                 firstPass=false;
                 numDays=0;
             }
             else {
-                if (weight.getMass() < minWeight) {
-                    minWeight = weight.getMass(); //determine the minimum weight for y axis range
-                }
-
-                if (weight.getMass() > maxWeight) {
-                    maxWeight = weight.getMass(); //determine the max weight for y axis range
-                }
-
                 //check if more than a day apart, if so calculate how many days and cap at 7
                 if (date-prevDate!=1) { //date should be later than prevDate
                     numDays = determineDaysBetween(date, prevDate);
@@ -209,12 +219,12 @@ public class AddWeightFragment extends Fragment {
             entry = new Entry((float) weight.getMass(), index);
             dataPoints.add(entry);
             xStrings.add(Integer.toString(date));
-            index=index+1;
+            index = index + 1;
 
-            prevWeight=weight;
+            prevWeight = weight;
             prevDate=date; //save the previous date to make days between calculation
 
-            if (i==weightLen-1) {
+            if (i == weightLen - 1) {
                 lastWeight = weight.getMass();
             }
         }
@@ -228,8 +238,6 @@ public class AddWeightFragment extends Fragment {
 
         LineData data = new LineData(xStrings, dataSets);
 
-        YAxis yAxisL = lineChart.getAxisLeft();
-
         lineChart.setVisibleXRangeMaximum(30);
         lineChart.moveViewToX(index);
         lineChart.setData(data);
@@ -241,18 +249,14 @@ public class AddWeightFragment extends Fragment {
         tv_avgWeight.setText(Double.toString(Math.round((avgWeight) * 10) / 10.0));
 
         if (weightLen>0) {
-            tv_maxWeight.setText(Double.toString(Math.round((maxWeight) * 10) / 10.0));
+            tv_maxWeight.setText(Double.toString(Math.round((dataSource.getMaxWeightDB()) * 10) / 10.0));
+            tv_minWeight.setText(Double.toString(Math.round((dataSource.getMinWeightDB()) * 10) / 10.0));
 
-            tv_minWeight.setText(Double.toString(Math.round((minWeight) * 10) / 10.0));
-
-            yAxisL.setAxisMinValue((float) minWeight - 1);
-            yAxisL.setAxisMaxValue((float) maxWeight + 1);
-            Log.i(LOGTAG, "max weight: " + maxWeight);
-            Log.i(LOGTAG, "min weight: " + minWeight);
+            yAxisL.setAxisMinValue((float) dataSource.getMinWeightDB() - 1);
+            yAxisL.setAxisMaxValue((float) dataSource.getMaxWeightDB() + 1);
         }
         else {
             tv_maxWeight.setText("0.0");
-
             tv_minWeight.setText("0.0");
 
             yAxisL.setAxisMinValue((float) 0);
@@ -260,7 +264,7 @@ public class AddWeightFragment extends Fragment {
         }
 
         weightDiff=Math.abs(firstWeight - lastWeight);
-        if (firstWeight>lastWeight) {
+        if (firstWeight > lastWeight) {
             tv_weightDiff.setText("You have lost " + Double.toString(Math.round((weightDiff) * 10) / 10.0) + " pounds.");
         }
         else tv_weightDiff.setText("You have gained " + Double.toString(Math.round((weightDiff) * 10) / 10.0) + " pounds.");
@@ -274,7 +278,7 @@ public class AddWeightFragment extends Fragment {
         SimpleDateFormat myFormat = new SimpleDateFormat("yyyyMMdd");
         String currentDateTemp=Integer.toString(currDate);
         String prevDateTemp=Integer.toString(prevDate);
-        int numDaysBetween=0;
+        int numDaysBetween = 0;
         try {
             Date currDateObj = myFormat.parse(currentDateTemp);
             Date minDateObj = myFormat.parse(prevDateTemp);
@@ -349,4 +353,5 @@ public class AddWeightFragment extends Fragment {
 
         return formattedDate;
     }
+
 }
