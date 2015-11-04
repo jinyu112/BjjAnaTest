@@ -147,6 +147,7 @@
                 android:id="@+id/drillNameEV_Edit"
                 android:layout_alignParentRight="true"
                 android:singleLine="true"
+                android:gravity="center_horizontal"
                 android:maxLength="200"
                 android:text="Drill"/>
             </LinearLayout>
@@ -172,16 +173,22 @@
                     android:layout_centerVertical="true"
                     android:gravity="center_vertical"
                     android:text="@string/drill_add_reps" />
-
-                <example.org.bjjanatest.MyEditText
+                <RelativeLayout
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true" android:focusableInTouchMode="true"
+                    android:layout_alignParentRight="true">
+                <example.org.bjjanatest.MyEditText
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/drillRepTotalEV_Edit"
                     android:layout_alignParentRight="true"
                     android:singleLine="true"
+                    android:textSize="@dimen/time_text_size"
                     android:maxLength="3"
-                    android:inputType="numberSigned"
-                    android:text="0"/>
+                    android:inputType="number"
+                    android:text="0"
+                    android:gravity="end"/></RelativeLayout>
 
             </RelativeLayout>
 
@@ -212,6 +219,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/drillRepTotalTV_Edit"
                 android:layout_alignParentRight="true"
+                android:textSize="@dimen/time_text_size"
                 android:singleLine="true"/>
 
         </RelativeLayout>

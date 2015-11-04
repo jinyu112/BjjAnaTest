@@ -4,6 +4,7 @@ package example.org.bjjanatest;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -46,7 +47,7 @@ public class EditDrill extends ActionBarActivity{
     public void finishEditDrill(View view) {
         //initialize some things
         Drill drillNew = new Drill();
-        EditText ev = (EditText) findViewById(R.id.drillRepTotalEV_Edit);
+        MyEditText ev = (MyEditText) findViewById(R.id.drillRepTotalEV_Edit);
         int addedReps = 0;
 
         //set id of new editted drill to old one for updating
