@@ -95,7 +95,7 @@
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
-        android:weightSum="10">
+        android:weightSum="11">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -409,6 +409,40 @@
 
     </RelativeLayout>
 </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        style="@style/PaddingStyle">
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <example.org.bjjanatest.MyTextView
+                android:id="@+id/view_weightLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="@string/weight_class" />
+
+            <example.org.bjjanatest.MyTextView
+                android:id="@+id/view_weightClass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentRight="true"
+                android:text="" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+
 </LinearLayout>
 
     </RelativeLayout>

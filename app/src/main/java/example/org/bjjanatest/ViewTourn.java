@@ -53,6 +53,45 @@ public class ViewTourn extends ActionBarActivity {
 
         tv = (MyTextView) findViewById(R.id.view_matchTime);
         tv.setText(String.valueOf(tourn.getMatchTime()));
+
+        tv = (MyTextView) findViewById(R.id.view_weightClass);
+
+        if (tourn.getWeightClass()==0)
+        {
+            tv.setText("127 lbs and below");
+        }
+        else if (tourn.getWeightClass()==1) {
+            tv.setText("127-141.5 lbs");
+        }
+        else if (tourn.getWeightClass()==2) {
+            tv.setText("141.5-154.5 lbs");
+        }
+        else if (tourn.getWeightClass()==3) {
+            tv.setText("154.5-168 lbs");
+        }
+        else if (tourn.getWeightClass()==4) {
+            tv.setText("168-181.5 lbs");
+        }
+        else if (tourn.getWeightClass()==5) {
+            tv.setText("181.5-195 lbs");
+        }
+        else if (tourn.getWeightClass()==6) {
+            tv.setText("195-208 lbs");
+        }
+        else if (tourn.getWeightClass()==7) {
+            tv.setText("208-222 lbs");
+        }
+        else if (tourn.getWeightClass()==8) {
+            tv.setText("222+ lbs");
+        }
+        else if (tourn.getWeightClass()==9) {
+            tv.setText("Open Light");
+        }
+        else if (tourn.getWeightClass()==10) {
+            tv.setText("Open Heavy");
+        }
+        else tv.setText("127 lbs and below");
+
     }
 
     public void finishViewTourn(View view) {

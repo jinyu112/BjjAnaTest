@@ -132,7 +132,7 @@ public class AddTourney extends ActionBarActivity {
         button_minus.setOnClickListener(subAttMinusListener);
         //////
 
-        this.weightSpinnerStrArray = new String[] {"127 and below", "127-141.5 lbs", "141.5-154.5 lbs", "154.5-168 lbs", "168-181.5 lbs", "181.5-195 lbs", "195-208 lbs","208-222 lbs","222+ lbs","Open Light","Open Heavy"};
+        this.weightSpinnerStrArray = new String[] {"127 lbs and below", "127-141.5 lbs", "141.5-154.5 lbs", "154.5-168 lbs", "168-181.5 lbs", "181.5-195 lbs", "195-208 lbs","208-222 lbs","222+ lbs","Open Light","Open Heavy"};
 
         this.beltSpinnerStrArray = new String[] {"White","Blue","Purple","Brown","Black","NoGi Novice", "NoGi Intermed.","NoGi Adv."};
 
