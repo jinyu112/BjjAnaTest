@@ -21,7 +21,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerInParent="true"
                 android:layout_marginLeft="16dp"
-                android:text="Total training time (hours): "/>
+                android:text="Total training time (hrs): "/>
 
             <example.org.bjjanatest.MyTextView
                 android:id="@+id/totalTime"
@@ -50,7 +50,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="16dp"
                 android:layout_centerInParent="true"
-                android:text="Average time per week: " />
+                android:text="Average time per week (hrs): " />
 
             <example.org.bjjanatest.MyTextView
                 android:id="@+id/avgTime"

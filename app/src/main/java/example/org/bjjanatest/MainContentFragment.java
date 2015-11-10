@@ -49,7 +49,7 @@ public class MainContentFragment extends Fragment {
         horizontalBarChart_OffPerc = (HorizontalBarChart) rootView.findViewById(R.id.tournOffPercChart);
         horizontalBarChart_OffPerc.setDrawValueAboveBar(true);
         horizontalBarChart_OffPerc.setDescription("");
-        //horizontalBarChart_OffPerc.animateY(1000);
+        horizontalBarChart_OffPerc.animateY(1000);
         horizontalBarChart_OffPerc.setPinchZoom(false);
         horizontalBarChart_OffPerc.setTouchEnabled(false);
         horizontalBarChart_OffPerc.getLegend().setEnabled(false);
@@ -69,12 +69,14 @@ public class MainContentFragment extends Fragment {
         yr_offperc.setEnabled(false);
         yr_offperc.setAxisMaxValue(100f);
 
+        horizontalBarChart_OffPerc.setNoDataText("No data.");
+
 
         //Tournament average horizon bar chart
         horizontalBarChart_TournAvg = (HorizontalBarChart) rootView.findViewById(R.id.tournAvgChart);
         horizontalBarChart_TournAvg.setDrawValueAboveBar(true);
         horizontalBarChart_TournAvg.setDescription("");
-        //horizontalBarChart_TournAvg.animateY(1000);
+        horizontalBarChart_TournAvg.animateY(1000);
         horizontalBarChart_TournAvg.setPinchZoom(false);
         horizontalBarChart_TournAvg.setTouchEnabled(false);
         horizontalBarChart_TournAvg.getLegend().setEnabled(false);
@@ -93,6 +95,7 @@ public class MainContentFragment extends Fragment {
         yr_avg.setDrawLabels(false);
         yr_avg.setEnabled(false);
 
+        horizontalBarChart_TournAvg.setNoDataText("No data.");
 
 
         //pie chart
@@ -110,6 +113,8 @@ public class MainContentFragment extends Fragment {
 
         pieChart_TournTotals.setRotationAngle(0);
         pieChart_TournTotals.setRotationEnabled(true);
+
+        pieChart_TournTotals.setNoDataText("No data.");
         return rootView;
     }
 
