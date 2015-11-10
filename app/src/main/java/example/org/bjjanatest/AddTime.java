@@ -93,10 +93,16 @@ public class AddTime extends ActionBarActivity {
     }
 
     public void saveTime(View view) {
+        String timeStr="";
         Time time = new Time();
         String timeDataArray[] = new String[] {"0", "0", "0", "0"};
         ev = (MyEditText) findViewById(R.id.timeEV);
-        double hours = Double.parseDouble(ev.getText().toString());
+
+        timeStr = ev.getText().toString();
+        if (timeStr.equals(".") || timeStr.equals("..") || timeStr.equals("")) {
+            timeStr = "0";
+        }
+        double hours = Double.parseDouble(timeStr);
         spin = (Spinner) findViewById(R.id.day_spinner_time);
         currDay = spin.getSelectedItemPosition()+1; //day is index PLUS 1
 
@@ -117,16 +123,21 @@ public class AddTime extends ActionBarActivity {
         timeDataArray[2]=Integer.toString(time.getDate());  // maximum date
         timeDataArray[3]=Double.toString(time.getHours());  // total hours trained
 
-        //prevent insensible date inputs (ie Feb 31)
-        if (checkValidDate(currMonth,currDay)) {
-            Toast.makeText(this, "Time saved.",
+        if (timeStr.equals("0")) {
+            Toast.makeText(this, "Invalid time.",
                     Toast.LENGTH_LONG).show();
-            saveTimeDataInternal(timeDataArray);
-            finish();
         }
         else {
-            Toast.makeText(this, "Invalid date.",
-                    Toast.LENGTH_LONG).show();
+            //prevent insensible date inputs (ie Feb 31)
+            if (checkValidDate(currMonth, currDay)) {
+                Toast.makeText(this, "Time saved.",
+                        Toast.LENGTH_LONG).show();
+                saveTimeDataInternal(timeDataArray);
+                finish();
+            } else {
+                Toast.makeText(this, "Invalid date.",
+                        Toast.LENGTH_LONG).show();
+            }
         }
 
     }

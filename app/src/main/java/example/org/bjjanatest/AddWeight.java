@@ -96,9 +96,14 @@ public class AddWeight extends ActionBarActivity {
     }
 
     public void saveWeight(View view) {
+        String massStr = "";
         Weight weight = new Weight();
         ev = (MyEditText) findViewById(R.id.weightEV);
-        double mass = Double.parseDouble(ev.getText().toString());
+        massStr = ev.getText().toString();
+        if (massStr.equals(".") || massStr.equals("..") || massStr.equals("")) {
+            massStr = "0";
+        }
+        double mass = Double.parseDouble(massStr);
         spin = (Spinner) findViewById(R.id.day_spinner);
         currDay = spin.getSelectedItemPosition()+1; //day is index PLUS 1
 

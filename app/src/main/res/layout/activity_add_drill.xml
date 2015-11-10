@@ -100,6 +100,7 @@
                 android:layout_alignParentRight="true"
                 android:singleLine="true"
                 android:maxLength="200"
+                android:gravity="center_horizontal"
                 android:text="Drill"/>
 
         </RelativeLayout>
@@ -125,17 +126,23 @@
                     android:layout_centerVertical="true"
                     android:gravity="center_vertical"
                     android:text="@string/drill_total_reps" />
-
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:focusable="true" android:focusableInTouchMode="true"
+                android:layout_alignParentRight="true">
                 <example.org.bjjanatest.MyEditText
-                    android:layout_width="100dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/drillRepTotalEV"
                     android:layout_alignParentRight="true"
                     android:singleLine="true"
+                    android:textSize="@dimen/time_text_size"
                     android:maxLength="3"
-                    android:inputType="numberSigned"
+                    android:inputType="number"
+                    android:gravity="end"
                     android:text="0"/>
-
+</RelativeLayout>
             </RelativeLayout>
             </LinearLayout>
 

@@ -8,13 +8,14 @@
     <RelativeLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:gravity="center_horizontal">
         <example.org.bjjanatest.MyTextView
             android:layout_width="wrap_content"
             android:layout_height="70dp"
             android:layout_marginLeft="10dp"
             android:layout_alignParentLeft="true"
-            android:gravity="center|center_vertical"
+            android:gravity="center"
             android:id="@+id/drill_list_item_name"/>
     </RelativeLayout>
 

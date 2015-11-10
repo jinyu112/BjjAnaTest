@@ -1,6 +1,7 @@
 package example.org.bjjanatest;
 
 import android.content.Context;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +48,7 @@ public class DrillListAdapter extends ArrayAdapter{
         //setting the drill name
         MyTextView tv = (MyTextView) view.findViewById(R.id.drill_list_item_name);
         tv.setText(drill.getDrillName());
+        tv.setGravity(Gravity.CENTER);
 
         //graphing the rep bar chart
         horizontalBarChart_Reps = (HorizontalBarChart) view.findViewById(R.id.drill_item_chart);
