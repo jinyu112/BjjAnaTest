@@ -9,7 +9,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,59 +18,60 @@
         </activity>
         <activity
             android:name=".AddTourney"
-            android:label="@string/title_activity_add_tourney" >
+            android:label="@string/title_activity_add_tourney"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".AddTraining"
-            android:label="@string/title_activity_add_train" >
+            android:label="@string/title_activity_add_train" android:screenOrientation="portrait"  >
         </activity>
         <activity
             android:name=".AddTech"
-            android:label="@string/title_activity_add_tech" >
+            android:label="@string/title_activity_add_tech" android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ViewTourn"
-            android:label="@string/title_activity_view_tourn" >
+            android:label="@string/title_activity_view_tourn" android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ViewTrain"
-            android:label="@string/title_activity_view_train" >
+            android:label="@string/title_activity_view_train" android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ViewTech"
-            android:label="@string/title_activity_view_tech" >
+            android:label="@string/title_activity_view_tech" android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".EditTech"
-            android:label="@string/title_activity_edit_tech" >
+            android:label="@string/title_activity_edit_tech" android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".AddWeight"
-            android:label="@string/title_activity_add_weight" >
+            android:label="@string/title_activity_add_weight" android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".AddTime"
-            android:label="@string/title_activity_add_time" >
+            android:label="@string/title_activity_add_time" android:screenOrientation="portrait" >
         </activity>
 
         <activity
             android:name=".AddDrill"
-            android:label="@string/title_activity_add_drill" >
+            android:label="@string/title_activity_add_drill" android:screenOrientation="portrait" >
         </activity>
 
         <activity
             android:name=".EditDrill"
-            android:label="@string/title_activity_edit_drill" >
+            android:label="@string/title_activity_edit_drill" android:screenOrientation="portrait" >
         </activity>
 
         <activity
             android:name=".EditTourn"
-            android:label="@string/title_activity_edit_tourn" >
+            android:label="@string/title_activity_edit_tourn" android:screenOrientation="portrait" >
         </activity>
 
         <activity
             android:name=".DeleteWeight"
-            android:label="@string/title_activity_delete_weight" >
+            android:label="@string/title_activity_delete_weight" android:screenOrientation="portrait" >
         </activity>
 
 
