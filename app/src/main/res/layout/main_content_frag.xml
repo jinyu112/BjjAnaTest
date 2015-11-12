@@ -69,7 +69,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="10dp"
-                    android:text="Match Time: " />
+                    android:text="Match Time (min): " />
 
                 <example.org.bjjanatest.MyTextView
                     android:id="@+id/main_avgMatchTime"
