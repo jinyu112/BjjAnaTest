@@ -43,15 +43,5 @@ public class MyEditText extends EditText implements View.OnFocusChangeListener {
         }
     }
 
-//    @Override
-//    protected void onSelectionChanged(int start, int end) {
-//        CharSequence text = getText();
-//        if (text != null) {
-//            if (start != text.length() || end != text.length()) {
-//                setSelection(text.length(), text.length());
-//                return;
-//            }
-//        }
-//        super.onSelectionChanged(start, end);
-//    }
+
 }
