@@ -460,6 +460,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
+            android:focusableInTouchMode="true"
             style="@style/PaddingStyle">
 
         <example.org.bjjanatest.MyTextView
@@ -484,6 +485,7 @@
             android:inputType="number"
             android:textAlignment="center"
             android:gravity="center_horizontal"
+            android:focusable="true" android:focusableInTouchMode="true"
             android:text="0"/></LinearLayout>
         <example.org.bjjanatest.MyTextView
             android:id="@+id/minLabel"

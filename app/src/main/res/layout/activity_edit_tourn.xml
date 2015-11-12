@@ -463,6 +463,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="horizontal"
+                android:focusableInTouchMode="true"
                 style="@style/PaddingStyle">
 
                 <example.org.bjjanatest.MyTextView
