@@ -206,7 +206,7 @@ public class AddTourney extends ActionBarActivity {
             tourn.setSubSuccessful(0);
         }
 
-        // if the wind checkbox is checked
+        // if the win checkbox is checked
         if (cbWin.isChecked()) {
             tourn.setWin(1);
         } else {
@@ -216,7 +216,11 @@ public class AddTourney extends ActionBarActivity {
         //Determine match outcome by points
         if (tourn.getPointsAllowed() < tourn.getPointsScored()) {
             tourn.setWin(1);
-        } else if (tourn.getPointsAllowed() == tourn.getPointsScored()) {
+        }
+        else if ((tourn.getPointsAllowed() >= tourn.getPointsScored()) && cbSub.isChecked() ) {
+            tourn.setWin(1);
+        }
+        else if (tourn.getPointsAllowed() == tourn.getPointsScored()) {
             if (cbWin.isChecked()) tourn.setWin(1);
             else tourn.setWin(0);
         } else {
