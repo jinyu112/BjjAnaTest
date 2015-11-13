@@ -61,8 +61,8 @@ public class EditTech extends ActionBarActivity {
         MyEditText ev = (MyEditText) findViewById(R.id.edit_techNameEV);
         techNew.setTechName(ev.getText().toString());
 
-        ev = (MyEditText) findViewById(R.id.edit_techNoteEV);
-        techNew.setTechNote(ev.getText().toString());
+        EditText et = (EditText) findViewById(R.id.edit_techNoteEV);
+        techNew.setTechNote(et.getText().toString());
 
 
         techNew.setTechVidURL(tech.getTechVidURL()); //need to add youtube url
