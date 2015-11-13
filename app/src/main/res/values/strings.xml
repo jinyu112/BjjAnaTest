@@ -52,7 +52,7 @@
 
     <string name="tech_activity">Add technique.</string>
     <string name="tech_name">Technique:</string>
-    <string name="tech_type">Technique Type:</string>
+    <string name="tech_type">Category:</string>
     <string name="tech_note">Notes:</string>
     <string name="tech_URL">Technique URL:</string>
     <string name="tech_add">Add</string>
