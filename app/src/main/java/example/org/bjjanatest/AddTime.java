@@ -21,10 +21,10 @@ public class AddTime extends ActionBarActivity {
 
     private String filename = "myTimeData";
     private static final String LOGTAG = "BJJTRAINING";
-    private String[] arrayMonthSpinner;
-    private String[] arrayDaySpinner;
-    private String[] arrayYearSpinner;
-    private Spinner spin;
+    private static String[] arrayMonthSpinner;
+    private static String[] arrayDaySpinner;
+    private static String[] arrayYearSpinner;
+    private static Spinner spin;
     private static MyEditText ev;
     private static int currDay;
     private static int currMonth;
@@ -45,7 +45,7 @@ public class AddTime extends ActionBarActivity {
         if (currDay > 30) {
             currDay = 30;
         }
-        currMonth = c.get(Calendar.MONTH);
+        currMonth = c.get(Calendar.MONTH); //January has a value of 0
         if (currMonth > 11) {
             currMonth = 11;
         }
@@ -99,10 +99,18 @@ public class AddTime extends ActionBarActivity {
         ev = (MyEditText) findViewById(R.id.timeEV);
 
         timeStr = ev.getText().toString();
-        if (timeStr.equals(".") || timeStr.equals("..") || timeStr.equals("")) {
+        if (timeStr.equals(".") || timeStr.equals("..") || timeStr.equals("") || timeStr.equals(",")) {
             timeStr = "0";
         }
-        double hours = Double.parseDouble(timeStr);
+        double hours = 0.0;
+        try {
+            hours = Double.parseDouble(timeStr);
+        } catch (NumberFormatException ex)
+        {
+            System.err.println("Caught NumberFormatException in AddTime activity: "
+                    +  ex.getMessage());
+            hours = 0.0;
+        }
         spin = (Spinner) findViewById(R.id.day_spinner_time);
         currDay = spin.getSelectedItemPosition()+1; //day is index PLUS 1
 
@@ -162,7 +170,14 @@ public class AddTime extends ActionBarActivity {
         yearIn = yearIn + 2000; //years start at 2000 and go to 2070 but the spinner index starts at 0 and goes to 70
 
         formattedDateStr = Integer.toString(yearIn) + tempMonth + tempDay;
-        formattedDateInt = Integer.parseInt(formattedDateStr);
+        formattedDateInt = 19000101;
+        try {
+            formattedDateStr = formattedDateStr.replaceAll("[^\\d]", "");
+            formattedDateInt = Integer.parseInt(formattedDateStr);
+        } catch (NumberFormatException ex) {
+            System.err.println("Caught NumberFormatException in AddTime activity, formatDate method: "
+                    +  ex.getMessage());
+        }
 
         return formattedDateInt;
     }
@@ -193,8 +208,8 @@ public class AddTime extends ActionBarActivity {
                 timeDataArray[2] = timeDataArrayRetreived[2];
             }
 
-            timeDataArray[0] = Integer.toString(Integer.parseInt(timeDataArray[0]) + Integer.parseInt(timeDataArrayRetreived[0]));
-            timeDataArray[3] = Double.toString(Double.parseDouble(timeDataArray[3]) + Double.parseDouble(timeDataArrayRetreived[3]));
+            timeDataArray[0] = Integer.toString(Integer.parseInt(timeDataArray[0]) + Integer.parseInt(timeDataArrayRetreived[0])); //increment training session
+            timeDataArray[3] = Double.toString(Double.parseDouble(timeDataArray[3]) + Double.parseDouble(timeDataArrayRetreived[3])); //add trained hours to total
 
             try {
                 outputStream = openFileOutput(filename, this.MODE_PRIVATE);
@@ -219,6 +234,8 @@ public class AddTime extends ActionBarActivity {
         }
     }
 
+    //this function returns data from the internal storage with information about the time trained
+    //the new time data point is then added on to this array data
     public String[] readTimeDataInternal() {
         String timeDataArrayRetrieved[] = new String[]{"0", "0", "0", "0"};
         try {

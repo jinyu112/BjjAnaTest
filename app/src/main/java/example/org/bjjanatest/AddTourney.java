@@ -230,8 +230,13 @@ public class AddTourney extends ActionBarActivity {
         //Set the match time
         et = (MyEditText) findViewById(R.id.matchTimeMinEV);
         double minutes = 0.0;
+        String tempStr="0";
         try {
-            minutes = Double.parseDouble(et.getText().toString());
+            tempStr = et.getText().toString();
+            if (tempStr.equals("") || tempStr.equals(".") || tempStr.equals(",")) {
+                tempStr = "0";
+            }
+            minutes = Double.parseDouble(tempStr);
         } catch (NumberFormatException ex) {
             System.err.println("Caught NumberFormatException in AddTourney Activity (minutes): "
                     + ex.getMessage());
@@ -240,8 +245,13 @@ public class AddTourney extends ActionBarActivity {
         et = (MyEditText) findViewById(R.id.matchTimeSecEV);
 
         double seconds = 0.0;
+        tempStr="0";
         try {
-            seconds = Double.parseDouble(et.getText().toString());
+            tempStr = et.getText().toString();
+            if (tempStr.equals("") || tempStr.equals(".") || tempStr.equals(",")) {
+                tempStr = "0";
+            }
+            seconds = Double.parseDouble(tempStr);
         } catch (NumberFormatException ex) {
             System.err.println("Caught NumberFormatException in AddTourney Activity (seconds): "
                     + ex.getMessage());
@@ -250,8 +260,8 @@ public class AddTourney extends ActionBarActivity {
             seconds = 60.0;
         }
         double sec2min = seconds / 60.0;
-
-        tourn.setMatchTime(minutes + sec2min);
+        double ttime = Math.round((minutes+sec2min)*10)/10.0;
+        tourn.setMatchTime(ttime);
 
         //setting up alert dialog
         LayoutInflater li = LayoutInflater.from(this);

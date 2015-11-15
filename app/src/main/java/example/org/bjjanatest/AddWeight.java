@@ -21,9 +21,9 @@ public class AddWeight extends ActionBarActivity {
     private List<Weight> weights;
     WeightDataSource dataSource;
     private static final String LOGTAG = "BJJTRAINING";
-    private String[] arrayMonthSpinner;
-    private String[] arrayDaySpinner;
-    private String[] arrayYearSpinner;
+    private static String[] arrayMonthSpinner;
+    private static String[] arrayDaySpinner;
+    private static String[] arrayYearSpinner;
     private Spinner spin;
     private static MyEditText ev;
     private static int currDay;
@@ -103,7 +103,14 @@ public class AddWeight extends ActionBarActivity {
         if (massStr.equals(".") || massStr.equals("..") || massStr.equals("")) {
             massStr = "0";
         }
-        double mass = Double.parseDouble(massStr);
+        double mass = 0.0;
+        try {
+            mass = Double.parseDouble(massStr);
+        } catch (NumberFormatException ex) {
+            System.err.println("Caught NumberFormatException in AddWeight Activity: "
+                    + ex.getMessage());
+        }
+
         spin = (Spinner) findViewById(R.id.day_spinner);
         currDay = spin.getSelectedItemPosition()+1; //day is index PLUS 1
 

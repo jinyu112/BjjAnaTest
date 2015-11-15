@@ -98,6 +98,8 @@ public class AddTimeFragment extends Fragment {
         double avgSessPerWeek=0.0;
         if (fileExistance(filename)) {
             timeDataForDisplay=readTimeDataInternal();
+            minDateInt = 19000101;
+            maxDateInt = minDateInt;
             try {
                 minDateInt = Integer.parseInt(timeDataForDisplay[1]);
                 maxDateInt = Integer.parseInt(timeDataForDisplay[2]);
@@ -111,6 +113,8 @@ public class AddTimeFragment extends Fragment {
                 weeks=1;
             }
             else weeks = (double) numDaysBetween/7.0;
+            avgTimePerWeek=0.0;
+            avgSessPerWeek=0.0;
             try {
                 avgTimePerWeek = (double) Double.parseDouble(timeDataForDisplay[3])/weeks;
                 avgSessPerWeek = (double) Integer.parseInt(timeDataForDisplay[0])/weeks;

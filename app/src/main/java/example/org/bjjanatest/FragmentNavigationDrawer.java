@@ -108,7 +108,7 @@ public class FragmentNavigationDrawer extends DrawerLayout {
                 setTitle(navItem.getTitle());
                 closeDrawer(lvDrawer);
             }
-        }, 150); //delays closing drawer by 150 ms to stop lagging
+        }, 150); //delays closing drawer by 150 ms to stop lagging (issue 22)
 
 
 

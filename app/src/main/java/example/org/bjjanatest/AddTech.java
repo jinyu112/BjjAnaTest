@@ -16,7 +16,7 @@ import example.org.bjjanatest.db.TechDataSource;
 
 public class AddTech extends ActionBarActivity{
 
-    private String[] arraySpinner;
+    private static String[] arraySpinner;
     private static Spinner spin;
     private TechDataSource dataSource;
     private static MyEditText ev;

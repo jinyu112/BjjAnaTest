@@ -25,19 +25,37 @@ public class MinusOnClickListener implements View.OnClickListener {
         int tempPlusValue = 0;
         if (!singleTvFlag) {
             tempStr = tvsuc.getText().toString();
-            tempPlusValue = Integer.parseInt(tempStr);
+            try {
+                tempPlusValue = Integer.parseInt(tempStr);
+            } catch (NumberFormatException ex) {
+                tempPlusValue = 1;
+                System.err.println("Caught NumberFormatException in minusonclick listener class: "
+                        + ex.getMessage());
+            }
             tempPlusValue = tempPlusValue - 1;
             if (tempPlusValue<0) tempPlusValue = 0;
             tvsuc.setText(String.format("%d",tempPlusValue));
 
             tempStr = tvatt.getText().toString();
-            tempPlusValue = Integer.parseInt(tempStr);
+            try {
+                tempPlusValue = Integer.parseInt(tempStr);
+            } catch (NumberFormatException ex) {
+                tempPlusValue = 1;
+                System.err.println("Caught NumberFormatException in minusonclick listener class: "
+                        + ex.getMessage());
+            }
             tempPlusValue = tempPlusValue - 1;
             if (tempPlusValue<0) tempPlusValue = 0;
             tvatt.setText(String.format("%d",tempPlusValue));
         } else {
             tempStr = tvatt.getText().toString();
-            tempPlusValue = Integer.parseInt(tempStr);
+            try {
+                tempPlusValue = Integer.parseInt(tempStr);
+            } catch (NumberFormatException ex) {
+                tempPlusValue = 1;
+                System.err.println("Caught NumberFormatException in minusonclick listener class: "
+                        + ex.getMessage());
+            }
             tempPlusValue = tempPlusValue - 1;
             if (tempPlusValue<0) tempPlusValue = 0;
             tvatt.setText(String.format("%d",tempPlusValue));

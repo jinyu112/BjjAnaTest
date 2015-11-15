@@ -50,7 +50,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="16dp"
                 android:layout_centerInParent="true"
-                android:text="Average time per week (hrs): " />
+                android:text="Avg. time per week (hrs): " />
 
             <example.org.bjjanatest.MyTextView
                 android:id="@+id/avgTime"

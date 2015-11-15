@@ -57,7 +57,7 @@ public class EditDrill extends ActionBarActivity{
         String repTotalStr = "0";
         repTotalStr = ev.getText().toString();
         repTotalStr = repTotalStr.replaceAll("[^\\d]", ""); //remove any non-numeric characters
-        if (repTotalStr.equals("")) {
+        if (repTotalStr.equals("") || repTotalStr.equals(".") || repTotalStr.equals("..") || repTotalStr.equals(",")) {
             repTotalStr = "0";
         }
         try {

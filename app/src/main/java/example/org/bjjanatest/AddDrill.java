@@ -66,7 +66,7 @@ public class AddDrill extends ActionBarActivity {
         int addedReps = 0;
         repTotalStr = ev.getText().toString();
         repTotalStr = repTotalStr.replaceAll("[^\\d]", "");
-        if (repTotalStr.equals("")) {
+        if (repTotalStr.equals("") || repTotalStr.equals(".") || repTotalStr.equals(",")) {
             repTotalStr = "0";
         }
         try {
@@ -78,9 +78,9 @@ public class AddDrill extends ActionBarActivity {
         drill.setDrillRepTotal(addedReps);
 
         if (dataSource.getDrillLen()<=MAX_DRILL_DATABASE_ROWS) { //limit the number of saved drills
-        dataSource.create(drill);
-        dataSource.close();
-        finish();
+            dataSource.create(drill);
+            dataSource.close();
+            finish();
         }
         else {
             Toast.makeText(this, "Drill limit reached.",

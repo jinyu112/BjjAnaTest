@@ -157,7 +157,14 @@ public class DeleteWeight extends ActionBarActivity {
         yearIn = yearIn + 2000; //years start at 2000 and go to 2070 but the spinner index starts at 0 and goes to 70
 
         formattedDateStr = Integer.toString(yearIn) + tempMonth + tempDay;
-        formattedDateInt = Integer.parseInt(formattedDateStr);
+
+        try {
+            formattedDateInt = Integer.parseInt(formattedDateStr);
+        } catch (NumberFormatException ex)
+        {
+            System.err.println("Caught NumberFormatException in DeletWeight activity: "
+                    +  ex.getMessage());
+        }
 
         return formattedDateInt;
     }
