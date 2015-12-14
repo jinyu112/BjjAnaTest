@@ -108,7 +108,6 @@ public class AddWeightFragment extends Fragment {
         tv_weightDiff = (MyTextView) rootView.findViewById(R.id.weightDiff);
 
         displayWeightData(refreshDisplay());
-        Log.i(LOGTAG, "oncreateview method");
         return rootView;
     }
 
@@ -131,14 +130,12 @@ public class AddWeightFragment extends Fragment {
     public void onResume() {
         super.onResume();
         //dataSource.open(); //opens connection to the datasource
-        Log.i(LOGTAG, "on resume method");
         displayWeightData(refreshDisplay());
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        Log.i(LOGTAG, "on pause method");
         dataSource.close();
     }
 

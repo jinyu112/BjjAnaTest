@@ -31,7 +31,6 @@ public class DrawerListAdapter extends ArrayAdapter {
 
 
        TextView tv = (TextView) view.findViewById(R.id.text1);
-        //tv.setText(tourn.getTournName());
         if (position==0) {
             tv.setText("My Stats");
         }

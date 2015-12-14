@@ -29,7 +29,7 @@ public class AddTime extends ActionBarActivity {
     private static int currDay;
     private static int currMonth;
     private static int currYear;
-//    private static final int MAX_WEIGHT_DATABASE_ROWS = 365;
+    //private static final int MAX_WEIGHT_DATABASE_ROWS = 365;
 
     public AddTime () {
 
@@ -61,7 +61,6 @@ public class AddTime extends ActionBarActivity {
                 android.R.layout.simple_spinner_item, arrayMonthSpinner);
         spin.setAdapter(adapter);
         spin.setSelection(currMonth);
-        Log.i(LOGTAG, "month: " + currMonth);
 
         //populate day spinner
         arrayDaySpinner = new String[31];
@@ -73,7 +72,6 @@ public class AddTime extends ActionBarActivity {
                 android.R.layout.simple_spinner_item, arrayDaySpinner);
         spin.setAdapter(adapter);
         spin.setSelection(currDay);
-        Log.i(LOGTAG, "day: " + currDay);
 
         //populate year spinner
         arrayYearSpinner = new String[70];
@@ -85,7 +83,6 @@ public class AddTime extends ActionBarActivity {
                 android.R.layout.simple_spinner_item, arrayYearSpinner);
         spin.setAdapter(adapter);
         spin.setSelection(currYear);
-        Log.i(LOGTAG, "year: " + currYear);
 
         ev = (MyEditText) findViewById(R.id.timeEV);
         ev.setText("0.0");

@@ -38,7 +38,6 @@ public class TrainingListFragment extends  android.support.v4.app.ListFragment{
         super.onCreate(savedInstanceState);
         dataSource = new TrainDataSource(getActivity());
         dataSource.open();
-        Log.i(LOGTAG, "Training list frag onCreate called");
         refreshDisplay();
         setHasOptionsMenu(true);
     }

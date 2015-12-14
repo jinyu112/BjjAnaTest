@@ -66,12 +66,10 @@ public class TrainDataSource {
     }
 
     public void open() {
-        Log.i(LOGTAG, "Database opened.");
         database = dbhelper.getWritableDatabase();
     }
 
     public void close() {
-        Log.i(LOGTAG,"Database closed.");
         dbhelper.close();
     }
 
@@ -93,7 +91,6 @@ public class TrainDataSource {
         values.put(trainingDBOpenHelper.COLUMN_TD_SUCCESS_TRAIN,train.getTdSuccessful());
         values.put(trainingDBOpenHelper.COLUMN_MATCH_TIME_TRAIN,train.getMatchTime());
         long insertId = database.insert(trainingDBOpenHelper.TABLE_TRAIN,null,values);
-        Log.i(LOGTAG,"train ID: " + insertId);
         train.setId(insertId);
         return train;
     }
@@ -101,7 +98,6 @@ public class TrainDataSource {
     public List<Train> findAll() {
         List<Train> trains = new ArrayList<Train>();
         Cursor cursor = database.query(trainingDBOpenHelper.TABLE_TRAIN,allColumns,null,null,null,null,null);
-        Log.i(LOGTAG,"returned " + cursor.getCount() + " rows.");
         trainLen = cursor.getCount();
         if (trainLen>0 && cursor != null) {
             totalPts = 0;

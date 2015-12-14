@@ -77,7 +77,7 @@ public class MainActivity extends ActionBarActivity {
             dlDrawer.selectDrawerItem(0);
         }
         dataSource = new TournDataSource(this);
-
+        AppRater.app_launched(this);
     }
 
     @Override

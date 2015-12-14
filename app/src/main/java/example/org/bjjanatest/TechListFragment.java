@@ -29,7 +29,6 @@ public class TechListFragment extends android.support.v4.app.ListFragment {
         super.onCreate(savedInstanceState);
         dataSource = new TechDataSource(getActivity());
         dataSource.open();
-        Log.i(LOGTAG, "Tech list frag onCreate called");
         refreshDisplay();
         setHasOptionsMenu(true);
     }

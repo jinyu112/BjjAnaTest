@@ -63,7 +63,6 @@ public class AddWeight extends ActionBarActivity {
                 android.R.layout.simple_spinner_item, arrayMonthSpinner);
         spin.setAdapter(adapter);
         spin.setSelection(currMonth);
-        Log.i(LOGTAG, "month: " + currMonth);
 
         //populate day spinner
         arrayDaySpinner = new String[31];
@@ -75,7 +74,6 @@ public class AddWeight extends ActionBarActivity {
                 android.R.layout.simple_spinner_item, arrayDaySpinner);
         spin.setAdapter(adapter);
         spin.setSelection(currDay);
-        Log.i(LOGTAG, "day: " + currDay);
 
         //populate year spinner
         arrayYearSpinner = new String[70];
@@ -87,7 +85,6 @@ public class AddWeight extends ActionBarActivity {
                 android.R.layout.simple_spinner_item, arrayYearSpinner);
         spin.setAdapter(adapter);
         spin.setSelection(currYear);
-        Log.i(LOGTAG, "year: " + currYear);
 
         ev = (MyEditText) findViewById(R.id.weightEV);
         ev.setText("0.0");
@@ -126,12 +123,9 @@ public class AddWeight extends ActionBarActivity {
         weight.setYear(currYear);
 
         weight.setDate(formatDate(currYear, currMonth, currDay));
-        Log.i(LOGTAG, Integer.toString(currYear) + Integer.toString(currMonth) + Integer.toString(currDay) );
 
         //do not allow for more than the upper limit of weight data points
-        Log.i(LOGTAG, "weight len in add weight activity: " + dataSource.getWeightLen());
         if (((int)dataSource.getWeightLen()+1)>MAX_WEIGHT_DATABASE_ROWS) {
-            Log.i(LOGTAG, "weight len in add weight activity: " + dataSource.getWeightLen());
             dataSource.removeBoundaryDate(weight.getDate());
         }
 

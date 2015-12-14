@@ -36,12 +36,10 @@ public class WeightDataSource {
     }
     
     public void open() {
-        Log.i(LOGTAG, "Database opened.");
         database = dbhelper.getWritableDatabase();
     }
 
     public void close() {
-        Log.i(LOGTAG,"Database closed.");
         dbhelper.close();
     }
     
@@ -53,7 +51,6 @@ public class WeightDataSource {
         values.put(trainingDBOpenHelper.COLUMN_WEIGHT_YEAR, weight.getYear());
         values.put(trainingDBOpenHelper.COLUMN_WEIGHT_DATE, weight.getDate());
         long insertId = database.insert(trainingDBOpenHelper.TABLE_WEIGHT, null, values);
-        Log.i(LOGTAG,"weight ID: " + insertId);
         weight.setId(insertId);
         return weight;
     }
@@ -65,7 +62,6 @@ public class WeightDataSource {
         List<Weight> weights = new ArrayList<Weight>();
         Cursor cursor = database.query(trainingDBOpenHelper.TABLE_WEIGHT, allColumns, null, null, null, null,
                 trainingDBOpenHelper.COLUMN_WEIGHT_DATE + " ASC");
-        Log.i(LOGTAG, "returned " + cursor.getCount() + " rows from weight db.");
         weightLen = cursor.getCount();
         if (weightLen > 0 && cursor != null) {
             while (cursor.moveToNext()) {
@@ -91,7 +87,6 @@ public class WeightDataSource {
                         maxWeightDB = weight.getMass(); //determine the max weight for y axis range
                     }
                 }
-                Log.i(LOGTAG, "weight mass: " + weight.getMass());
             }
         }
         cursor.close();

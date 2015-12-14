@@ -56,7 +56,6 @@ public class AddTimeFragment extends Fragment {
             case R.id.time_add:
                 Intent intent = new Intent(getActivity(),AddTime.class);
                 startActivity(intent);
-                Log.i(LOGTAG,"adding a new weight from the weight frag");
                 break;
             case R.id.time_del:
                 deleteTimeData();
@@ -108,7 +107,6 @@ public class AddTimeFragment extends Fragment {
                         +  ex.getMessage());
             }
             numDaysBetween=determineDaysBetween(maxDateInt,minDateInt);
-            Log.i(LOGTAG, "number of days: " + numDaysBetween );
             if (numDaysBetween < 7) {
                 weeks=1;
             }
@@ -232,10 +230,6 @@ public class AddTimeFragment extends Fragment {
         catch (Exception e) {
             e.printStackTrace();
         }
-        Log.i(LOGTAG, "sessions: " + timeDataArrayRetrieved[0] );
-        Log.i(LOGTAG, "mindate: " + timeDataArrayRetrieved[1] );
-        Log.i(LOGTAG, "maxdate: " + timeDataArrayRetrieved[2] );
-        Log.i(LOGTAG, "hours: " + timeDataArrayRetrieved[3] );
         return timeDataArrayRetrieved;
     }
 

@@ -30,12 +30,10 @@ public class TechDataSource {
     }
 
     public void open() {
-        Log.i(LOGTAG, "Database opened.");
         database = dbhelper.getWritableDatabase();
     }
 
     public void close() {
-        Log.i(LOGTAG,"Database closed.");
         dbhelper.close();
     }
 
@@ -47,7 +45,6 @@ public class TechDataSource {
         values.put(trainingDBOpenHelper.COLUMN_TECH_URL,tech.getTechVidURL());
         values.put(trainingDBOpenHelper.COLUMN_TECH_NOTE,tech.getTechNote());
         long insertId = database.insert(trainingDBOpenHelper.TABLE_TECH, null, values);
-        Log.i(LOGTAG,"tech ID: " + insertId);
         tech.setId(insertId);
         return tech;
     }
@@ -55,7 +52,6 @@ public class TechDataSource {
     public List<Tech> findAll() {
         List<Tech> techs = new ArrayList<Tech>();
         Cursor cursor = database.query(trainingDBOpenHelper.TABLE_TECH, allColumns, null, null, null, null, null);
-        Log.i(LOGTAG, "returned " + cursor.getCount() + " rows.");
         techLen = cursor.getCount();
         if (techLen > 0 && cursor != null) {
             while (cursor.moveToNext()) {

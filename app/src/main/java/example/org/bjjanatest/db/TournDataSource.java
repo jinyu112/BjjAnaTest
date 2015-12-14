@@ -68,12 +68,10 @@ public class TournDataSource {
     }
 
     public void open() {
-        Log.i(LOGTAG, "Database opened.");
         database = dbhelper.getWritableDatabase();
     }
 
     public void close() {
-        Log.i(LOGTAG,"Database closed.");
         dbhelper.close();
     }
 
@@ -97,7 +95,6 @@ public class TournDataSource {
         values.put(trainingDBOpenHelper.COLUMN_MATCH_TIME,tourn.getMatchTime());
         values.put(trainingDBOpenHelper.COLUMN_WIN,tourn.getWin());
         long insertId = database.insert(trainingDBOpenHelper.TABLE_TOURN,null,values);
-        Log.i(LOGTAG,"Tourn ID: " + insertId);
         tourn.setId(insertId);
         return tourn;
     }
@@ -105,7 +102,6 @@ public class TournDataSource {
     public List<Tourn> findAll() {
         List<Tourn> tourns = new ArrayList<Tourn>();
         Cursor cursor = database.query(trainingDBOpenHelper.TABLE_TOURN,allColumns,null,null,null,null,null);
-        Log.i(LOGTAG,"returned " + cursor.getCount() + " rows.");
         tournLen = cursor.getCount();
         if (tournLen>0 && cursor != null) {
             totalPts = 0;
