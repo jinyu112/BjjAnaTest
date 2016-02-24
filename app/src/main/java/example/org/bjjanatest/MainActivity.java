@@ -12,6 +12,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -27,6 +28,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.SQLData;
+import java.util.HashMap;
 import java.util.List;
 
 import example.org.bjjanatest.db.TournDataSource;
@@ -47,6 +49,15 @@ public class MainActivity extends ActionBarActivity {
     private FragmentNavigationDrawer dlDrawer;
 
     //Other objects
+    // Alert Dialog Manager
+    AlertDialogManager alert = new AlertDialogManager();
+
+    // Session Manager Class
+    SessionManagement session;
+
+    // Button Logout
+    Button btnLogout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +89,34 @@ public class MainActivity extends ActionBarActivity {
         }
         dataSource = new TournDataSource(this);
         AppRater.app_launched(this);
+
+
+        // Session class instance (for email sign up)
+        session = new SessionManagement(getApplicationContext());
+
+        //TextView lblName = (TextView) findViewById(R.id.lblName);
+        TextView lblEmail = (TextView) findViewById(R.id.lblEmail);
+
+        // Button logout
+        btnLogout = (Button) findViewById(R.id.btnLogin);
+
+        /**
+         * Call this function whenever you want to check user login
+         * This will redirect user to LoginActivity is he is not
+         * logged in
+         * */
+        session.checkLogin();
+
+        // get user data from session
+        HashMap<String, String> user = session.getUserDetails();
+
+        // email
+        String email = user.get(SessionManagement.KEY_EMAIL);
+
+        //session.logoutUser();
+
+
+
     }
 
     @Override
