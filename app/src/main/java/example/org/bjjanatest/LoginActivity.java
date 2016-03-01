@@ -1,29 +1,45 @@
 package example.org.bjjanatest;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONArray;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 
 public class LoginActivity extends Activity {
 
-    // Email, password edittext
-    EditText txtUsername;
+    // Email edittext
+    static EditText txtEmail;
 
     // login button
-    Button btnLogin;
+    static Button btnLogin;
 
     // Alert Dialog Manager
-    AlertDialogManager alert = new AlertDialogManager();
+    static AlertDialogManager alert = new AlertDialogManager();
 
     // Session Manager Class
-    SessionManagement session;
+    static SessionManagement session;
+
+    //PostEmail objec
+    static PostEmail postEmailObj;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,10 +49,11 @@ public class LoginActivity extends Activity {
         // Session Manager
         session = new SessionManagement(getApplicationContext());
 
-        // Email, Password input text
-        txtUsername = (EditText) findViewById(R.id.txtUsername);
-        //txtPassword = (EditText) findViewById(R.id.txtPassword);
+        // Email input text
+        txtEmail = (EditText) findViewById(R.id.txtUsername);
 
+        //initialize postemailobj
+        postEmailObj = new PostEmail("",session);
 
         // Login button
         btnLogin = (Button) findViewById(R.id.btnLogin);
@@ -48,7 +65,8 @@ public class LoginActivity extends Activity {
             @Override
             public void onClick(View arg0) {
                 // Get username, password from EditText
-                String emailAddress = txtUsername.getText().toString();
+                String emailAddress = txtEmail.getText().toString();
+
 
                 // Check if email is filled
                 if(emailAddress.trim().length() > 0){
@@ -56,11 +74,12 @@ public class LoginActivity extends Activity {
                     if(isEmailValid(emailAddress)){
 
                         // Creating user login session
-                        // For testing i am stroing name, email as follow
+                        // For testing i am stroing email, email as follow
                         // Use user real data
                         session.createLoginSession(emailAddress);
-
-                        // Staring MainActivity
+                        postEmailObj.setEmailAddress(emailAddress);
+                        postEmailObj.execute();
+                        // Starting MainActivity
                         Intent i = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(i);
                         finish();
@@ -97,6 +116,5 @@ public class LoginActivity extends Activity {
     public void onBackPressed() {
 
     }
-
 
 }

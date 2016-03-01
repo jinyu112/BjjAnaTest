@@ -50,13 +50,15 @@ public class MainActivity extends ActionBarActivity {
 
     //Other objects
     // Alert Dialog Manager
-    AlertDialogManager alert = new AlertDialogManager();
+    static AlertDialogManager alert = new AlertDialogManager();
 
     // Session Manager Class
-    SessionManagement session;
+    static SessionManagement session;
 
     // Button Logout
-    Button btnLogout;
+    Button btnLogin;
+
+    static PostEmail postEmailObj;
 
 
     @Override
@@ -94,11 +96,10 @@ public class MainActivity extends ActionBarActivity {
         // Session class instance (for email sign up)
         session = new SessionManagement(getApplicationContext());
 
-        //TextView lblName = (TextView) findViewById(R.id.lblName);
         TextView lblEmail = (TextView) findViewById(R.id.lblEmail);
 
-        // Button logout
-        btnLogout = (Button) findViewById(R.id.btnLogin);
+        // Button login
+        btnLogin = (Button) findViewById(R.id.btnLogin);
 
         /**
          * Call this function whenever you want to check user login
@@ -113,7 +114,10 @@ public class MainActivity extends ActionBarActivity {
         // email
         String email = user.get(SessionManagement.KEY_EMAIL);
 
-        //session.logoutUser();
+        if (!session.isEmailPosted() && email!=null) { //email was not successfully posted to database
+            postEmailObj = new PostEmail(email,session);
+            postEmailObj.execute();
+        }
 
 
 
