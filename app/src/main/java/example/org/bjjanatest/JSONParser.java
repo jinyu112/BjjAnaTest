@@ -24,10 +24,15 @@ public class JSONParser {
 
     static InputStream is = null;
     static JSONObject jObj = null;
-    static String json = "";
+    static String json = "{\"success\":\"-1\"}";
 
     // constructor
     public JSONParser() {
+        try {
+            jObj = new JSONObject(json);
+        } catch (JSONException e) {
+            Log.e("JSON Parser", "Error parsing data " + e.toString());
+        }
 
     }
 
@@ -66,10 +71,13 @@ public class JSONParser {
 
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
+            json = "{\"success\":\"-1\"}";
         } catch (ClientProtocolException e) {
             e.printStackTrace();
+            json = "{\"success\":\"-1\"}";
         } catch (IOException e) {
             e.printStackTrace();
+            json = "{\"success\":\"-1\"}";
         }
 
         try {
