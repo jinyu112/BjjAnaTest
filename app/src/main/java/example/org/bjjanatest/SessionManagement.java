@@ -12,13 +12,13 @@ import android.content.SharedPreferences.Editor;
 
 public class SessionManagement {
     // Shared Preferences
-    SharedPreferences pref;
+    static SharedPreferences pref;
 
     // Editor for Shared preferences
-    Editor editor;
+    static Editor editor;
 
     // Context
-    Context _context;
+    static Context _context;
 
     // Shared pref mode
     static int PRIVATE_MODE = 0;
@@ -108,7 +108,7 @@ public class SessionManagement {
     // Get Login State
     public boolean isLoggedIn(){return pref.getBoolean(IS_LOGIN, false);    }
 
-    public boolean isEmailPosted() {return pref.getBoolean(KEY_POST_SUCCESS, false);}
+    public boolean isEmailPosted() {return pref.getBoolean(KEY_POST_SUCCESS,false);}
 
     public void setEmailPosted() {
         //Storing post status
