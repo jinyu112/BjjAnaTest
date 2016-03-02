@@ -34,7 +34,7 @@ public class MainContentFragment extends Fragment {
     private MyTextView tv;
 
     //database related
-    TournDataSource dataSource;
+    static TournDataSource dataSource;
     private static HorizontalBarChart horizontalBarChart_OffPerc;
     private static HorizontalBarChart horizontalBarChart_TournAvg;
     private static PieChart pieChart_TournTotals;

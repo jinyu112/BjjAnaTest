@@ -23,6 +23,8 @@ import org.json.JSONArray;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
+import example.org.bjjanatest.db.TournDataSource;
+
 public class LoginActivity extends Activity {
 
     // Email edittext
@@ -38,13 +40,18 @@ public class LoginActivity extends Activity {
     static SessionManagement session;
 
     //PostEmail objec
-    static PostEmail postEmailObj;
+    static PostStats postStatsObj;
+//    static PostEmail postEmailObj;
+
+    static TournDataSource dataSource;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        dataSource = new TournDataSource(this);
 
         // Session Manager
         session = new SessionManagement(getApplicationContext());
@@ -53,7 +60,8 @@ public class LoginActivity extends Activity {
         txtEmail = (EditText) findViewById(R.id.txtUsername);
 
         //initialize postemailobj
-        postEmailObj = new PostEmail("",session);
+        //postEmailObj = new PostEmail("",session);
+        postStatsObj = new PostStats("",session);
 
         // Login button
         btnLogin = (Button) findViewById(R.id.btnLogin);
@@ -77,8 +85,10 @@ public class LoginActivity extends Activity {
                         // For testing i am stroing email, email as follow
                         // Use user real data
                         session.createLoginSession(emailAddress);
-                        postEmailObj.setEmailAddress(emailAddress);
-                        postEmailObj.execute();
+                        postStatsObj.setEmailAddress(emailAddress);
+                        postStatsObj.execute();
+//                        postEmailObj.setEmailAddress(emailAddress);
+//                        postEmailObj.execute();
                         // Starting MainActivity
                         Intent i = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(i);
@@ -115,6 +125,23 @@ public class LoginActivity extends Activity {
     @Override
     public void onBackPressed() {
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        dataSource.close();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        dataSource.close();
     }
 
 }

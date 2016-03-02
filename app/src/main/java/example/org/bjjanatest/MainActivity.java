@@ -27,9 +27,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.sql.SQLData;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import example.org.bjjanatest.db.TournDataSource;
 import example.org.bjjanatest.db.trainingDBOpenHelper;
@@ -58,8 +65,9 @@ public class MainActivity extends ActionBarActivity {
     // Button Logout
     Button btnLogin;
 
-    static PostEmail postEmailObj;
+    static PostStats postStatsObj;
 
+    private static final String filename = "myTimeData";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +98,8 @@ public class MainActivity extends ActionBarActivity {
             dlDrawer.selectDrawerItem(0);
         }
         dataSource = new TournDataSource(this);
+        dataSource.open(); //opens connection to the datasource
+        List<Tourn> tourns = dataSource.findAll();
         AppRater.app_launched(this);
 
 
@@ -114,10 +124,59 @@ public class MainActivity extends ActionBarActivity {
         // email
         String email = user.get(SessionManagement.KEY_EMAIL);
 
-        if (!session.isEmailPosted() && email!=null) { //email was not successfully posted to database
-            postEmailObj = new PostEmail(email,session);
-            postEmailObj.execute();
+        //training time data
+        String timeDataForDisplay[] = new String[]{"0", "0", "0", "0"};
+        int minDateInt=19000101;
+        int maxDateInt=minDateInt;
+        int numDaysBetween=0;
+        double weeks = 0.0;
+        double avgTimePerWeek=0.0;
+        double totalTimeTrained=0.0;
+        if (fileExistance(filename)) {
+            timeDataForDisplay = readTimeDataInternal();
+            minDateInt = 19000101;
+            maxDateInt = minDateInt;
+            try {
+                minDateInt = Integer.parseInt(timeDataForDisplay[1]);
+                maxDateInt = Integer.parseInt(timeDataForDisplay[2]);
+            } catch (NumberFormatException ex) {
+                System.err.println("Caught NumberFormatException in mainactivity: "
+                        + ex.getMessage());
+            }
+            numDaysBetween = determineDaysBetween(maxDateInt, minDateInt);
+            if (numDaysBetween < 7) {
+                weeks = 1;
+            } else weeks = (double) numDaysBetween / 7.0;
+            avgTimePerWeek = 0.0;
+            totalTimeTrained=0.0;
+            try {
+                avgTimePerWeek = (double) Double.parseDouble(timeDataForDisplay[3]) / weeks;
+                totalTimeTrained = (double) Double.parseDouble(timeDataForDisplay[3]);
+            } catch (NumberFormatException ex) {
+                System.err.println("Caught NumberFormatException in AddTimeFragment fragment: "
+                        + ex.getMessage());
+            }
+
+            avgTimePerWeek = Math.round(avgTimePerWeek * 10) / 10.0;
+            totalTimeTrained = Math.round(totalTimeTrained*10)/10.0;
         }
+
+        if (email!=null) { //email was not successfully posted to database
+            postStatsObj = new PostStats(email,session);
+            postStatsObj.setTournLen(dataSource.getTournLen());
+            postStatsObj.setTotalPts(dataSource.getTotalPts());
+            postStatsObj.setTotalPtsAllowed(dataSource.getTotalPtsAllowed());
+            postStatsObj.setSubSucPerc(dataSource.getSubSucPerc());
+            postStatsObj.setTdSucPerc(dataSource.getTdSucPerc());
+            postStatsObj.setSweepSucPerc(dataSource.getSweepSucPerc());
+            postStatsObj.setPassSucPerc(dataSource.getPassSucPerc());
+            postStatsObj.setTotalTime(totalTimeTrained);
+            postStatsObj.setAvgTimePerWeek(avgTimePerWeek);
+
+            postStatsObj.execute();
+        }
+
+        dataSource.close();
 
 
 
@@ -168,6 +227,7 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     protected void onResume() {
+
         super.onResume();
     }
 
@@ -181,6 +241,46 @@ public class MainActivity extends ActionBarActivity {
     protected void onStop() {
         super.onStop();
         dataSource.close();
+    }
+
+
+
+    public String[] readTimeDataInternal() {
+        String timeDataArrayRetrieved[] = new String[]{"0", "0", "0", "0"};
+        try {
+            FileInputStream fin = this.openFileInput(filename);
+            ObjectInputStream ois = new ObjectInputStream(fin);
+            timeDataArrayRetrieved = (String[]) ois.readObject();
+            ois.close();
+            fin.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return timeDataArrayRetrieved;
+    }
+
+    public boolean fileExistance(String fname){
+        File file = this.getFileStreamPath(fname);
+        return file.exists();
+    }
+
+    //This function calculates the number of days between two string dates
+    public int determineDaysBetween(int currDate, int prevDate) {
+        SimpleDateFormat myFormat = new SimpleDateFormat("yyyyMMdd");
+        String currentDateTemp=Integer.toString(currDate);
+        String prevDateTemp=Integer.toString(prevDate);
+        int numDaysBetween=0;
+        try {
+            Date currDateObj = myFormat.parse(currentDateTemp);
+            Date minDateObj = myFormat.parse(prevDateTemp);
+            long diff = currDateObj.getTime() - minDateObj.getTime();
+            numDaysBetween = (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            numDaysBetween=-1;
+        }
+        return numDaysBetween;
     }
 
 }
