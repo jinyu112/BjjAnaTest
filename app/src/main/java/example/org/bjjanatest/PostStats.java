@@ -58,12 +58,12 @@ public class PostStats extends AsyncTask<String, String, String> {
         params.add(new BasicNameValuePair("tournLen", Integer.toString(tournLen)));
         params.add(new BasicNameValuePair("totalPts",Integer.toString(totalPts) ));
         params.add(new BasicNameValuePair("totalPtsAllowed",Integer.toString(totalPtsAllowed) ));
-        params.add(new BasicNameValuePair("totalTime", Double.toString(Math.round(totalTime*10)/10) ));
-        params.add(new BasicNameValuePair("avgTimePerWeek", Double.toString(Math.round(avgTimePerWeek*10)/10) ));
-        params.add(new BasicNameValuePair("tdSucPerc", Double.toString(Math.round(tdSucPerc*1000)/1000) ));
-        params.add(new BasicNameValuePair("passSucPerc", Double.toString(Math.round(passSucPerc*1000)/1000) ));
-        params.add(new BasicNameValuePair("sweepSucPerc", Double.toString(Math.round(sweepSucPerc*1000)/1000) ));
-        params.add(new BasicNameValuePair("subSucPerc", Double.toString(Math.round(subSucPerc*1000)/1000) ));
+        params.add(new BasicNameValuePair("totalTime", Double.toString(totalTime)));
+        params.add(new BasicNameValuePair("avgTimePerWeek", Double.toString(avgTimePerWeek)));
+        params.add(new BasicNameValuePair("tdSucPerc", Double.toString(tdSucPerc)));
+        params.add(new BasicNameValuePair("passSucPerc", Double.toString(passSucPerc)));
+        params.add(new BasicNameValuePair("sweepSucPerc", Double.toString(sweepSucPerc)));
+        params.add(new BasicNameValuePair("subSucPerc", Double.toString(subSucPerc)));
         //Log.i("BJJ", "passSucPerc " + passSucPerc);
         // getting JSON Object
         // Note that post email url accepts POST method
