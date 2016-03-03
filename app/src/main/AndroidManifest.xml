@@ -22,20 +22,12 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".AddTraining"
-            android:label="@string/title_activity_add_train" android:screenOrientation="portrait"  >
-        </activity>
-        <activity
             android:name=".AddTech"
             android:label="@string/title_activity_add_tech" android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ViewTourn"
             android:label="@string/title_activity_view_tourn" android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".ViewTrain"
-            android:label="@string/title_activity_view_train" android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ViewTech"
