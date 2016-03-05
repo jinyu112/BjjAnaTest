@@ -68,6 +68,12 @@ public class TechDataSource {
         return techs;
     }
 
+    public int runTechCountQuery() {
+        Cursor cursor = database.query(trainingDBOpenHelper.TABLE_TECH, allColumns, null, null, null, null, null);
+        int techLenTemp = cursor.getCount();
+        return techLenTemp;
+    }
+
     public boolean removeFromTechs(Tech tech) {
         String where = trainingDBOpenHelper.COLUMN_ID_TECH + "=" + tech.getId(); //this string must be very carefully crafted or all data can be deleted
         int result = database.delete(trainingDBOpenHelper.TABLE_TECH, where, null);

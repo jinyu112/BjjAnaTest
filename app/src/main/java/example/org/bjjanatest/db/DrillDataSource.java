@@ -69,6 +69,12 @@ public class DrillDataSource {
         return drills;
     }
 
+    public int runDrillCountQuery() {
+        Cursor cursor = database.query(trainingDBOpenHelper.TABLE_DRILLS, allColumns, null, null, null, null, null);
+        int drillLenTemp = cursor.getCount();
+        return drillLenTemp;
+    }
+
     public boolean removeFromDrills(Drill drill) {
         String where = trainingDBOpenHelper.COLUMN_ID_DRILL + "=" + drill.getId(); //this string must be very carefully crafted or all data can be deleted
         int result = database.delete(trainingDBOpenHelper.TABLE_DRILLS, where, null);

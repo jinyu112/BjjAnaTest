@@ -16,6 +16,7 @@
     <string name="title_activity_edit_drill">EditDrill</string>
     <string name="title_activity_edit_tourn">EditTourn</string>
     <string name="title_activity_delete_weight">DeleteWeight</string>
+    <string name="title_activity_login">Login</string>
 
     <string name="pts_scored">Points Scored: </string>
     <string name="pts_allowed">Points Allowed: </string>

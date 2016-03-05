@@ -25,9 +25,18 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.github.mikephil.charting.utils.PercentFormatter;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+import example.org.bjjanatest.db.DrillDataSource;
+import example.org.bjjanatest.db.TechDataSource;
 import example.org.bjjanatest.db.TournDataSource;
 
 public class MainContentFragment extends Fragment {
@@ -35,9 +44,12 @@ public class MainContentFragment extends Fragment {
 
     //database related
     static TournDataSource dataSource;
+    static DrillDataSource drillsDataSource;
+    static TechDataSource techsDataSource;
     private static HorizontalBarChart horizontalBarChart_OffPerc;
     private static HorizontalBarChart horizontalBarChart_TournAvg;
     private static PieChart pieChart_TournTotals;
+    private static final String filename = "myTimeData";
 
     public MainContentFragment (){
             }
@@ -46,6 +58,9 @@ public class MainContentFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.main_content_frag,container,false);
         dataSource = new TournDataSource(getActivity());
+        drillsDataSource = new DrillDataSource(getActivity());
+        techsDataSource = new TechDataSource(getActivity());
+
         horizontalBarChart_OffPerc = (HorizontalBarChart) rootView.findViewById(R.id.tournOffPercChart);
         horizontalBarChart_OffPerc.setDrawValueAboveBar(true);
         horizontalBarChart_OffPerc.setDescription("");
@@ -231,12 +246,59 @@ public class MainContentFragment extends Fragment {
             PieData data_Totals = new PieData(xAxisStrings_Totals, dataSet_Totals);
             data_Totals.setValueFormatter(new IntValueFormatter()); //format the values a integers
 
-            dataSet_Totals.setColors(colors);
+            //set pie chart colors
+            ArrayList<Integer> colorsPie = new ArrayList<Integer>();
+            colorsPie.add(ColorTemplate.getHoloBlue());
+            colorsPie.add(Color.rgb(255, 167, 0));
 
+            dataSet_Totals.setColors(colorsPie);
             pieChart_TournTotals.setData(data_Totals);
             pieChart_TournTotals.highlightValues(null);
-
             pieChart_TournTotals.invalidate();
+
+
+            //training time data
+            String timeDataForDisplay[] = new String[]{"0", "0", "0", "0"};
+            int minDateInt=19000101;
+            int maxDateInt=minDateInt;
+            int numDaysBetween=0;
+            double weeks = 0.0;
+            double avgTimePerWeek=0.0;
+            double totalTimeTrained=0.0;
+            if (fileExistance(filename)) {
+                timeDataForDisplay = readTimeDataInternal();
+                minDateInt = 19000101;
+                maxDateInt = minDateInt;
+                try {
+                    minDateInt = Integer.parseInt(timeDataForDisplay[1]);
+                    maxDateInt = Integer.parseInt(timeDataForDisplay[2]);
+                } catch (NumberFormatException ex) {
+                    System.err.println("Caught NumberFormatException in mainactivity: "
+                            + ex.getMessage());
+                }
+                numDaysBetween = determineDaysBetween(maxDateInt, minDateInt);
+                if (numDaysBetween < 7) {
+                    weeks = 1;
+                } else weeks = (double) numDaysBetween / 7.0;
+                avgTimePerWeek = 0.0;
+                totalTimeTrained=0.0;
+                try {
+                    avgTimePerWeek = (double) Double.parseDouble(timeDataForDisplay[3]) / weeks;
+                    totalTimeTrained = (double) Double.parseDouble(timeDataForDisplay[3]);
+                } catch (NumberFormatException ex) {
+                    System.err.println("Caught NumberFormatException in AddTimeFragment fragment: "
+                            + ex.getMessage());
+                }
+
+                avgTimePerWeek = Math.round(avgTimePerWeek * 10) / 10.0;
+                totalTimeTrained = Math.round(totalTimeTrained*10)/10.0;
+            }
+
+            tv = (MyTextView) getView().findViewById(R.id.main_totalTime);
+            tv.setText(String.format("%6.1f",totalTimeTrained));
+
+            tv = (MyTextView) getView().findViewById(R.id.main_avgTime);
+            tv.setText(String.format("%6.1f",avgTimePerWeek));
 
         }
         else {
@@ -244,6 +306,27 @@ public class MainContentFragment extends Fragment {
             toast=Toast.makeText(getActivity(), "No tournament data found", Toast.LENGTH_LONG);
             toast.show();
         }
+
+        int drillLenTemp = drillsDataSource.runDrillCountQuery();
+        tv = (MyTextView) getView().findViewById(R.id.main_numDrills);
+        if (drillLenTemp!=0) {
+            tv.setText(String.format("%d",drillLenTemp));
+        }
+        else {
+            tv.setText("0");
+        }
+
+        int techLenTemp = techsDataSource.runTechCountQuery();
+        tv = (MyTextView) getView().findViewById(R.id.main_numTechs);
+        if (techLenTemp!=0) {
+            tv.setText(String.format("%d",techLenTemp));
+        }
+        else {
+            tv.setText("0");
+        }
+
+
+
     }
 
     @Override
@@ -264,4 +347,45 @@ public class MainContentFragment extends Fragment {
         super.onStop();
         dataSource.close();
     }
+
+
+    public String[] readTimeDataInternal() {
+        String timeDataArrayRetrieved[] = new String[]{"0", "0", "0", "0"};
+        try {
+            FileInputStream fin = getActivity().openFileInput(filename);
+            ObjectInputStream ois = new ObjectInputStream(fin);
+            timeDataArrayRetrieved = (String[]) ois.readObject();
+            ois.close();
+            fin.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return timeDataArrayRetrieved;
+    }
+
+
+    public boolean fileExistance(String fname){
+        File file = getActivity().getFileStreamPath(fname);
+        return file.exists();
+    }
+
+    //This function calculates the number of days between two string dates
+    public int determineDaysBetween(int currDate, int prevDate) {
+        SimpleDateFormat myFormat = new SimpleDateFormat("yyyyMMdd");
+        String currentDateTemp=Integer.toString(currDate);
+        String prevDateTemp=Integer.toString(prevDate);
+        int numDaysBetween=0;
+        try {
+            Date currDateObj = myFormat.parse(currentDateTemp);
+            Date minDateObj = myFormat.parse(prevDateTemp);
+            long diff = currDateObj.getTime() - minDateObj.getTime();
+            numDaysBetween = (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            numDaysBetween=-1;
+        }
+        return numDaysBetween;
+    }
+
 }
