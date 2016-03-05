@@ -33,7 +33,7 @@ public class ViewTech extends ActionBarActivity {
         tv = (MyTextView) findViewById(R.id.view_techType);
         int techType = tech.getTechType();
         if (techType==0) {
-            tv.setText("Position");
+            tv.setText("Pass");
         }
         else if (techType==1) {
             tv.setText("Submission");
@@ -45,10 +45,10 @@ public class ViewTech extends ActionBarActivity {
             tv.setText("Takedown");
         }
         else if (techType==4) {
-            tv.setText("Reversal");
+            tv.setText("Defense");
         }
         else {
-            tv.setText("Defense");
+            tv.setText("Misc.");
         }
 
         tv = (MyTextView) findViewById(R.id.view_techNotes);

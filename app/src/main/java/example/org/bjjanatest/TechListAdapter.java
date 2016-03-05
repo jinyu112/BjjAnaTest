@@ -39,7 +39,7 @@ public class TechListAdapter extends ArrayAdapter<Tech> {
 
 
         if (tech.getTechType()==0) {
-            tv.setText("Position");
+            tv.setText("Pass");
             iv.setImageResource(R.drawable.position_50);
         }
         else if (tech.getTechType()==1) {
@@ -55,11 +55,11 @@ public class TechListAdapter extends ArrayAdapter<Tech> {
             iv.setImageResource(R.drawable.td_50);
         }
         else if (tech.getTechType()==4) {
-            tv.setText("Reversal");
+            tv.setText("Defense");
             iv.setImageResource(R.drawable.reversal_50);
         }
         else if (tech.getTechType()==5) {
-            tv.setText("Defense");
+            tv.setText("Misc.");
             iv.setImageResource(R.drawable.defense_50);
         }
         else {

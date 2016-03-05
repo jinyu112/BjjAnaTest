@@ -260,7 +260,7 @@ public class AddTourney extends ActionBarActivity {
             seconds = 60.0;
         }
         double sec2min = seconds / 60.0;
-        double ttime = Math.round((minutes+sec2min)*10)/10.0;
+        double ttime = Math.round((minutes+sec2min)*100)/100.0;
         tourn.setMatchTime(ttime);
 
         //setting up alert dialog

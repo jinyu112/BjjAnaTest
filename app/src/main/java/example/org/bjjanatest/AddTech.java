@@ -30,7 +30,7 @@ public class AddTech extends ActionBarActivity{
         dataSource = new TechDataSource(this);
         dataSource.open();
 
-        this.arraySpinner = new String[] {"Position", "Submission", "Sweep", "Takedown", "Reversal", "Defense"};
+        this.arraySpinner = new String[] {"Pass", "Submission", "Sweep", "Takedown", "Defense", "Misc."};
 
         spin = (Spinner) findViewById(R.id.techType);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,

@@ -36,7 +36,7 @@ public class EditTech extends ActionBarActivity {
         ev.setText(tech.getTechName());
 
 
-        this.arraySpinner = new String[] {"Position", "Submission", "Sweep", "Takedown", "Reversal", "Defense"};
+        this.arraySpinner = new String[] {"Pass", "Submission", "Sweep", "Takedown", "Defense", "Misc."};
         spin = (Spinner) findViewById(R.id.edit_techType);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, arraySpinner);

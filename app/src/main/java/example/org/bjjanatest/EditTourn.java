@@ -292,8 +292,9 @@ public class EditTourn extends ActionBarActivity {
             seconds = 60.0;
         }
         double sec2min = seconds/60.0;
+        double ttime = Math.round((minutes+sec2min)*100)/100.0;
 
-        tourn.setMatchTime(minutes+sec2min);
+        tourn.setMatchTime(ttime);
 
         //Perform tournament data checks
         if (tourn.getPassAttempted()<tourn.getPassSuccessful()) {
