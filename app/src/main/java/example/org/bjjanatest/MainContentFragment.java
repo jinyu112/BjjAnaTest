@@ -121,9 +121,9 @@ public class MainContentFragment extends Fragment {
         pieChart_TournTotals.setTransparentCircleColor(Color.WHITE);
         pieChart_TournTotals.setTransparentCircleAlpha(110);
         pieChart_TournTotals.getLegend().setEnabled(false);
-
-        pieChart_TournTotals.setHoleRadius(58f);
-        pieChart_TournTotals.setTransparentCircleRadius(61f);
+        pieChart_TournTotals.setTouchEnabled(false);
+        pieChart_TournTotals.setHoleRadius(45f);
+        pieChart_TournTotals.setTransparentCircleRadius(49f);
         pieChart_TournTotals.setDrawCenterText(true);
 
         pieChart_TournTotals.setRotationAngle(0);
@@ -301,11 +301,11 @@ public class MainContentFragment extends Fragment {
             tv.setText(String.format("%6.1f",avgTimePerWeek));
 
         }
-        else {
-            Toast toast;
-            toast=Toast.makeText(getActivity(), "No tournament data found", Toast.LENGTH_LONG);
-            toast.show();
-        }
+//        else {
+            //Toast toast;
+            //toast=Toast.makeText(getActivity(), "No tournament data found", Toast.LENGTH_LONG);
+            //toast.show();
+//        }
 
         int drillLenTemp = drillsDataSource.runDrillCountQuery();
         tv = (MyTextView) getView().findViewById(R.id.main_numDrills);
