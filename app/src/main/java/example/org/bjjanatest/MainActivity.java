@@ -80,6 +80,7 @@ public class MainActivity extends ActionBarActivity {
         //initialize stuff
         android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
         toolbar.setBackgroundColor(Color.WHITE);
+        toolbar.setLogo(R.drawable.bjjanawhite50);
         setSupportActionBar(toolbar);
 
         // Find our drawer view

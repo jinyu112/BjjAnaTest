@@ -14,8 +14,8 @@ public class AppRater {
     private final static String APP_TITLE = "BJJ Analytics";
     private final static String APP_PNAME = "com.finalfeecalculator.finalfeecalculator";
 
-    private final static int DAYS_UNTIL_PROMPT = 7;
-    private final static int LAUNCHES_UNTIL_PROMPT = 15;
+    private final static int DAYS_UNTIL_PROMPT = 5;
+    private final static int LAUNCHES_UNTIL_PROMPT = 10;
 
     public static void app_launched(Context mContext) {
         SharedPreferences prefs = mContext.getSharedPreferences("apprater", 0);

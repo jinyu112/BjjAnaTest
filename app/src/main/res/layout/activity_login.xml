@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:gravity="center_vertical"
+    android:id="@+id/login_main_view">
+
 
 
     <!-- Email Label -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal">
     <TextView
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Email Address:"
         android:singleLine="true"
         android:layout_marginBottom="5dip"
         android:id="@+id/lblEmail"/>
+        </LinearLayout>
 
     <!-- Email input text -->
     <EditText android:id="@+id/txtUsername"
@@ -23,7 +32,19 @@
     <Button android:id="@+id/btnLogin"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Login"/>
+        android:text="Sign Up"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:gravity="center_vertical|center_horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register with BJJ Analytics."/>
+
+
+    </LinearLayout>
 
 
 

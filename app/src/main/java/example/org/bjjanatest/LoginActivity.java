@@ -3,6 +3,7 @@ package example.org.bjjanatest;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -65,6 +66,8 @@ public class LoginActivity extends Activity {
 
         // Login button
         btnLogin = (Button) findViewById(R.id.btnLogin);
+
+        this.findViewById(R.id.login_main_view).setBackgroundColor(Color.WHITE);
 
 
         // Login button click event

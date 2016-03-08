@@ -1,12 +1,16 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:buttonStyle">@style/CKButton</item>
+        <item name="colorControlNormal">#c5c5c5</item>
     </style>
     <style name="PaddingStyle">
         <item name="android:paddingLeft">16dp</item>
         <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingBottom">1dp</item>
+        <item name="android:paddingTop">1dp</item>
         <item name="android:gravity">center_vertical</item>
     </style>
     <style name="DividerLine">
@@ -26,6 +30,15 @@
     <style name="TopContent">
         <item name="android:paddingBottom">100dp</item>
     </style>
+    <style name="CKButton" parent="android:style/Widget.Button">
+        <item name="android:background">#33b5e5</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:bottomRightRadius">0dp</item>
+        <item name="android:bottomLeftRadius">0dp</item>
+        <item name="android:topLeftRadius">0dp</item>
+        <item name="android:topRightRadius">0dp</item>
+    </style>
+
 
 
     <style name="BaseRelativeLayout_0dpPadding">

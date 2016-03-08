@@ -78,6 +78,7 @@
                     android:id="@+id/ptsScoredPlus_edit"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    android:layout_marginRight="2dp"
                     android:layout_toLeftOf="@+id/ptsScoredMinus_edit"
                     android:text="+" />
 
@@ -117,6 +118,7 @@
                 <Button
                     android:id="@+id/ptsAllowedPlus_edit"
                     android:layout_width="40dp"
+                    android:layout_marginRight="2dp"
                     android:layout_height="40dp"
                     android:layout_toLeftOf="@+id/ptsAllowedMinus_edit"
                     android:text="+" />
@@ -156,6 +158,7 @@
                     android:id="@+id/swpsAttPlus_edit"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    android:layout_marginRight="2dp"
                     android:layout_toLeftOf="@+id/swpAttMinus_edit"
                     android:text="+" />
 
@@ -193,6 +196,7 @@
 
                 <Button
                     android:id="@+id/swpsSucPlus_edit"
+                    android:layout_marginRight="2dp"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_toLeftOf="@+id/swpSucMinus_edit"
@@ -235,6 +239,7 @@
                     android:id="@+id/passAttPlus_edit"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    android:layout_marginRight="2dp"
                     android:layout_toLeftOf="@+id/passAttMinus_edit"
                     android:text="+" />
 
@@ -274,6 +279,7 @@
                     android:id="@+id/passSucPlus_edit"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    android:layout_marginRight="2dp"
                     android:layout_toLeftOf="@+id/passSucMinus_edit"
                     android:text="+" />
 
@@ -313,6 +319,7 @@
                     android:id="@+id/tdAttPlus_edit"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    android:layout_marginRight="2dp"
                     android:layout_toLeftOf="@+id/tdAttMinus_edit"
                     android:text="+" />
 
@@ -352,6 +359,7 @@
                     android:id="@+id/tdSucPlus_edit"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    android:layout_marginRight="2dp"
                     android:layout_toLeftOf="@+id/tdSucMinus_edit"
                     android:text="+" />
 
@@ -391,6 +399,7 @@
                     android:id="@+id/subAttPlus_edit"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    android:layout_marginRight="2dp"
                     android:layout_toLeftOf="@+id/subAttMinus_edit"
                     android:text="+" />
 
