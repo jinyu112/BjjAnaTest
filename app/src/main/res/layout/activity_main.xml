@@ -1,4 +1,4 @@
-<example.org.bjjanatest.FragmentNavigationDrawer xmlns:android="http://schemas.android.com/apk/res/android"
+<com.analytics.bjj.FragmentNavigationDrawer xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
@@ -32,4 +32,4 @@
 
     </ListView>
 
-</example.org.bjjanatest.FragmentNavigationDrawer>
+</com.analytics.bjj.FragmentNavigationDrawer>

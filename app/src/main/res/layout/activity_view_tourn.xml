@@ -101,7 +101,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         style="@style/PaddingStyle">
-        <example.org.bjjanatest.MyTextView
+        <com.analytics.bjj.MyTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/view_tourn_activity" />
@@ -130,7 +130,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <example.org.bjjanatest.MyTextView
+        <com.analytics.bjj.MyTextView
             android:id="@+id/view_ptsScoredLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -139,7 +139,7 @@
             android:gravity="center_vertical"
             android:text="@string/pts_scored" />
 
-        <example.org.bjjanatest.MyTextView
+        <com.analytics.bjj.MyTextView
             android:id="@+id/view_pointsScored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -161,7 +161,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <example.org.bjjanatest.MyTextView
+        <com.analytics.bjj.MyTextView
             android:id="@+id/view_ptsAllowedLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -170,7 +170,7 @@
             android:gravity="center_vertical"
             android:text="@string/pts_allowed" />
 
-        <example.org.bjjanatest.MyTextView
+        <com.analytics.bjj.MyTextView
             android:id="@+id/view_pointsAllowed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -194,7 +194,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <example.org.bjjanatest.MyTextView
+        <com.analytics.bjj.MyTextView
             android:id="@+id/view_sweepAttemptedLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -202,7 +202,7 @@
             android:layout_centerVertical="true"
             android:text="@string/swp_att" />
 
-        <example.org.bjjanatest.MyTextView
+        <com.analytics.bjj.MyTextView
             android:id="@+id/view_sweepAttempted"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -227,7 +227,7 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <example.org.bjjanatest.MyTextView
+        <com.analytics.bjj.MyTextView
             android:id="@+id/view_sweepSuccLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -235,7 +235,7 @@
             android:layout_centerVertical="true"
             android:text="@string/swp_suc" />
 
-        <example.org.bjjanatest.MyTextView
+        <com.analytics.bjj.MyTextView
             android:id="@+id/view_sweepSuccessful"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -260,7 +260,7 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <example.org.bjjanatest.MyTextView
+        <com.analytics.bjj.MyTextView
             android:id="@+id/view_passAttLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -268,7 +268,7 @@
             android:layout_centerVertical="true"
             android:text="@string/pass_att" />
 
-        <example.org.bjjanatest.MyTextView
+        <com.analytics.bjj.MyTextView
             android:id="@+id/view_passAtt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -291,7 +291,7 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <example.org.bjjanatest.MyTextView
+        <com.analytics.bjj.MyTextView
             android:id="@+id/view_passSucLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -299,7 +299,7 @@
             android:layout_centerVertical="true"
             android:text="@string/pass_suc" />
 
-        <example.org.bjjanatest.MyTextView
+        <com.analytics.bjj.MyTextView
             android:id="@+id/view_passSuc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -325,7 +325,7 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <example.org.bjjanatest.MyTextView
+        <com.analytics.bjj.MyTextView
             android:id="@+id/view_tdAttLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -333,7 +333,7 @@
             android:layout_centerVertical="true"
             android:text="@string/td_att" />
 
-        <example.org.bjjanatest.MyTextView
+        <com.analytics.bjj.MyTextView
             android:id="@+id/view_tdAtt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -358,7 +358,7 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <example.org.bjjanatest.MyTextView
+        <com.analytics.bjj.MyTextView
             android:id="@+id/view_tdSucLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -366,7 +366,7 @@
             android:layout_centerVertical="true"
             android:text="@string/td_suc" />
 
-        <example.org.bjjanatest.MyTextView
+        <com.analytics.bjj.MyTextView
             android:id="@+id/view_tdSuc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -390,7 +390,7 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <example.org.bjjanatest.MyTextView
+        <com.analytics.bjj.MyTextView
             android:id="@+id/view_matchTimeLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -398,7 +398,7 @@
             android:layout_centerVertical="true"
             android:text="@string/match_time" />
 
-        <example.org.bjjanatest.MyTextView
+        <com.analytics.bjj.MyTextView
             android:id="@+id/view_matchTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -421,7 +421,7 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <example.org.bjjanatest.MyTextView
+            <com.analytics.bjj.MyTextView
                 android:id="@+id/view_weightLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -429,7 +429,7 @@
                 android:layout_centerVertical="true"
                 android:text="@string/weight_class" />
 
-            <example.org.bjjanatest.MyTextView
+            <com.analytics.bjj.MyTextView
                 android:id="@+id/view_weightClass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

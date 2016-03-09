@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="example.org.bjjanatest.DrillListFragment">
+    tools:context="com.analytics.bjj.DrillListFragment">
 
 
     <LinearLayout
@@ -13,7 +13,7 @@
         android:paddingBottom="16dp"
         android:paddingTop="16dp"
         style="@style/PaddingStyle">
-        <example.org.bjjanatest.MyTextView
+        <com.analytics.bjj.MyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Create a New Drill to Track" />
@@ -54,13 +54,13 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="end">
-            <example.org.bjjanatest.MyEditText
+            <com.analytics.bjj.MyEditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:singleLine="true"
                 android:text="Drill"
-                android:id="@+id/alertDialog_DrillName"></example.org.bjjanatest.MyEditText>
+                android:id="@+id/alertDialog_DrillName"></com.analytics.bjj.MyEditText>
         </LinearLayout>
     </LinearLayout>
 
@@ -84,14 +84,14 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="end">
-            <example.org.bjjanatest.MyEditText
+            <com.analytics.bjj.MyEditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:gravity="center_horizontal"
                 android:maxLength="3"
                 android:inputType="number"
-                android:id="@+id/alertDialog_NumReps"></example.org.bjjanatest.MyEditText>
+                android:id="@+id/alertDialog_NumReps"></com.analytics.bjj.MyEditText>
         </LinearLayout>
     </LinearLayout>
 

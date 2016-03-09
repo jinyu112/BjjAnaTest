@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="example.org.bjjanatest" >
+    package="com.analytics.bjj" >
 
     <application
         android:allowBackup="true"
@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="com.analytics.bjj.MainActivity"
             android:label="@string/app_name" android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,57 +17,57 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AddTourney"
+            android:name="com.analytics.bjj.AddTourney"
             android:label="@string/title_activity_add_tourney"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".AddTech"
+            android:name="com.analytics.bjj.AddTech"
             android:label="@string/title_activity_add_tech" android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".ViewTourn"
+            android:name="com.analytics.bjj.ViewTourn"
             android:label="@string/title_activity_view_tourn" android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".ViewTech"
+            android:name="com.analytics.bjj.ViewTech"
             android:label="@string/title_activity_view_tech" android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".EditTech"
+            android:name="com.analytics.bjj.EditTech"
             android:label="@string/title_activity_edit_tech" android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".AddWeight"
+            android:name="com.analytics.bjj.AddWeight"
             android:label="@string/title_activity_add_weight" android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".AddTime"
+            android:name="com.analytics.bjj.AddTime"
             android:label="@string/title_activity_add_time" android:screenOrientation="portrait" >
         </activity>
 
         <activity
-            android:name=".AddDrill"
+            android:name="com.analytics.bjj.AddDrill"
             android:label="@string/title_activity_add_drill" android:screenOrientation="portrait" >
         </activity>
 
         <activity
-            android:name=".EditDrill"
+            android:name="com.analytics.bjj.EditDrill"
             android:label="@string/title_activity_edit_drill" android:screenOrientation="portrait" >
         </activity>
 
         <activity
-            android:name=".EditTourn"
+            android:name="com.analytics.bjj.EditTourn"
             android:label="@string/title_activity_edit_tourn" android:screenOrientation="portrait" >
         </activity>
 
         <activity
-            android:name=".DeleteWeight"
+            android:name="com.analytics.bjj.DeleteWeight"
             android:label="@string/title_activity_delete_weight" android:screenOrientation="portrait" >
         </activity>
 
         <activity
-            android:name=".LoginActivity"
+            android:name="com.analytics.bjj.LoginActivity"
             android:label="@string/title_activity_login" android:screenOrientation="portrait" >
         </activity>
 
@@ -85,7 +85,7 @@
             android:parentActivityName=".ItemListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="example.org.bjjanatest.ItemListActivity" />
+                android:value="com.analytics.bjj.ItemListActivity" />
         </activity>
     </application>
 

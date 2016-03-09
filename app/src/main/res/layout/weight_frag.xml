@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="100"
-    tools:context="example.org.bjjanatest.AddWeightFragment">
+    tools:context="com.analytics.bjj.AddWeightFragment">
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-        <example.org.bjjanatest.MyTextView
+        <com.analytics.bjj.MyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -38,7 +38,7 @@
             android:layout_marginLeft="10dp"
             android:text="Average weight: " />
 
-        <example.org.bjjanatest.MyTextView
+        <com.analytics.bjj.MyTextView
             android:id="@+id/avgWeight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <example.org.bjjanatest.MyTextView
+            <com.analytics.bjj.MyTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -68,7 +68,7 @@
                 android:layout_marginLeft="10dp"
                 android:text="Max weight: " />
 
-            <example.org.bjjanatest.MyTextView
+            <com.analytics.bjj.MyTextView
                 android:id="@+id/maxWeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <example.org.bjjanatest.MyTextView
+            <com.analytics.bjj.MyTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -99,7 +99,7 @@
                 android:layout_marginLeft="10dp"
                 android:text="Min weight: " />
 
-            <example.org.bjjanatest.MyTextView
+            <com.analytics.bjj.MyTextView
                 android:id="@+id/minWeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -120,7 +120,7 @@
             android:layout_height="0dp"
             android:layout_weight="12.5"
             android:gravity="center">
-            <example.org.bjjanatest.MyTextView
+            <com.analytics.bjj.MyTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/weightDiff"/>

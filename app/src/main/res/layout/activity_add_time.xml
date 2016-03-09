@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="example.org.bjjanatest.AddTime"
+    tools:context="com.analytics.bjj.AddTime"
     style="@style/BaseRelativeLayout_0dpPadding"
     android:orientation="vertical">
 
@@ -53,7 +53,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <example.org.bjjanatest.MyTextView
+            <com.analytics.bjj.MyTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Enter amount of time spent training on:"
@@ -85,14 +85,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center">
-        <example.org.bjjanatest.MyEditText
+        <com.analytics.bjj.MyEditText
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:singleLine="true"
             android:maxLength="5"
             android:numeric="decimal"
             android:id="@+id/timeEV"/>
-            <example.org.bjjanatest.MyTextView
+            <com.analytics.bjj.MyTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="hours"

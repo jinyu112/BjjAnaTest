@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <example.org.bjjanatest.MyTextView
+                <com.analytics.bjj.MyTextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                    android:id="@+id/main_record_label"
@@ -31,7 +31,7 @@
                     android:text="@string/main_record_label"
                     android:textStyle="bold"
                     android:textSize="25sp"/>
-                <example.org.bjjanatest.MyTextView
+                <com.analytics.bjj.MyTextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/main_record"
@@ -50,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <example.org.bjjanatest.MyTextView
+                <com.analytics.bjj.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
@@ -64,14 +64,14 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <example.org.bjjanatest.MyTextView
+                <com.analytics.bjj.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="10dp"
                     android:text="Match Time (min): " />
 
-                <example.org.bjjanatest.MyTextView
+                <com.analytics.bjj.MyTextView
                     android:id="@+id/main_avgMatchTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -94,43 +94,43 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"></LinearLayout>
-                    <example.org.bjjanatest.MyTextView
+                    <com.analytics.bjj.MyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Sub Attempts"
                         android:layout_weight="1"/>
-                    <example.org.bjjanatest.MyTextView
+                    <com.analytics.bjj.MyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Subs "
                         android:layout_weight="1"/>
-                    <example.org.bjjanatest.MyTextView
+                    <com.analytics.bjj.MyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Sweep Attempts"
                         android:singleLine="true"
                         android:layout_weight="1"/>
-                    <example.org.bjjanatest.MyTextView
+                    <com.analytics.bjj.MyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Sweeps"
                         android:layout_weight="1"/>
-                    <example.org.bjjanatest.MyTextView
+                    <com.analytics.bjj.MyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Pass Attempts"
                         android:layout_weight="1"/>
-                    <example.org.bjjanatest.MyTextView
+                    <com.analytics.bjj.MyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Passes"
                         android:layout_weight="1"/>
-                    <example.org.bjjanatest.MyTextView
+                    <com.analytics.bjj.MyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="TD Attempts"
                         android:layout_weight="1"/>
-                    <example.org.bjjanatest.MyTextView
+                    <com.analytics.bjj.MyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="TDs"
@@ -159,7 +159,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <example.org.bjjanatest.MyTextView
+                <com.analytics.bjj.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
@@ -181,22 +181,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"></LinearLayout>
-                <example.org.bjjanatest.MyTextView
+                <com.analytics.bjj.MyTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Sub %"
                     android:layout_weight="1"/>
-                <example.org.bjjanatest.MyTextView
+                <com.analytics.bjj.MyTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Sweep %"
                     android:layout_weight="1"/>
-                <example.org.bjjanatest.MyTextView
+                <com.analytics.bjj.MyTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Pass %"
                     android:layout_weight="1"/>
-                <example.org.bjjanatest.MyTextView
+                <com.analytics.bjj.MyTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TD %"
@@ -222,7 +222,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <example.org.bjjanatest.MyTextView
+                <com.analytics.bjj.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
@@ -248,7 +248,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <example.org.bjjanatest.MyTextView
+                <com.analytics.bjj.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
@@ -265,14 +265,14 @@
                     android:gravity="center"
                     android:orientation="horizontal">
 
-                    <example.org.bjjanatest.MyTextView
+                    <com.analytics.bjj.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_marginLeft="10dp"
                         android:text="Total Time Trained (hrs): " />
 
-                    <example.org.bjjanatest.MyTextView
+                    <com.analytics.bjj.MyTextView
                         android:id="@+id/main_totalTime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -292,14 +292,14 @@
                     android:gravity="center"
                     android:orientation="horizontal">
 
-                    <example.org.bjjanatest.MyTextView
+                    <com.analytics.bjj.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_marginLeft="10dp"
                         android:text="Average Time Trained Per Week (hrs): " />
 
-                    <example.org.bjjanatest.MyTextView
+                    <com.analytics.bjj.MyTextView
                         android:id="@+id/main_avgTime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -318,7 +318,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <example.org.bjjanatest.MyTextView
+                <com.analytics.bjj.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
@@ -335,14 +335,14 @@
                     android:gravity="center"
                     android:orientation="horizontal">
 
-                    <example.org.bjjanatest.MyTextView
+                    <com.analytics.bjj.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_marginLeft="10dp"
                         android:text="Number of Drills Tracked: " />
 
-                    <example.org.bjjanatest.MyTextView
+                    <com.analytics.bjj.MyTextView
                         android:id="@+id/main_numDrills"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -362,14 +362,14 @@
                     android:gravity="center"
                     android:orientation="horizontal">
 
-                    <example.org.bjjanatest.MyTextView
+                    <com.analytics.bjj.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_marginLeft="10dp"
                         android:text="Number of Techniques Tracked: " />
 
-                    <example.org.bjjanatest.MyTextView
+                    <com.analytics.bjj.MyTextView
                         android:id="@+id/main_numTechs"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

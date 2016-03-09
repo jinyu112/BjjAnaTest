@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/BaseRelativeLayout_0dpPadding"
-    tools:context="example.org.bjjanatest.EditTech">
+    tools:context="com.analytics.bjj.EditTech">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -29,7 +29,7 @@
                 android:paddingTop="16dp"
                 style="@style/PaddingStyle">
 
-            <example.org.bjjanatest.MyTextView
+            <com.analytics.bjj.MyTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/edit_tech_activity" />
@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <example.org.bjjanatest.MyTextView
+                <com.analytics.bjj.MyTextView
                     android:id="@+id/techNameLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
                     android:layout_width="0px"
                     android:layout_height="0px">
                 </LinearLayout>
-                <example.org.bjjanatest.MyEditText
+                <com.analytics.bjj.MyEditText
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/edit_techNameEV"
@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <example.org.bjjanatest.MyTextView
+                <com.analytics.bjj.MyTextView
                     android:id="@+id/techTypeLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -125,7 +125,7 @@
                 style="@style/PaddingStyle"
                 android:orientation="vertical">
 
-                <example.org.bjjanatest.MyTextView
+                <com.analytics.bjj.MyTextView
                     android:id="@+id/techNotesLabel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

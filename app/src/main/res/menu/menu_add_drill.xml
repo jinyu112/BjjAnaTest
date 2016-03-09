@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="example.org.bjjanatest.AddDrill">
+    tools:context="com.analytics.bjj.AddDrill">
     <item
         android:id="@+id/drill_add"
         android:orderInCategory="100"

@@ -26,7 +26,7 @@
                 android:paddingBottom="16dp"
                 android:paddingTop="16dp"
                 style="@style/PaddingStyle">
-    <example.org.bjjanatest.MyTextView
+    <com.analytics.bjj.MyTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/view_tech_activity" />
@@ -56,7 +56,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <example.org.bjjanatest.MyTextView
+        <com.analytics.bjj.MyTextView
             android:id="@+id/view_techLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
             android:gravity="center_vertical"
             android:text="@string/tech_name" />
 
-        <example.org.bjjanatest.MyTextView
+        <com.analytics.bjj.MyTextView
             android:id="@+id/view_techName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <example.org.bjjanatest.MyTextView
+        <com.analytics.bjj.MyTextView
             android:id="@+id/view_techTypeLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -100,7 +100,7 @@
             android:gravity="center_vertical"
             android:text="@string/tech_type" />
 
-        <example.org.bjjanatest.MyTextView
+        <com.analytics.bjj.MyTextView
             android:id="@+id/view_techType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -120,7 +120,7 @@
             android:paddingTop="16dp"
             style="@style/PaddingStyle">
 
-        <example.org.bjjanatest.MyTextView
+        <com.analytics.bjj.MyTextView
             android:id="@+id/view_techNotesLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -139,7 +139,7 @@
             android:paddingTop="16dp"
             style="@style/PaddingStyle">
 
-        <example.org.bjjanatest.MyTextView
+        <com.analytics.bjj.MyTextView
             android:id="@+id/view_techNotes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:gravity="center">
-    <example.org.bjjanatest.MyTextView
+    <com.analytics.bjj.MyTextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Improve your BJJ game with BJJ Analytics!"

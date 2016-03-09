@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical">
-            <example.org.bjjanatest.MyTextView
+            <com.analytics.bjj.MyTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -23,7 +23,7 @@
                 android:layout_marginLeft="16dp"
                 android:text="Total training time (hrs): "/>
 
-            <example.org.bjjanatest.MyTextView
+            <com.analytics.bjj.MyTextView
                 android:id="@+id/totalTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <example.org.bjjanatest.MyTextView
+            <com.analytics.bjj.MyTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -52,7 +52,7 @@
                 android:layout_centerInParent="true"
                 android:text="Avg. time per week (hrs): " />
 
-            <example.org.bjjanatest.MyTextView
+            <com.analytics.bjj.MyTextView
                 android:id="@+id/avgTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <example.org.bjjanatest.MyTextView
+            <com.analytics.bjj.MyTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -80,7 +80,7 @@
                 android:layout_centerInParent="true"
                 android:text="Total training sessions: " />
 
-            <example.org.bjjanatest.MyTextView
+            <com.analytics.bjj.MyTextView
                 android:id="@+id/totalSessions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -100,7 +100,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <example.org.bjjanatest.MyTextView
+            <com.analytics.bjj.MyTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -108,7 +108,7 @@
                 android:layout_centerInParent="true"
                 android:text="Average sessions per week: " />
 
-            <example.org.bjjanatest.MyTextView
+            <com.analytics.bjj.MyTextView
                 android:id="@+id/avgSessions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
