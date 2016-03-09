@@ -89,6 +89,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentRight="true"
+            style="@style/minusButton"
             android:text="-" />
     </RelativeLayout>
 
@@ -129,6 +130,7 @@
             android:id="@+id/ptsAllowedMinus"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            style="@style/minusButton"
             android:layout_alignParentRight="true"
             android:text="-" />
     </RelativeLayout>
@@ -168,6 +170,7 @@
             android:id="@+id/swpAttMinus"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            style="@style/minusButton"
             android:layout_alignParentRight="true"
             android:text="-" />
     </RelativeLayout>
@@ -208,6 +211,7 @@
             android:id="@+id/swpSucMinus"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            style="@style/minusButton"
             android:layout_alignParentRight="true"
             android:text="-" />
     </RelativeLayout>
@@ -249,6 +253,7 @@
             android:id="@+id/passAttMinus"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            style="@style/minusButton"
             android:layout_alignParentRight="true"
             android:text="-" />
     </RelativeLayout>
@@ -289,6 +294,7 @@
             android:id="@+id/passSucMinus"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            style="@style/minusButton"
             android:layout_alignParentRight="true"
             android:text="-" />
     </RelativeLayout>
@@ -329,6 +335,7 @@
             android:id="@+id/tdAttMinus"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            style="@style/minusButton"
             android:layout_alignParentRight="true"
             android:text="-" />
     </RelativeLayout>
@@ -369,6 +376,7 @@
             android:id="@+id/tdSucMinus"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            style="@style/minusButton"
             android:layout_alignParentRight="true"
             android:text="-" />
     </RelativeLayout>
@@ -409,6 +417,7 @@
                 android:id="@+id/subAttMinus"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                style="@style/minusButton"
                 android:layout_alignParentRight="true"
                 android:text="-" />
         </RelativeLayout>

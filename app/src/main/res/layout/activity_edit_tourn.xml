@@ -86,6 +86,7 @@
                     android:id="@+id/ptsScoredMinus_edit"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    style="@style/minusButton"
                     android:layout_alignParentRight="true"
                     android:text="-" />
             </RelativeLayout>
@@ -126,6 +127,7 @@
                 <Button
                     android:id="@+id/ptsAllowedMinus_edit"
                     android:layout_width="40dp"
+                    style="@style/minusButton"
                     android:layout_height="40dp"
                     android:layout_alignParentRight="true"
                     android:text="-" />
@@ -166,6 +168,7 @@
                     android:id="@+id/swpAttMinus_edit"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    style="@style/minusButton"
                     android:layout_alignParentRight="true"
                     android:text="-" />
             </RelativeLayout>
@@ -206,6 +209,7 @@
                     android:id="@+id/swpSucMinus_edit"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    style="@style/minusButton"
                     android:layout_alignParentRight="true"
                     android:text="-" />
             </RelativeLayout>
@@ -247,6 +251,7 @@
                     android:id="@+id/passAttMinus_edit"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    style="@style/minusButton"
                     android:layout_alignParentRight="true"
                     android:text="-" />
             </RelativeLayout>
@@ -286,6 +291,7 @@
                 <Button
                     android:id="@+id/passSucMinus_edit"
                     android:layout_width="40dp"
+                    style="@style/minusButton"
                     android:layout_height="40dp"
                     android:layout_alignParentRight="true"
                     android:text="-" />
@@ -327,6 +333,7 @@
                     android:id="@+id/tdAttMinus_edit"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    style="@style/minusButton"
                     android:layout_alignParentRight="true"
                     android:text="-" />
             </RelativeLayout>
@@ -368,6 +375,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_alignParentRight="true"
+                    style="@style/minusButton"
                     android:text="-" />
             </RelativeLayout>
 
@@ -406,6 +414,7 @@
                 <Button
                     android:id="@+id/subAttMinus_edit"
                     android:layout_width="40dp"
+                    style="@style/minusButton"
                     android:layout_height="40dp"
                     android:layout_alignParentRight="true"
                     android:text="-" />

@@ -39,6 +39,14 @@
         <item name="android:topRightRadius">0dp</item>
     </style>
 
+    <style name="minusButton" parent="android:style/Widget.Button">
+        <item name="android:background">#FFA700</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:bottomRightRadius">0dp</item>
+        <item name="android:bottomLeftRadius">0dp</item>
+        <item name="android:topLeftRadius">0dp</item>
+        <item name="android:topRightRadius">0dp</item>
+    </style>
 
 
     <style name="BaseRelativeLayout_0dpPadding">
