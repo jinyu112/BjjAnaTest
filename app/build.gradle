@@ -5,7 +5,7 @@ android {
     buildToolsVersion "21.1.2"
 
     defaultConfig {
-        applicationId "example.org.bjjanatest"
+        applicationId "com.analytics.bjj"
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 1
