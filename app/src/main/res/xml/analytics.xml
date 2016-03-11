@@ -8,6 +8,6 @@
     <bool name="ga_autoActivityTracking">true</bool>
 
     <!--Disable automatic exception tracking-->
-    <bool name="ga_reportUncaughtExceptions">false</bool>
+    <bool name="ga_reportUncaughtExceptions">true</bool>
 
 </resources>
