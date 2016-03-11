@@ -1,5 +1,6 @@
 package com.analytics.bjj;
 
+import android.app.Application;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -33,6 +34,8 @@ import java.util.concurrent.TimeUnit;
 import com.analytics.bjj.db.DrillDataSource;
 import com.analytics.bjj.db.TechDataSource;
 import com.analytics.bjj.db.TournDataSource;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 public class MainContentFragment extends Fragment {
     private MyTextView tv;
@@ -327,6 +330,16 @@ public class MainContentFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+
+        //ga
+        AnalyticsApplication application = (AnalyticsApplication) getActivity().getApplication();
+        final Tracker tracker = application.getDefaultTracker();
+        if(tracker != null){
+            tracker.setScreenName(getClass().getSimpleName());
+            tracker.send(new HitBuilders.ScreenViewBuilder().build());
+        }
+
+
         dataSource.open(); //opens connection to the datasource
         drillsDataSource.open();
         techsDataSource.open();

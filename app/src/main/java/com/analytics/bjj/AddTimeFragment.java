@@ -10,6 +10,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
@@ -78,6 +81,16 @@ public class AddTimeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+
+        //ga
+        AnalyticsApplication application = (AnalyticsApplication) getActivity().getApplication();
+        final Tracker tracker = application.getDefaultTracker();
+        if(tracker != null){
+            tracker.setScreenName(getClass().getSimpleName());
+            tracker.send(new HitBuilders.ScreenViewBuilder().build());
+        }
+
+
         displayTimeData();
     }
 

@@ -13,6 +13,8 @@ import android.widget.ListView;
 import java.util.List;
 
 import com.analytics.bjj.db.TechDataSource;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 
 public class TechListFragment extends android.support.v4.app.ListFragment {
@@ -80,6 +82,15 @@ public class TechListFragment extends android.support.v4.app.ListFragment {
     @Override
     public void onResume() {
         super.onResume();
+
+        //ga
+        AnalyticsApplication application = (AnalyticsApplication) getActivity().getApplication();
+        final Tracker tracker = application.getDefaultTracker();
+        if(tracker != null){
+            tracker.setScreenName(getClass().getSimpleName());
+            tracker.send(new HitBuilders.ScreenViewBuilder().build());
+        }
+
         dataSource.open(); //opens connection to the datasource
         refreshDisplay();
     }

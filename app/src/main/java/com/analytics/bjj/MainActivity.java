@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import com.analytics.bjj.db.TournDataSource;
+import com.google.android.gms.analytics.Tracker;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -162,8 +163,6 @@ public class MainActivity extends ActionBarActivity {
         }
 
         dataSource.close();
-
-
 
     }
 

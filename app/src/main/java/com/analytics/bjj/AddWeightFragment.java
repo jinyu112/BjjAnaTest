@@ -26,6 +26,8 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import com.analytics.bjj.db.WeightDataSource;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 public class AddWeightFragment extends Fragment {
 
@@ -126,7 +128,17 @@ public class AddWeightFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        //dataSource.open(); //opens connection to the datasource
+
+        //ga
+        AnalyticsApplication application = (AnalyticsApplication) getActivity().getApplication();
+        final Tracker tracker = application.getDefaultTracker();
+        if(tracker != null){
+            tracker.setScreenName(getClass().getSimpleName());
+            tracker.send(new HitBuilders.ScreenViewBuilder().build());
+        }
+
+
+        dataSource.open(); //opens connection to the datasource
         displayWeightData(refreshDisplay());
     }
 
