@@ -82,7 +82,7 @@ public class MainContentFragment extends Fragment {
         yr_offperc.setEnabled(false);
         yr_offperc.setAxisMaxValue(100f);
 
-        horizontalBarChart_OffPerc.setNoDataText("No data.");
+        horizontalBarChart_OffPerc.setNoDataText("No data. Add tournament match statistics.");
 
 
         //Tournament average horizon bar chart
@@ -108,7 +108,7 @@ public class MainContentFragment extends Fragment {
         yr_avg.setDrawLabels(false);
         yr_avg.setEnabled(false);
 
-        horizontalBarChart_TournAvg.setNoDataText("No data.");
+        horizontalBarChart_TournAvg.setNoDataText("No data. Add tournament match statistics.");
 
 
         //pie chart
@@ -127,7 +127,7 @@ public class MainContentFragment extends Fragment {
         pieChart_TournTotals.setRotationAngle(0);
         pieChart_TournTotals.setRotationEnabled(true);
 
-        pieChart_TournTotals.setNoDataText("No data.");
+        pieChart_TournTotals.setNoDataText("No data. Add tournament match statistics.");
         return rootView;
     }
 

@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import com.analytics.bjj.db.TournDataSource;
+import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
 
@@ -52,6 +53,8 @@ public class MainActivity extends ActionBarActivity {
     static PostStats postStatsObj;
 
     private static final String filename = "myTimeData";
+
+    private Tracker tracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -158,11 +161,19 @@ public class MainActivity extends ActionBarActivity {
             postStatsObj.setPassSucPerc(dataSource.getPassSucPerc());
             postStatsObj.setTotalTime(totalTimeTrained);
             postStatsObj.setAvgTimePerWeek(avgTimePerWeek);
-
             postStatsObj.execute();
         }
 
         dataSource.close();
+
+
+        //ga
+        AnalyticsApplication application = (AnalyticsApplication) getApplication();
+        tracker = application.getDefaultTracker();
+        if(tracker != null){
+            tracker.setScreenName(getClass().getSimpleName());
+            tracker.send(new HitBuilders.ScreenViewBuilder().build());
+        }
 
     }
 
