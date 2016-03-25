@@ -24,7 +24,6 @@ public class DrillListFragment extends ListFragment{
 
     private static DrillDataSource dataSource;
     private List<Drill> drills;
-    private static final String LOGTAG = "BJJTRAINING";
     private static final int MAX_DRILL_DATABASE_ROWS = 49;
 
 

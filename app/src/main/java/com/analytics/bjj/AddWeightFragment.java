@@ -3,7 +3,6 @@ package com.analytics.bjj;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -32,7 +31,6 @@ import com.google.android.gms.analytics.Tracker;
 public class AddWeightFragment extends Fragment {
 
     WeightDataSource dataSource;
-    private static final String LOGTAG = "BJJTRAINING";
     private static LineChart lineChart; //should this be static?
     private static MyTextView tv_avgWeight;
     private static MyTextView tv_maxWeight;
@@ -51,7 +49,6 @@ public class AddWeightFragment extends Fragment {
         super.onCreate(savedInstanceState);
         dataSource = new WeightDataSource(getActivity());
         dataSource.open();
-        Log.i(LOGTAG, "Weight frag onCreate called");
         setHasOptionsMenu(true);
     }
 
@@ -68,7 +65,6 @@ public class AddWeightFragment extends Fragment {
             case R.id.weight_add:
                 Intent intent = new Intent(getActivity(),AddWeight.class);
                 startActivity(intent);
-                Log.i(LOGTAG,"adding a new weight from the weight frag");
 
                 break;
             case R.id.weight_del:

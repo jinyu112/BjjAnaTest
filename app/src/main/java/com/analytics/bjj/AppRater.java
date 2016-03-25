@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class AppRater {
     private final static String APP_TITLE = "BJJ Analytics";
-    private final static String APP_PNAME = "com.finalfeecalculator.finalfeecalculator";
+    private final static String APP_PNAME = "com.analytics.bjj";
 
     private final static int DAYS_UNTIL_PROMPT = 5;
     private final static int LAUNCHES_UNTIL_PROMPT = 10;

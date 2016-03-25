@@ -5,11 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import com.analytics.bjj.Weight;
 
 public class WeightDataSource {
@@ -18,7 +15,6 @@ public class WeightDataSource {
     private static long weightLen;
     private static double minWeightDB = 0.0;
     private static double maxWeightDB = 0.0;
-    private static final String LOGTAG = "BJJTRAINING";
     private static final String[] allColumns = {
             trainingDBOpenHelper.COLUMN_ID_WEIGHT,
             trainingDBOpenHelper.COLUMN_WEIGHT_MASS,
@@ -117,7 +113,6 @@ public class WeightDataSource {
             if (c.getCount() > 0 && c != null) {
                 c.moveToFirst();
                 minDate = c.getInt(0);
-                Log.i(LOGTAG, "earliest date removed? " + c.getInt(0));
             }
 
             //determine the max date (latest date)
@@ -126,7 +121,6 @@ public class WeightDataSource {
             if (c.getCount() > 0 && c != null) {
                 c.moveToFirst();
                 maxDate = c.getInt(0);
-                Log.i(LOGTAG, "latest date removed? " + c.getInt(0));
             }
 
             //determine which boundary date to remove

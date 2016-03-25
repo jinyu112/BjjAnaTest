@@ -14,9 +14,7 @@ import com.analytics.bjj.db.WeightDataSource;
 
 public class AddWeight extends ActionBarActivity {
 
-    private List<Weight> weights;
     WeightDataSource dataSource;
-    private static final String LOGTAG = "BJJTRAINING";
     private static String[] arrayMonthSpinner;
     private static String[] arrayDaySpinner;
     private static String[] arrayYearSpinner;

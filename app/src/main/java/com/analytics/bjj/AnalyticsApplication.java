@@ -1,8 +1,6 @@
 package com.analytics.bjj;
 
 import android.app.Application;
-import android.util.Log;
-
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
@@ -31,7 +29,7 @@ public class AnalyticsApplication extends Application {
             return googleAnalytics.newTracker(R.xml.analytics);
 
         }catch(final Exception e){
-            Log.e("GA Track", "Failed to initialize Google Analytics V4");
+            //Log.e("GA Track", "Failed to initialize Google Analytics V4");
         }
         return null;
     }

@@ -2,7 +2,6 @@ package com.analytics.bjj;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -47,7 +46,7 @@ public class TechListFragment extends android.support.v4.app.ListFragment {
             case R.id.tech_add:
                 Intent intent = new Intent(getActivity(),AddTech.class);
                 startActivity(intent);
-                Log.i(LOGTAG,"adding a new tech from the tech list frag");
+                //Log.i(LOGTAG,"adding a new tech from the tech list frag");
                 break;
             case R.id.tech_del:
                 dataSource.removeAllTechs();

@@ -2,7 +2,6 @@ package com.analytics.bjj;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,7 +20,6 @@ public class TournListFragment extends android.support.v4.app.ListFragment {
     private List<Tourn> tourns;  // should this be static??
     //database related
     TournDataSource dataSource; //should this be a private variable?
-    private static final String LOGTAG = "BJJTRAINING";
 
     public TournListFragment (){
     }
@@ -47,7 +45,7 @@ public class TournListFragment extends android.support.v4.app.ListFragment {
             case R.id.tourn_add:
                 Intent intent = new Intent(getActivity(),AddTourney.class);
                 startActivity(intent);
-                Log.i(LOGTAG,"adding a new tourney from the tourn list frag");
+                //Log.i(LOGTAG,"adding a new tourney from the tourn list frag");
                 break;
             case R.id.tourn_del:
                 dataSource.removeAllTourns();

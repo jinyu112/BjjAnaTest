@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_weight="2">
         <com.analytics.bjj.MyTextView
             android:layout_width="wrap_content"
             android:layout_height="70dp"
@@ -18,18 +18,18 @@
             android:id="@+id/tech_list_item_name"/>
     </RelativeLayout>
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:layout_weight="1"
-        android:gravity="center">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:id="@+id/tech_list_item_icon"
-            android:gravity="center_vertical|center" />
-    </LinearLayout>
+    <!--<LinearLayout-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="70dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:gravity="center">-->
+        <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:id="@+id/tech_list_item_icon"-->
+            <!--android:gravity="center_vertical|center" />-->
+    <!--</LinearLayout>-->
 
     <RelativeLayout
         android:layout_width="0dp"
@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="70dp"
             android:layout_gravity="center_vertical"
-            android:layout_alignParentRight="true"
+
             android:layout_marginRight="10dp"
             android:id="@+id/tech_list_item_cat"
             android:gravity="center_vertical" />

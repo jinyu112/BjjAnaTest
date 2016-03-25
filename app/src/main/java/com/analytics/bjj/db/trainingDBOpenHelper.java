@@ -4,11 +4,9 @@ package com.analytics.bjj.db;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 public class trainingDBOpenHelper extends SQLiteOpenHelper{
 
-    private static final String LOGTAG = "BJJTRAINING";
     private static final String DATABASE_NAME = "training_database.db";
     private static final int DATABASE_VERSION = 1;
 
@@ -144,15 +142,10 @@ public class trainingDBOpenHelper extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         //if database doesn't exist, this method is called by the sdk ONLY
         db.execSQL(TABLE_CREATE);
-        Log.i(LOGTAG, "Table tourn has been created.");
         db.execSQL(TABLE_CREATE_TRAIN);
-        Log.i(LOGTAG, "Table train has been created.");
         db.execSQL(TABLE_CREATE_TECH);
-        Log.i(LOGTAG, "Table tech has been created.");
         db.execSQL(TABLE_CREATE_WEIGHT);
-        Log.i(LOGTAG, "Table weight has been created.");
         db.execSQL(TABLE_CREATE_DRILL);
-        Log.i(LOGTAG, "Table drill has been created.");
     }
 
     @Override

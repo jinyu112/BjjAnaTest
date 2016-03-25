@@ -29,7 +29,7 @@ import com.google.android.gms.analytics.Tracker;
 
 public class MainActivity extends ActionBarActivity {
     //LOGCAT
-    private static final String LOGTAG = "BJJTRAINING";
+    //private static final String LOGTAG = "BJJTRAINING";
 
     //activity codes
     private static final int ADDTOURNEY_REQ_CODE = 1;

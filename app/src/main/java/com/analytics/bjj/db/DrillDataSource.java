@@ -6,17 +6,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import com.analytics.bjj.Drill;
 
 public class DrillDataSource {
     SQLiteDatabase database;
     SQLiteOpenHelper dbhelper;
-    private static final String LOGTAG = "BJJTRAINING";
     private static final String[] allColumns = {
             trainingDBOpenHelper.COLUMN_ID_DRILL,
             trainingDBOpenHelper.COLUMN_DRILL_NAME,
@@ -43,7 +39,6 @@ public class DrillDataSource {
         values.put(trainingDBOpenHelper.COLUMN_DRILL_NAME,drill.getDrillName());
         values.put(trainingDBOpenHelper.COLUMN_DRILL_TOTAL_REPS,drill.getDrillRepTotal());
         long insertId = database.insert(trainingDBOpenHelper.TABLE_DRILLS, null, values);
-        Log.i(LOGTAG,"drill ID: " + insertId);
         drill.setId(insertId);
         return drill;
     }

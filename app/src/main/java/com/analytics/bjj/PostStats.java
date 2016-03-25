@@ -25,8 +25,8 @@ public class PostStats extends AsyncTask<String, String, String> {
 
     static JSONParser jsonParser = new JSONParser();
 
-    //php file that posts email to database on server
-    private static String urlPostStats = "http://vbaexceltutorial.com/write_email.php";
+    //php file that posts email/data to database on server
+    private static String urlPostStats = "http://bjjanalytics.com/write_data.php";
 
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
