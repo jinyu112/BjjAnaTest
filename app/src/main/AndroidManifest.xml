@@ -3,6 +3,8 @@
     package="com.analytics.bjj"
     android:versionCode="1"
     android:versionName="1.0">
+    <uses-sdk
+        android:minSdkVersion="15"/>
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -81,18 +83,18 @@
         <uses-permission android:name="android.permission.INTERNET"/>
         <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
-        <activity
-            android:name=".ItemListActivity"
-            android:label="@string/title_item_list" >
-        </activity>
-        <activity
-            android:name=".ItemDetailActivity"
-            android:label="@string/title_item_detail"
-            android:parentActivityName=".ItemListActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.analytics.bjj.ItemListActivity" />
-        </activity>
+        <!--<activity-->
+            <!--android:name=".ItemListActivity"-->
+            <!--android:label="@string/title_item_list" >-->
+        <!--</activity>-->
+        <!--<activity-->
+            <!--android:name=".ItemDetailActivity"-->
+            <!--android:label="@string/title_item_detail"-->
+            <!--android:parentActivityName=".ItemListActivity" >-->
+            <!--<meta-data-->
+                <!--android:name="android.support.PARENT_ACTIVITY"-->
+                <!--android:value="com.analytics.bjj.ItemListActivity" />-->
+        <!--</activity>-->
     </application>
 
 </manifest>
