@@ -1,0 +1,19 @@
+05-01 22:46:55.492: I/BJJTRAINING(7318): returned 0 rows.
+05-01 22:46:55.492: I/BJJTRAINING(7318): first beltblack
+05-01 22:46:55.492: I/BJJTRAINING(7318): first id9
+05-01 22:46:55.492: I/BJJTRAINING(7318): first passattempts0
+05-01 22:46:55.502: I/BJJTRAINING(7318): Tournament data created with id 9
+05-01 22:46:55.512: I/BJJTRAINING(7318): Tournament data created with id 5
+05-01 22:46:55.512: I/BJJTRAINING(7318): asdfasdf8.0
+05-01 22:46:55.512: I/BJJTRAINING(7318): Tournament data created with id 1
+05-01 22:46:55.522: I/BJJTRAINING(7318): returned 3 rows.
+05-01 22:46:55.522: I/BJJTRAINING(7318): got the proper tourn id 1
+05-01 22:46:55.522: I/BJJTRAINING(7318): got the proper tourn name 
+05-01 22:46:55.522: I/BJJTRAINING(7318): got the proper tourn match time 19.0
+05-01 22:46:55.522: I/BJJTRAINING(7318): got the proper tourn id 5
+05-01 22:46:55.522: I/BJJTRAINING(7318): got the proper tourn name 
+05-01 22:46:55.522: I/BJJTRAINING(7318): got the proper tourn match time 1.0
+05-01 22:46:55.522: I/BJJTRAINING(7318): got the proper tourn id 9
+05-01 22:46:55.522: I/BJJTRAINING(7318): got the proper tourn name askdfhasdflkddddddd
+05-01 22:46:55.522: I/BJJTRAINING(7318): got the proper tourn match time 1239.9
+05-01 22:46:55.522: I/BJJTRAINING(7318): Database opened.

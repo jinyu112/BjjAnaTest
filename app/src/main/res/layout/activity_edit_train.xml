@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="0dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    tools:context="com.analytics.bjj.AddTrain">
+
+
+<ScrollView
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    style="@style/TopContent"
+    android:layout_alignParentTop="true">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="16dp"
+                android:paddingTop="16dp"
+                style="@style/PaddingStyle">
+                <com.analytics.bjj.MyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Edit sparring match statistics." />
+            </LinearLayout>
+
+            <!--divider line-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/PaddingStyle"
+                android:orientation="vertical">
+                <View
+                    style="@style/DividerLine" />
+            </LinearLayout>
+            <!--divider line-->
+
+
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                style="@style/PaddingStyle">
+
+                <com.analytics.bjj.MyTextView
+                    android:id="@+id/sweepAttemptedLabel_edit_train"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/swp_att" />
+
+                <com.analytics.bjj.MyTextView
+                    android:id="@+id/sweepAttempted_edit_train"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/swpsAttPlus_edit_train"
+                    android:text="0" />
+
+                <Button
+                    android:id="@+id/swpsAttPlus_edit_train"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_toLeftOf="@+id/swpAttMinus_edit_train"
+                    android:text="+" />
+
+                <Button
+                    android:id="@+id/swpAttMinus_edit_train"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    style="@style/minusButton"
+                    android:layout_alignParentRight="true"
+                    android:text="-" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                style="@style/PaddingStyle">
+
+                <com.analytics.bjj.MyTextView
+                    android:id="@+id/sweepSuccLabel_edit_train"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/swp_suc" />
+
+                <com.analytics.bjj.MyTextView
+                    android:id="@+id/sweepSuccessful_edit_train"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/swpsSucPlus_edit_train"
+                    android:text="0" />
+
+                <Button
+                    android:id="@+id/swpsSucPlus_edit_train"
+                    android:layout_marginRight="2dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_toLeftOf="@+id/swpSucMinus_edit_train"
+                    android:text="+" />
+
+                <Button
+                    android:id="@+id/swpSucMinus_edit_train"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    style="@style/minusButton"
+                    android:layout_alignParentRight="true"
+                    android:text="-" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                style="@style/PaddingStyle">
+
+                <com.analytics.bjj.MyTextView
+                    android:id="@+id/passAttLabel_edit_train"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/pass_att" />
+
+                <com.analytics.bjj.MyTextView
+                    android:id="@+id/passAtt_edit_train"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/passAttPlus_edit_train"
+                    android:text="0" />
+
+                <Button
+                    android:id="@+id/passAttPlus_edit_train"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_toLeftOf="@+id/passAttMinus_edit_train"
+                    android:text="+" />
+
+                <Button
+                    android:id="@+id/passAttMinus_edit_train"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    style="@style/minusButton"
+                    android:layout_alignParentRight="true"
+                    android:text="-" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                style="@style/PaddingStyle">
+
+                <com.analytics.bjj.MyTextView
+                    android:id="@+id/passSucLabel_edit_train"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/pass_suc" />
+
+                <com.analytics.bjj.MyTextView
+                    android:id="@+id/passSuc_edit_train"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/passSucPlus_edit_train"
+                    android:text="0" />
+
+                <Button
+                    android:id="@+id/passSucPlus_edit_train"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_toLeftOf="@+id/passSucMinus_edit_train"
+                    android:text="+" />
+
+                <Button
+                    android:id="@+id/passSucMinus_edit_train"
+                    android:layout_width="40dp"
+                    style="@style/minusButton"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:text="-" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                style="@style/PaddingStyle">
+
+                <com.analytics.bjj.MyTextView
+                    android:id="@+id/tdAttLabel_edit_train"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/td_att" />
+
+                <com.analytics.bjj.MyTextView
+                    android:id="@+id/tdAtt_edit_train"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/tdAttPlus_edit_train"
+                    android:text="0" />
+
+                <Button
+                    android:id="@+id/tdAttPlus_edit_train"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_toLeftOf="@+id/tdAttMinus_edit_train"
+                    android:text="+" />
+
+                <Button
+                    android:id="@+id/tdAttMinus_edit_train"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    style="@style/minusButton"
+                    android:layout_alignParentRight="true"
+                    android:text="-" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                style="@style/PaddingStyle">
+
+                <com.analytics.bjj.MyTextView
+                    android:id="@+id/tdSucLabel_edit_train"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/td_suc" />
+
+                <com.analytics.bjj.MyTextView
+                    android:id="@+id/tdSuc_edit_train"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/tdSucPlus_edit_train"
+                    android:text="0" />
+
+                <Button
+                    android:id="@+id/tdSucPlus_edit_train"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_toLeftOf="@+id/tdSucMinus_edit_train"
+                    android:text="+" />
+
+                <Button
+                    android:id="@+id/tdSucMinus_edit_train"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    style="@style/minusButton"
+                    android:text="-" />
+            </RelativeLayout>
+
+            <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            style="@style/PaddingStyle">
+
+            <com.analytics.bjj.MyTextView
+                android:id="@+id/subAttLabel_edit_train"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="@string/sub_att" />
+
+            <com.analytics.bjj.MyTextView
+                android:id="@+id/subAtt_edit_train"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/subAttPlus_edit_train"
+                android:text="0" />
+
+            <Button
+                android:id="@+id/subAttPlus_edit_train"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="2dp"
+                android:layout_toLeftOf="@+id/subAttMinus_edit_train"
+                android:text="+" />
+
+            <Button
+                android:id="@+id/subAttMinus_edit_train"
+                android:layout_width="40dp"
+                style="@style/minusButton"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:text="-" />
+        </RelativeLayout>
+
+
+
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                style="@style/PaddingStyle">
+
+                <com.analytics.bjj.MyTextView
+                    android:id="@+id/subSucLabel_edit_train"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="Submissions Successful:" />
+
+                <com.analytics.bjj.MyTextView
+                    android:id="@+id/subSuc_edit_train"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/subSucPlus_edit_train"
+                    android:text="0" />
+
+                <Button
+                    android:id="@+id/subSucPlus_edit_train"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_toLeftOf="@+id/subSucMinus_edit_train"
+                    android:text="+" />
+
+                <Button
+                    android:id="@+id/subSucMinus_edit_train"
+                    android:layout_width="40dp"
+                    style="@style/minusButton"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:text="-" />
+            </RelativeLayout>
+
+<!--&lt;!&ndash;filler test&ndash;&gt;-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="100dp"></LinearLayout>-->
+            <!--&lt;!&ndash;filler test&ndash;&gt;-->
+
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:focusableInTouchMode="true"
+                style="@style/PaddingStyle">
+
+                <com.analytics.bjj.MyTextView
+                    android:id="@+id/matchTimeLabel_edit_train"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="Match Length:" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true" android:focusableInTouchMode="true"
+                    android:layout_toLeftOf="@+id/minLabel_edit_train">
+                <com.analytics.bjj.MyEditText
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/matchTimeMinEV_edit_train"
+                    android:layout_toLeftOf="@+id/minLabel_edit_train"
+                    android:singleLine="true"
+                    android:maxLength="2"
+                    android:inputType="number"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"
+                    android:text="0"/>
+</LinearLayout>
+                <com.analytics.bjj.MyTextView
+                    android:id="@+id/minLabel_edit_train"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/matchTimeSecEV_edit_train"
+                    android:text="min" />
+
+                <com.analytics.bjj.MyEditText
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/matchTimeSecEV_edit_train"
+                    android:singleLine="true"
+                    android:layout_toLeftOf="@+id/secLabel_edit_train"
+                    android:maxLength="2"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"
+                    android:inputType="number"
+                    android:text="00"/>
+                <com.analytics.bjj.MyTextView
+                    android:id="@+id/secLabel_edit_train"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentRight="true"
+                    android:text="sec" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>
+
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:orientation="horizontal"
+        android:layout_above="@+id/bottombar_edittrain">
+        <View
+            style="@style/DividerLine" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/bottombar_edittrain"
+        style="@style/BottomActionBar">
+        <ImageButton
+            android:id="@+id/save_train_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:src="@drawable/ok_100"
+            android:background="@android:color/transparent"
+            android:onClick="saveTrain_edit"
+            android:text="Save Sparring Match" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

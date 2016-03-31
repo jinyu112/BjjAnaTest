@@ -1,0 +1,6 @@
+Analytics tracking ID
+UA-48423141-6
+Google Analytics Account
+jinyu112
+Analytics Property
+BJJ Analytics Android: com.analytics.bjj

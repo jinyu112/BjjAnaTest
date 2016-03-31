@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.analytics.bjj.db.TrainDataSource;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -44,8 +45,11 @@ public class MainContentFragment extends Fragment {
     static TournDataSource dataSource;
     static DrillDataSource drillsDataSource;
     static TechDataSource techsDataSource;
+    static TrainDataSource trainsDataSource;
     private static HorizontalBarChart horizontalBarChart_OffPerc;
     private static HorizontalBarChart horizontalBarChart_TournAvg;
+    private static HorizontalBarChart horizontalBarChart_TrainAvg;
+    private static HorizontalBarChart horizontalBarChart_TrainOffPerc;
     private static PieChart pieChart_TournTotals;
     private static final String filename = "myTimeData";
 
@@ -58,7 +62,61 @@ public class MainContentFragment extends Fragment {
         dataSource = new TournDataSource(getActivity());
         drillsDataSource = new DrillDataSource(getActivity());
         techsDataSource = new TechDataSource(getActivity());
+        trainsDataSource = new TrainDataSource(getActivity());
 
+        horizontalBarChart_TrainOffPerc = (HorizontalBarChart) rootView.findViewById(R.id.trainOffPercChart);
+        horizontalBarChart_TrainOffPerc.setDrawValueAboveBar(true);
+        horizontalBarChart_TrainOffPerc.setDescription("");
+        horizontalBarChart_TrainOffPerc.animateY(1000);
+        horizontalBarChart_TrainOffPerc.setPinchZoom(false);
+        horizontalBarChart_TrainOffPerc.setTouchEnabled(false);
+        horizontalBarChart_TrainOffPerc.getLegend().setEnabled(false);
+
+        XAxis xl_offperc_train = horizontalBarChart_TrainOffPerc.getXAxis(); //actual data on the x axis (horizontal chart only)
+        xl_offperc_train.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xl_offperc_train.setDrawGridLines(false);
+        xl_offperc_train.setEnabled(false);
+
+        YAxis yl_offperc_train = horizontalBarChart_TrainOffPerc.getAxisLeft(); //left y axis
+        yl_offperc_train.setDrawLabels(false);
+        yl_offperc_train.setEnabled(false);
+        yl_offperc_train.setAxisMaxValue(100f);
+
+        YAxis yr_offperc_train = horizontalBarChart_TrainOffPerc.getAxisRight(); //right y axis
+        yr_offperc_train.setDrawLabels(false);
+        yr_offperc_train.setEnabled(false);
+        yr_offperc_train.setAxisMaxValue(100f);
+
+        horizontalBarChart_TrainOffPerc.setNoDataText("No data.");
+
+
+        horizontalBarChart_TrainAvg = (HorizontalBarChart) rootView.findViewById(R.id.trainAvgChart);
+        horizontalBarChart_TrainAvg.setDrawValueAboveBar(true);
+        horizontalBarChart_TrainAvg.setDescription("");
+        horizontalBarChart_TrainAvg.animateY(1000);
+        horizontalBarChart_TrainAvg.setPinchZoom(false);
+        horizontalBarChart_TrainAvg.setTouchEnabled(false);
+        horizontalBarChart_TrainAvg.getLegend().setEnabled(false);
+
+
+        XAxis xl_avg_train = horizontalBarChart_TrainAvg.getXAxis();  //actual data on the x axis (horizontal chart only)
+        xl_avg_train.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xl_avg_train.setDrawGridLines(false);
+        xl_avg_train.setEnabled(false);
+
+        YAxis yl_avg_train = horizontalBarChart_TrainAvg.getAxisLeft(); //left y axis
+        yl_avg_train.setDrawLabels(false);
+        yl_avg_train.setEnabled(false);
+
+        YAxis yr_avg_train = horizontalBarChart_TrainAvg.getAxisRight(); //right y axis
+        yr_avg_train.setDrawLabels(false);
+        yr_avg_train.setEnabled(false);
+
+        horizontalBarChart_TrainAvg.setNoDataText("No data.");
+
+
+
+        //tournament stats
         horizontalBarChart_OffPerc = (HorizontalBarChart) rootView.findViewById(R.id.tournOffPercChart);
         horizontalBarChart_OffPerc.setDrawValueAboveBar(true);
         horizontalBarChart_OffPerc.setDescription("");
@@ -305,23 +363,119 @@ public class MainContentFragment extends Fragment {
             //toast.show();
 //        }
 
-        int drillLenTemp = drillsDataSource.runDrillCountQuery();
-        tv = (MyTextView) getView().findViewById(R.id.main_numDrills);
-        if (drillLenTemp!=0) {
-            tv.setText(String.format("%d",drillLenTemp));
-        }
-        else {
-            tv.setText("0");
+//        int drillLenTemp = drillsDataSource.runDrillCountQuery();
+//        tv = (MyTextView) getView().findViewById(R.id.main_numDrills);
+//        if (drillLenTemp!=0) {
+//            tv.setText(String.format("%d",drillLenTemp));
+//        }
+//        else {
+//            tv.setText("0");
+//        }
+//
+//        int techLenTemp = techsDataSource.runTechCountQuery();
+//        tv = (MyTextView) getView().findViewById(R.id.main_numTechs);
+//        if (techLenTemp!=0) {
+//            tv.setText(String.format("%d",techLenTemp));
+//        }
+//        else {
+//            tv.setText("0");
+//        }
+
+
+
+
+
+
+        List<Train> trains = trainsDataSource.findAll();
+        if (trains.size()!=0) {
+
+            //set colors
+            ArrayList<Integer> colors_train = new ArrayList<Integer>();
+            colors_train.add(ColorTemplate.getHoloBlue());
+
+            //plot offense percentage data
+            ArrayList<BarEntry> dataPoints_Avg_train = new ArrayList<BarEntry>();
+            ArrayList<String> xAxisStrings_train = new ArrayList<String>();
+            BarEntry entry_train;
+
+            entry_train = new BarEntry((float) trainsDataSource.getAvgTdScored(), 0);
+            dataPoints_Avg_train.add(entry_train);
+            xAxisStrings_train.add("");
+
+            entry_train = new BarEntry((float) trainsDataSource.getAvgTdAtt(), 1);
+            dataPoints_Avg_train.add(entry_train);
+            xAxisStrings_train.add("");
+
+            entry_train = new BarEntry((float) trainsDataSource.getAvgPassesScored(), 2);
+            dataPoints_Avg_train.add(entry_train);
+            xAxisStrings_train.add("");
+
+            entry_train = new BarEntry((float) trainsDataSource.getAvgPassesAtt(), 3);
+            dataPoints_Avg_train.add(entry_train);
+            xAxisStrings_train.add("");
+
+            entry_train = new BarEntry((float) trainsDataSource.getAvgSweepsScored(), 4);
+            dataPoints_Avg_train.add(entry_train);
+            xAxisStrings_train.add("");
+
+            entry_train = new BarEntry((float) trainsDataSource.getAvgSweepsAtt(), 5);
+            dataPoints_Avg_train.add(entry_train);
+            xAxisStrings_train.add("");
+
+            entry_train = new BarEntry((float) trainsDataSource.getAvgSubsScored(), 6);
+            dataPoints_Avg_train.add(entry_train);
+            xAxisStrings_train.add("");
+
+            entry_train = new BarEntry((float) trainsDataSource.getAvgSubsAtt(), 7);
+            dataPoints_Avg_train.add(entry_train);
+            xAxisStrings_train.add("");
+
+            BarDataSet set1_train = new BarDataSet(dataPoints_Avg_train, "Training Offense Percentages");
+            set1_train.setBarSpacePercent(0f);
+            set1_train.setColors(colors_train);
+
+            ArrayList<BarDataSet> dataSets_train = new ArrayList<BarDataSet>();
+            dataSets_train.add(set1_train);
+
+            BarData data_train = new BarData(xAxisStrings_train, dataSets_train);
+
+            horizontalBarChart_TrainAvg.setData(data_train);
+            horizontalBarChart_TrainAvg.invalidate();
+
+
+            //plot offense percentage data
+            ArrayList<BarEntry> dataPoints_OffPerc_train = new ArrayList<BarEntry>();
+            ArrayList<String> xAxisStrings_OffPerc_train = new ArrayList<String>();
+
+            entry_train = new BarEntry((float) trainsDataSource.getTdSucPerc() * 100, 0);
+            dataPoints_OffPerc_train.add(entry_train);
+            xAxisStrings_OffPerc_train.add("TD %");
+
+            entry_train = new BarEntry((float) trainsDataSource.getPassSucPerc() * 100, 1);
+            dataPoints_OffPerc_train.add(entry_train);
+            xAxisStrings_OffPerc_train.add("Pass %");
+
+            entry_train = new BarEntry((float) trainsDataSource.getSweepSucPerc() * 100, 2);
+            dataPoints_OffPerc_train.add(entry_train);
+            xAxisStrings_OffPerc_train.add("Sweep %");
+
+            entry_train = new BarEntry((float) trainsDataSource.getSubSucPerc() * 100, 3);
+            dataPoints_OffPerc_train.add(entry_train);
+            xAxisStrings_OffPerc_train.add("Sub %");
+
+            BarDataSet set1_OffPerc_train = new BarDataSet(dataPoints_OffPerc_train, "Tournament Offsense Percentages");
+            set1_OffPerc_train.setColors(colors_train);
+            set1_OffPerc_train.setBarSpacePercent(0f);
+
+            ArrayList<BarDataSet> dataSets_OffPerc_train = new ArrayList<BarDataSet>();
+            dataSets_OffPerc_train.add(set1_OffPerc_train);
+
+            BarData data_OffPerc_train = new BarData(xAxisStrings_OffPerc_train, dataSets_OffPerc_train);
+
+            horizontalBarChart_TrainOffPerc.setData(data_OffPerc_train);
+            horizontalBarChart_TrainOffPerc.invalidate();
         }
 
-        int techLenTemp = techsDataSource.runTechCountQuery();
-        tv = (MyTextView) getView().findViewById(R.id.main_numTechs);
-        if (techLenTemp!=0) {
-            tv.setText(String.format("%d",techLenTemp));
-        }
-        else {
-            tv.setText("0");
-        }
 
 
 
@@ -343,6 +497,7 @@ public class MainContentFragment extends Fragment {
         dataSource.open(); //opens connection to the datasource
         drillsDataSource.open();
         techsDataSource.open();
+        trainsDataSource.open();
         getStats();
     }
 
@@ -352,6 +507,7 @@ public class MainContentFragment extends Fragment {
         dataSource.close();
         drillsDataSource.close();
         techsDataSource.close();
+        trainsDataSource.close();
     }
 
     @Override
@@ -360,6 +516,7 @@ public class MainContentFragment extends Fragment {
         dataSource.close();
         drillsDataSource.close();
         techsDataSource.close();
+        trainsDataSource.close();
     }
 
 

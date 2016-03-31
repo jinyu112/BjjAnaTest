@@ -1,14 +1,24 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.google.gms.google-services'
+
 
 android {
-    compileSdkVersion 22
+    compileSdkVersion 21
     buildToolsVersion "21.1.2"
+    productFlavors {
+        free {
+            applicationId "com.analytics.bjj.free"
+            versionName "1.0-free"
+        }
+        pro {
+            applicationId "com.analytics.bjj.pro"
+            versionName "1.0-pro"
+        }
+    }
 
     defaultConfig {
         applicationId "com.analytics.bjj"
         minSdkVersion 15
-        targetSdkVersion 22
+        targetSdkVersion 21
         versionCode 1
         versionName "1.0"
     }
@@ -33,3 +43,4 @@ dependencies {
     compile 'com.google.android.gms:play-services-analytics:8.3.0'
 
 }
+apply plugin: 'com.google.gms.google-services'

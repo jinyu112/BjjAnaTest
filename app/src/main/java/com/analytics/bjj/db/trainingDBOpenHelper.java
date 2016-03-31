@@ -1,6 +1,4 @@
 package com.analytics.bjj.db;
-
-
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -35,8 +33,6 @@ public class trainingDBOpenHelper extends SQLiteOpenHelper{
     public static final String COLUMN_TRAIN_NAME             = "trainName";
     public static final String COLUMN_BELT_TRAIN              = "belt";
     public static final String COLUMN_BELT_TRAIN_OPP              = "oppBelt";
-    public static final String COLUMN_PTS_ALLOWED_TRAIN           = "pointsAllowed";
-    public static final String COLUMN_PTS_SCORED_TRAIN        = "pointsScored";
     public static final String COLUMN_SUB_ATTEMPT_TRAIN        = "subAttempted";
     public static final String COLUMN_SUB_SUCCESS_TRAIN       = "subSuccess";
     public static final String COLUMN_PASS_ATTEMPTED_TRAIN    = "passAttempted";
@@ -95,8 +91,6 @@ public class trainingDBOpenHelper extends SQLiteOpenHelper{
                     COLUMN_TRAIN_NAME + " TEXT NOT NULL, " +
                     COLUMN_BELT_TRAIN + " TEXT NOT NULL, " +
                     COLUMN_BELT_TRAIN_OPP + " TEXT NOT NULL, " +
-                    COLUMN_PTS_ALLOWED_TRAIN + " NUMERIC, " +
-                    COLUMN_PTS_SCORED_TRAIN + " NUMERIC, " +
                     COLUMN_SUB_ATTEMPT_TRAIN + " NUMERIC, " +
                     COLUMN_SUB_SUCCESS_TRAIN + " NUMERIC, " +
                     COLUMN_PASS_ATTEMPTED_TRAIN + " NUMERIC, " +

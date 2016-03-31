@@ -22,6 +22,8 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.analytics.bjj.pro.DrawerListAdapter;
+
 import java.util.ArrayList;
 
 public class FragmentNavigationDrawer extends DrawerLayout {
