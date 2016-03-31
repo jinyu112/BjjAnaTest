@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import java.util.List;
 import com.analytics.bjj.db.DrillDataSource;
+import com.analytics.bjj.pro.GlobConstants;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
@@ -24,7 +25,7 @@ public class DrillListFragment extends ListFragment{
 
     private static DrillDataSource dataSource;
     private List<Drill> drills;
-    private static final int MAX_DRILL_DATABASE_ROWS = 49;
+    private static int MAX_DRILL_DATABASE_ROWS = 49;
 
 
 
@@ -35,6 +36,10 @@ public class DrillListFragment extends ListFragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        GlobConstants drillLimitObj = new GlobConstants();
+        MAX_DRILL_DATABASE_ROWS = drillLimitObj.getDrillLimit();
+
         dataSource = new DrillDataSource(getActivity());
         dataSource.open();
         setHasOptionsMenu(true);
@@ -97,7 +102,7 @@ public class DrillListFragment extends ListFragment{
                                             dataSource.create(drill);
                                             refreshDisplay();
                                         } else {
-                                            Toast.makeText(getActivity(), "Drill limit reached.",
+                                            Toast.makeText(getActivity(), "Drill limit reached. Please buy Pro version to unlock.",
                                                     Toast.LENGTH_SHORT).show();
                                         }
 

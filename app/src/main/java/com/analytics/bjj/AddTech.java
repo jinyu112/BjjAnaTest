@@ -11,6 +11,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.analytics.bjj.db.TechDataSource;
+import com.analytics.bjj.pro.GlobConstants;
 
 public class AddTech extends ActionBarActivity{
 
@@ -18,12 +19,16 @@ public class AddTech extends ActionBarActivity{
     private static Spinner spin;
     private TechDataSource dataSource;
     private static MyEditText ev;
-    private static final int MAX_TECH_DATABASE_ROWS = 49;
+    private static int MAX_TECH_DATABASE_ROWS = 49;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_tech);
+
+        GlobConstants techLimitObj = new GlobConstants();
+        MAX_TECH_DATABASE_ROWS = techLimitObj.getTechLimit();
+
         //database related
         dataSource = new TechDataSource(this);
         dataSource.open();
@@ -78,7 +83,7 @@ public class AddTech extends ActionBarActivity{
             finish();
         }
         else {
-            Toast.makeText(this, "Technique limit reached.",
+            Toast.makeText(this, "Technique limit reached. Please buy Pro version to unlock.",
                     Toast.LENGTH_SHORT).show();
         }
     }
