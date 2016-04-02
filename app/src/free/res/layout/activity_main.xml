@@ -1,0 +1,55 @@
+<com.analytics.bjj.FragmentNavigationDrawer
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <include
+        layout="@layout/toolbar"
+        android:id="@+id/main_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <FrameLayout android:id="@+id/mainContent"
+        android:layout_height="fill_parent"
+        android:layout_width="match_parent">
+
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            ads:adSize="SMART_BANNER"
+            android:gravity="bottom"
+            android:layout_gravity="bottom"
+            ads:adUnitId="@string/real_ad_unit_id">
+        </com.google.android.gms.ads.AdView>
+
+    </FrameLayout>
+
+    </LinearLayout>
+
+    <ListView android:id="@+id/drawerList"
+        android:layout_width="240dp"
+        android:layout_height="match_parent"
+        android:entries="@array/drawerBar"
+        android:layout_gravity="start"
+        android:choiceMode="singleChoice"
+        android:dividerHeight="0dp"
+        android:background="#FFFFFF">
+
+
+
+
+    </ListView>
+
+
+
+
+</com.analytics.bjj.FragmentNavigationDrawer>
+

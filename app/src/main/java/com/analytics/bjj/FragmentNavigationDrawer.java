@@ -22,7 +22,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.analytics.bjj.pro.DrawerListAdapter;
+import com.analytics.bjj.free.DrawerListAdapter;
 
 import java.util.ArrayList;
 

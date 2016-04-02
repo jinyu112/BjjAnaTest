@@ -12,7 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.analytics.bjj.db.TournDataSource;
-import com.analytics.bjj.pro.MainActivity;
+import com.analytics.bjj.free.MainActivity;
 
 public class LoginActivity extends Activity {
 

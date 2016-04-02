@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import java.util.List;
 import com.analytics.bjj.db.DrillDataSource;
-import com.analytics.bjj.pro.GlobConstants;
+import com.analytics.bjj.free.GlobConstants;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 

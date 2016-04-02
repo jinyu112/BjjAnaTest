@@ -11,7 +11,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.analytics.bjj.db.TechDataSource;
-import com.analytics.bjj.pro.GlobConstants;
+import com.analytics.bjj.free.GlobConstants;
 
 public class AddTech extends ActionBarActivity{
 
